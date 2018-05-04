@@ -18,10 +18,7 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 		// button to add an entry
 		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewEntry))
 
-		// fake data
-		entries.append(Entry(weight: 200.0))
-		entries.append(Entry(weight: 185.0))
-		entries.append(Entry(weight: 175.0))
+		readEntries()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -69,9 +66,36 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 		let weight = Double(wgt) ?? 0.0
 		let newEntry = Entry(weight: weight)
 		entries.insert(newEntry, at: 0)
+		writeEntries()
 
 		let indexPath = IndexPath(row: 0, section: 0)
 		tableView.insertRows(at: [indexPath], with: .automatic)
+	}
+
+	func readEntries() {
+		let defaults = UserDefaults.standard
+
+		if let savedEntries = defaults.object(forKey: "entries") as? Data {
+			let jsonDecoder = JSONDecoder()
+
+			do {
+				entries = try jsonDecoder.decode([Entry].self, from: savedEntries)
+			}
+			catch {
+				print("Failed to load entries!.")
+			}
+		}
+	}
+
+	func writeEntries() {
+		let jsonEncoder = JSONEncoder()
+		if let savedData = try? jsonEncoder.encode(entries) {
+			let defaults = UserDefaults.standard
+			defaults.set(savedData, forKey: "entries")
+		}
+		else {
+			print("Failed to save entries!")
+		}
 	}
 
 }
