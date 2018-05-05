@@ -10,17 +10,16 @@ import UIKit
 
 class ViewController: UITableViewController, UINavigationControllerDelegate {
 
-	var entries = [Entry]()
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		// button to add an entry
-		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewEntry))
 
 		readEntries()
 	}
 
+	override func viewDidAppear(_ animated: Bool) {
+		tableView.reloadData()
+	}
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -48,53 +47,15 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 		return cell
 	}
 
-	@objc func addNewEntry() {
-		let ac = UIAlertController(title: "Enter weight", message: nil, preferredStyle: .alert)
-		ac.addTextField()
-
-		let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, ac] (action: UIAlertAction) in
-			let weight = ac.textFields![0]
-			self.submit(weight: weight.text!)
-		}
-
-		ac.addAction(submitAction)
-		present(ac, animated: true)
-	}
-
-	func submit(weight wgt: String) {
-		// need to check for invalid weight string
-		let weight = Double(wgt) ?? 0.0
-		let newEntry = Entry(weight: weight)
-		entries.insert(newEntry, at: 0)
-		writeEntries()
-
-		let indexPath = IndexPath(row: 0, section: 0)
-		tableView.insertRows(at: [indexPath], with: .automatic)
-	}
-
-	func readEntries() {
-		let defaults = UserDefaults.standard
-
-		if let savedEntries = defaults.object(forKey: "entries") as? Data {
-			let jsonDecoder = JSONDecoder()
-
-			do {
-				entries = try jsonDecoder.decode([Entry].self, from: savedEntries)
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "Edit Entry" {
+			if let dest = segue.destination as? EntryViewController {
+				if let selectedCell = sender as? UITableViewCell {
+					if let indexPath = tableView.indexPath(for: selectedCell) {
+						dest.fromIndexPath = indexPath
+					}
+				}
 			}
-			catch {
-				print("Failed to load entries!.")
-			}
-		}
-	}
-
-	func writeEntries() {
-		let jsonEncoder = JSONEncoder()
-		if let savedData = try? jsonEncoder.encode(entries) {
-			let defaults = UserDefaults.standard
-			defaults.set(savedData, forKey: "entries")
-		}
-		else {
-			print("Failed to save entries!")
 		}
 	}
 

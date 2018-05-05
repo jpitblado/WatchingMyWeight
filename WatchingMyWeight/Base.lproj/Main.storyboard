@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,6 +42,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Zyw-do-Lpb" kind="show" identifier="Edit Entry" id="G2f-45-CYb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -48,11 +52,87 @@
                             <outlet property="delegate" destination="j5y-So-ZHT" id="bVr-oW-55d"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Xf7-3c-GAw"/>
+                    <navigationItem key="navigationItem" id="Xf7-3c-GAw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="kqe-LG-N7m">
+                            <connections>
+                                <segue destination="Zyw-do-Lpb" kind="show" identifier="Add Entry" id="vNc-Cm-5Si"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7IH-s0-hsD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="975" y="-548"/>
+        </scene>
+        <!--Entry View Controller-->
+        <scene sceneID="Dia-kZ-CtX">
+            <objects>
+                <viewController id="Zyw-do-Lpb" customClass="EntryViewController" customModule="WatchingMyWeight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uZc-Rq-mDW" userLabel="view" customClass="e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ujR-yM-rkC">
+                                <rect key="frame" x="27.5" y="155" width="320" height="357.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KYw-7V-b3B">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b70-XW-WNv">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wp-Al-pja">
+                                                <rect key="frame" x="0.0" y="20.5" width="320" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ogo-lK-dZK">
+                                        <rect key="frame" x="0.0" y="70.5" width="320" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="547245328.68758202">
+                                            <!--2018-05-05 20:35:28 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W07-A5-dms">
+                                        <rect key="frame" x="0.0" y="306.5" width="320" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="SyZ-74-ofm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitPressed:" destination="Zyw-do-Lpb" eventType="touchUpInside" id="mjP-71-xas"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="KYw-7V-b3B" firstAttribute="leading" secondItem="ujR-yM-rkC" secondAttribute="leading" id="FCp-6g-lEF"/>
+                                    <constraint firstItem="W07-A5-dms" firstAttribute="leading" secondItem="ujR-yM-rkC" secondAttribute="leading" id="HhO-Bg-Rkv"/>
+                                    <constraint firstAttribute="trailing" secondItem="W07-A5-dms" secondAttribute="trailing" id="JeC-S5-4gY"/>
+                                    <constraint firstAttribute="trailing" secondItem="KYw-7V-b3B" secondAttribute="trailing" id="gf0-jx-JSg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ujR-yM-rkC" firstAttribute="centerY" secondItem="uZc-Rq-mDW" secondAttribute="centerY" id="6W5-Sn-bRy"/>
+                            <constraint firstItem="ujR-yM-rkC" firstAttribute="centerX" secondItem="uZc-Rq-mDW" secondAttribute="centerX" id="qUv-7H-3ob"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="j7u-TL-ATd"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="Ogo-lK-dZK" id="fNc-w1-lqg"/>
+                        <outlet property="weightTextField" destination="2Wp-Al-pja" id="gfN-BQ-Z3L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTX-Bh-swj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896.8" y="-548.27586206896558"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jB8-Os-8xz">
@@ -73,4 +153,7 @@
             <point key="canvasLocation" x="36" y="-548"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vNc-Cm-5Si"/>
+    </inferredMetricsTieBreakers>
 </document>

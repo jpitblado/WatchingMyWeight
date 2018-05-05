@@ -24,3 +24,31 @@ class Entry : Codable {
 	}
 
 }
+
+var entries = [Entry]()
+
+func readEntries() {
+	let defaults = UserDefaults.standard
+
+	if let savedEntries = defaults.object(forKey: "entries") as? Data {
+		let jsonDecoder = JSONDecoder()
+
+		do {
+			entries = try jsonDecoder.decode([Entry].self, from: savedEntries)
+		}
+		catch {
+			print("Failed to load entries!")
+		}
+	}
+}
+
+func writeEntries() {
+	let jsonEncoder = JSONEncoder()
+	if let savedData = try? jsonEncoder.encode(entries) {
+		let defaults = UserDefaults.standard
+		defaults.set(savedData, forKey: "entries")
+	}
+	else {
+		print("Failed to save entries!")
+	}
+}
