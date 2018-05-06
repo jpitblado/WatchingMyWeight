@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="8r8-Xx-AMD" detailTextLabel="X1I-9N-Uow" style="IBUITableViewCellStyleSubtitle" id="iBA-Dn-p0R">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="8r8-Xx-AMD" detailTextLabel="X1I-9N-Uow" style="IBUITableViewCellStyleValue1" id="iBA-Dn-p0R">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iBA-Dn-p0R" id="Vrx-Ua-9BH">
@@ -28,16 +28,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8r8-Xx-AMD">
-                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X1I-9N-Uow">
-                                            <rect key="frame" x="16" y="25.5" width="33" height="14.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X1I-9N-Uow">
+                                            <rect key="frame" x="296" y="12" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ujR-yM-rkC">
-                                <rect key="frame" x="21" y="218.5" width="333" height="230"/>
+                                <rect key="frame" x="21" y="228.5" width="333" height="210"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vgJ-76-VlW" userLabel="weight Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
@@ -85,7 +85,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="mpD-f9-cbH"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="v8a-Hg-XEW"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -107,7 +107,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="abP-31-vKZ"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="f1Z-1E-hEk"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -124,12 +124,8 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W07-A5-dms">
-                                        <rect key="frame" x="116.5" y="180" width="100" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="FoM-pS-k7n"/>
-                                            <constraint firstAttribute="height" constant="50" id="SyZ-74-ofm"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <rect key="frame" x="142" y="180" width="49" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Submit"/>
                                         <connections>
                                             <action selector="submitPressed:" destination="Zyw-do-Lpb" eventType="touchUpInside" id="mjP-71-xas"/>
@@ -152,7 +148,10 @@
                         <viewLayoutGuide key="safeArea" id="j7u-TL-ATd"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="yf4-0h-ddu" id="tE9-kJ-wH3"/>
                         <outlet property="datePicker" destination="Ogo-lK-dZK" id="fNc-w1-lqg"/>
+                        <outlet property="submitButton" destination="W07-A5-dms" id="XvY-oP-qL5"/>
+                        <outlet property="weightLabel" destination="CEd-ME-bhB" id="4aW-FX-sdC"/>
                         <outlet property="weightPicker" destination="ca8-V6-dCW" id="yMp-0N-nUt"/>
                     </connections>
                 </viewController>

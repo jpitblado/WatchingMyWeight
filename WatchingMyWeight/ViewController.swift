@@ -13,7 +13,18 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		// navigation bar settings
+		/*
+		let att = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: settings.fontSize)]
+		self.navigationController?.navigationBar.titleTextAttributes = att
+		*/
+		navigationItem.title = "Weight Data"
+
+		// data setup
 		readEntries()
+
+		// table settings
+		tableView.rowHeight = settings.fontSize * (1.0 + 2*Defaults.spacing)
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -25,6 +36,8 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 
+	// MARK: Table view
+
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return entries.count
 	}
@@ -32,22 +45,29 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let entry = entries[indexPath.row]
 
-		let calendar = Calendar.current
-		let month = calendar.component(.month, from: entry.date)
-		let day = calendar.component(.day, from: entry.date)
-		let year = calendar.component(.year, from: entry.date)
-		let hour = calendar.component(.hour, from: entry.date)
-		let minute = calendar.component(.minute, from: entry.date)
-		let second = calendar.component(.second, from: entry.date)
-
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+
+		// Weight label
 		cell.textLabel?.text = "\(entry.weight)"
-		cell.detailTextLabel?.text = "\(year)-\(month)-\(day) \(hour):\(minute) \(second)"
+		cell.textLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
+
+		// Date label
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = DateFormatter.Style.medium
+		dateFormatter.timeStyle = DateFormatter.Style.none
+		cell.detailTextLabel?.text = dateFormatter.string(from: entry.date)
+		cell.detailTextLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
 
 		return cell
 	}
 
+	// MARK: Navigation
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let backItem = UIBarButtonItem()
+		backItem.title = "Discard"
+		navigationItem.backBarButtonItem = backItem
+
 		if segue.identifier == "Edit Entry" {
 			if let dest = segue.destination as? EntryViewController {
 				if let selectedCell = sender as? UITableViewCell {

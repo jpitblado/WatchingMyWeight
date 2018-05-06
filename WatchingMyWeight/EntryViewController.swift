@@ -12,9 +12,14 @@ class EntryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
 	var fromIndexPath: IndexPath?
 
+	@IBOutlet var weightLabel: UILabel!
 	@IBOutlet var weightPicker: UIPickerView!
+
+	@IBOutlet var dateLabel: UILabel!
 	@IBOutlet var datePicker: UIDatePicker!
 
+	@IBOutlet var submitButton: UIButton!
+	
 	var weightDigits = ["0","0","0",".","0"]
 	let weightPickerDim = 5
 
@@ -63,20 +68,27 @@ class EntryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		weightPicker.delegate = self
 		weightPicker.dataSource = self
 
+		weightLabel.font = UIFont.systemFont(ofSize: settings.fontSize)
+		dateLabel.font = UIFont.systemFont(ofSize: settings.fontSize)
+		submitButton.titleLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
+
 		if let indexPath = fromIndexPath {
 			setWeightDigits(fromWeight: entries[indexPath.row].weight)
 			datePicker.date = entries[indexPath.row].date
-			navigationItem.title = "Edit weight data"
+			navigationItem.title = "Edit"
+			submitButton.setTitle("Submit changes", for: .normal)
 		}
 		else if entries.count > 0 {
 			setWeightDigits(fromWeight: entries[0].weight)
 			// datePicker defaults to current date/time
-			navigationItem.title = "New weight data"
+			navigationItem.title = "Add"
+			submitButton.setTitle("Submit new data", for: .normal)
 		}
 		else {
 			weightDigits = ["1", "2", "5", ".", "0"]
 			// datePicker defaults to current date/time
-			navigationItem.title = "New weight data"
+			navigationItem.title = "Add"
+			submitButton.setTitle("Submit new data", for: .normal)
 		}
 		updateWeightPicker()
     }
