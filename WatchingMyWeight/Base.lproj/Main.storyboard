@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,42 +69,67 @@
         <scene sceneID="Dia-kZ-CtX">
             <objects>
                 <viewController id="Zyw-do-Lpb" customClass="EntryViewController" customModule="WatchingMyWeight" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uZc-Rq-mDW" userLabel="view" customClass="e">
+                    <view key="view" contentMode="scaleToFill" id="uZc-Rq-mDW" userLabel="view">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ujR-yM-rkC">
-                                <rect key="frame" x="27.5" y="155" width="320" height="357.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ujR-yM-rkC">
+                                <rect key="frame" x="21" y="218.5" width="333" height="230"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KYw-7V-b3B">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vgJ-76-VlW" userLabel="weight Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b70-XW-WNv">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEd-ME-bhB">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="mpD-f9-cbH"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="v8a-Hg-XEW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wp-Al-pja">
-                                                <rect key="frame" x="0.0" y="20.5" width="320" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ca8-V6-dCW">
+                                                <rect key="frame" x="158" y="0.0" width="175" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="PUS-T2-VPQ"/>
+                                                    <constraint firstAttribute="width" constant="175" id="S5E-8w-wxa"/>
+                                                </constraints>
+                                            </pickerView>
                                         </subviews>
                                     </stackView>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ogo-lK-dZK">
-                                        <rect key="frame" x="0.0" y="70.5" width="320" height="216"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="547245328.68758202">
-                                            <!--2018-05-05 20:35:28 +0000-->
-                                        </date>
-                                    </datePicker>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="id8-a3-rBK" userLabel="date Stack View">
+                                        <rect key="frame" x="0.0" y="90" width="333" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yf4-0h-ddu">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="abP-31-vKZ"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="f1Z-1E-hEk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ogo-lK-dZK">
+                                                <rect key="frame" x="88" y="0.0" width="245" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="245" id="1ZV-qn-5iL"/>
+                                                    <constraint firstAttribute="height" constant="50" id="faN-G4-t25"/>
+                                                </constraints>
+                                                <date key="date" timeIntervalSinceReferenceDate="547245328.68758202">
+                                                    <!--2018-05-05 20:35:28 +0000-->
+                                                </date>
+                                            </datePicker>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W07-A5-dms">
-                                        <rect key="frame" x="0.0" y="306.5" width="320" height="51"/>
+                                        <rect key="frame" x="116.5" y="180" width="100" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="51" id="SyZ-74-ofm"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="FoM-pS-k7n"/>
+                                            <constraint firstAttribute="height" constant="50" id="SyZ-74-ofm"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="Submit"/>
                                         <connections>
                                             <action selector="submitPressed:" destination="Zyw-do-Lpb" eventType="touchUpInside" id="mjP-71-xas"/>
@@ -111,10 +137,10 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="KYw-7V-b3B" firstAttribute="leading" secondItem="ujR-yM-rkC" secondAttribute="leading" id="FCp-6g-lEF"/>
-                                    <constraint firstItem="W07-A5-dms" firstAttribute="leading" secondItem="ujR-yM-rkC" secondAttribute="leading" id="HhO-Bg-Rkv"/>
-                                    <constraint firstAttribute="trailing" secondItem="W07-A5-dms" secondAttribute="trailing" id="JeC-S5-4gY"/>
-                                    <constraint firstAttribute="trailing" secondItem="KYw-7V-b3B" secondAttribute="trailing" id="gf0-jx-JSg"/>
+                                    <constraint firstAttribute="trailing" secondItem="vgJ-76-VlW" secondAttribute="trailing" id="1CQ-Dc-Ngy"/>
+                                    <constraint firstItem="id8-a3-rBK" firstAttribute="leading" secondItem="ujR-yM-rkC" secondAttribute="leading" id="20e-gV-bNx"/>
+                                    <constraint firstItem="vgJ-76-VlW" firstAttribute="leading" secondItem="ujR-yM-rkC" secondAttribute="leading" id="3jk-jv-hy7"/>
+                                    <constraint firstAttribute="trailing" secondItem="id8-a3-rBK" secondAttribute="trailing" id="X2x-oB-haA"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -127,7 +153,7 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="Ogo-lK-dZK" id="fNc-w1-lqg"/>
-                        <outlet property="weightTextField" destination="2Wp-Al-pja" id="gfN-BQ-Z3L"/>
+                        <outlet property="weightPicker" destination="ca8-V6-dCW" id="yMp-0N-nUt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KTX-Bh-swj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -154,6 +180,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vNc-Cm-5Si"/>
+        <segue reference="G2f-45-CYb"/>
     </inferredMetricsTieBreakers>
 </document>
