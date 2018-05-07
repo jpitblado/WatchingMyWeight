@@ -19,7 +19,7 @@ class EntryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	@IBOutlet var datePicker: UIDatePicker!
 
 	@IBOutlet var submitButton: UIButton!
-	
+
 	var weightDigits = ["0","0","0",".","0"]
 	let weightPickerDim = 5
 
@@ -78,14 +78,13 @@ class EntryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			navigationItem.title = "Edit"
 			submitButton.setTitle("Submit changes", for: .normal)
 		}
-		else if entries.count > 0 {
-			setWeightDigits(fromWeight: entries[0].weight)
-			// datePicker defaults to current date/time
-			navigationItem.title = "Add"
-			submitButton.setTitle("Submit new data", for: .normal)
-		}
 		else {
-			weightDigits = ["1", "2", "5", ".", "0"]
+			if entries.count > 0 && settings.newWeight == NewWeight.top {
+				setWeightDigits(fromWeight: entries[0].weight)
+			}
+			else {
+				setWeightDigits(fromWeight: settings.weightDefault)
+			}
 			// datePicker defaults to current date/time
 			navigationItem.title = "Add"
 			submitButton.setTitle("Submit new data", for: .normal)
@@ -103,9 +102,9 @@ class EntryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	}
 
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//		pickerView.subviews.forEach {
-//			$0.isHidden = $0.frame.height < 1.0
-//		}
+		pickerView.subviews.forEach {
+			$0.isHidden = $0.frame.height < 1.0
+		}
 		return weightPickerDim
 	}
 
@@ -120,36 +119,26 @@ class EntryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		weightDigits[component] = String(row)
 	}
 
-	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		if component == 3 {
-			return "."
-		}
-		return String(row)
-	}
-
-/*
 	func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
 		if component == 3 {
-			return 24
+			return settings.fontSize/2
 		}
-		return 24
+		return settings.fontSize
 	}
 
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
 		var pickerLabel: UILabel? = (view as? UILabel)
 		if pickerLabel == nil {
 			pickerLabel = UILabel()
-			pickerLabel?.font = UIFont(name: "System", size: 48)
-			pickerLabel?.font = UIFont.systemFont(ofSize: 28)
+			pickerLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
 		}
 		if component == 3 {
 			pickerLabel?.text = "."
 		}
 		else {
-			pickerLabel?.text = " " + String(row)
+			pickerLabel?.text = String(row)
 		}
 		return pickerLabel!
 	}
-*/
 
 }
