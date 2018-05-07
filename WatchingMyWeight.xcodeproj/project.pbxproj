@@ -60,17 +60,41 @@
 		77140590209BF75B00213BBA /* WatchingMyWeight */ = {
 			isa = PBXGroup;
 			children = (
+				77A0F87820A00B0B008BD461 /* Model */,
+				77A0F87620A00ABF008BD461 /* View */,
+				77A0F87720A00AF4008BD461 /* Controller */,
 				77140598209BF75C00213BBA /* Assets.xcassets */,
-				7714059A209BF75C00213BBA /* LaunchScreen.storyboard */,
-				77140595209BF75B00213BBA /* Main.storyboard */,
 				7714059D209BF75C00213BBA /* Info.plist */,
-				77140591209BF75B00213BBA /* AppDelegate.swift */,
-				771405A3209BF87E00213BBA /* Entry.swift */,
-				778ABAB7209E4CC500D1C955 /* EntryViewController.swift */,
-				77A9F0F1209FB0B3002FA3EF /* Settings.swift */,
-				77140593209BF75B00213BBA /* ViewController.swift */,
 			);
 			path = WatchingMyWeight;
+			sourceTree = "<group>";
+		};
+		77A0F87620A00ABF008BD461 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7714059A209BF75C00213BBA /* LaunchScreen.storyboard */,
+				77140595209BF75B00213BBA /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		77A0F87720A00AF4008BD461 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				77140591209BF75B00213BBA /* AppDelegate.swift */,
+				778ABAB7209E4CC500D1C955 /* EntryViewController.swift */,
+				77140593209BF75B00213BBA /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		77A0F87820A00B0B008BD461 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				771405A3209BF87E00213BBA /* Entry.swift */,
+				77A9F0F1209FB0B3002FA3EF /* Settings.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
