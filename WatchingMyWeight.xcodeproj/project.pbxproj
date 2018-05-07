@@ -14,6 +14,7 @@
 		7714059C209BF75C00213BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7714059A209BF75C00213BBA /* LaunchScreen.storyboard */; };
 		771405A4209BF87E00213BBA /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771405A3209BF87E00213BBA /* Entry.swift */; };
 		778ABAB8209E4CC500D1C955 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABAB7209E4CC500D1C955 /* EntryViewController.swift */; };
+		77A0F87A20A00BEE008BD461 /* WeightPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A0F87920A00BEE008BD461 /* WeightPickerView.swift */; };
 		77A9F0F2209FB0B3002FA3EF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A9F0F1209FB0B3002FA3EF /* Settings.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		7714059D209BF75C00213BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		771405A3209BF87E00213BBA /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		778ABAB7209E4CC500D1C955 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		77A0F87920A00BEE008BD461 /* WeightPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightPickerView.swift; sourceTree = "<group>"; };
 		77A9F0F1209FB0B3002FA3EF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 			children = (
 				7714059A209BF75C00213BBA /* LaunchScreen.storyboard */,
 				77140595209BF75B00213BBA /* Main.storyboard */,
+				77A0F87920A00BEE008BD461 /* WeightPickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A0F87A20A00BEE008BD461 /* WeightPickerView.swift in Sources */,
 				771405A4209BF87E00213BBA /* Entry.swift in Sources */,
 				778ABAB8209E4CC500D1C955 /* EntryViewController.swift in Sources */,
 				77140594209BF75B00213BBA /* ViewController.swift in Sources */,

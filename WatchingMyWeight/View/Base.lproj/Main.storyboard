@@ -152,7 +152,7 @@
                         <outlet property="datePicker" destination="Ogo-lK-dZK" id="fNc-w1-lqg"/>
                         <outlet property="submitButton" destination="W07-A5-dms" id="XvY-oP-qL5"/>
                         <outlet property="weightLabel" destination="CEd-ME-bhB" id="4aW-FX-sdC"/>
-                        <outlet property="weightPicker" destination="ca8-V6-dCW" id="yMp-0N-nUt"/>
+                        <outlet property="weightPickerOutlet" destination="ca8-V6-dCW" id="0Df-TI-a6r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KTX-Bh-swj" userLabel="First Responder" sceneMemberID="firstResponder"/>
