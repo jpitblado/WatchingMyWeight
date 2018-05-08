@@ -20,6 +20,9 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 		*/
 		navigationItem.title = "Weight Data"
 
+		// settings setup
+		readSettings()
+
 		// data setup
 		readEntries()
 
@@ -65,6 +68,13 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let backItem = UIBarButtonItem()
+
+		if segue.identifier == "Settings" {
+			backItem.title = "Back"
+			navigationItem.backBarButtonItem = backItem
+			return
+		}
+
 		backItem.title = "Discard"
 		navigationItem.backBarButtonItem = backItem
 

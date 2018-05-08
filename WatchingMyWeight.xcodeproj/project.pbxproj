@@ -16,6 +16,7 @@
 		778ABAB8209E4CC500D1C955 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABAB7209E4CC500D1C955 /* EntryViewController.swift */; };
 		77A0F87A20A00BEE008BD461 /* WeightPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A0F87920A00BEE008BD461 /* WeightPickerView.swift */; };
 		77A9F0F2209FB0B3002FA3EF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A9F0F1209FB0B3002FA3EF /* Settings.swift */; };
+		77FE57AF20A1596F001B1B72 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		778ABAB7209E4CC500D1C955 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		77A0F87920A00BEE008BD461 /* WeightPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightPickerView.swift; sourceTree = "<group>"; };
 		77A9F0F1209FB0B3002FA3EF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				77140591209BF75B00213BBA /* AppDelegate.swift */,
 				778ABAB7209E4CC500D1C955 /* EntryViewController.swift */,
+				77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */,
 				77140593209BF75B00213BBA /* ViewController.swift */,
 			);
 			path = Controller;
@@ -177,6 +180,7 @@
 				77140594209BF75B00213BBA /* ViewController.swift in Sources */,
 				77140592209BF75B00213BBA /* AppDelegate.swift in Sources */,
 				77A9F0F2209FB0B3002FA3EF /* Settings.swift in Sources */,
+				77FE57AF20A1596F001B1B72 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

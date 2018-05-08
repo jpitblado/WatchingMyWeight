@@ -30,11 +30,11 @@ var entries = [Entry]()
 func readEntries() {
 	let defaults = UserDefaults.standard
 
-	if let savedEntries = defaults.object(forKey: "entries") as? Data {
+	if let savedData = defaults.object(forKey: "entries") as? Data {
 		let jsonDecoder = JSONDecoder()
 
 		do {
-			entries = try jsonDecoder.decode([Entry].self, from: savedEntries)
+			entries = try jsonDecoder.decode([Entry].self, from: savedData)
 		}
 		catch {
 			print("Failed to load entries!")
