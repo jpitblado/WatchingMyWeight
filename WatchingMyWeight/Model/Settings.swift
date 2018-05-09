@@ -26,6 +26,13 @@ enum NewWeight: String, Codable {
 	case top
 }
 
+enum SettingType {
+	case fontSize
+	case weightDefault
+	case newWeight
+	case scale
+}
+
 struct Settings: Codable {
 	// Cosmetic settings
 	var fontSize: CGFloat = Defaults.fontSize
@@ -34,6 +41,15 @@ struct Settings: Codable {
 	var weightDefault: Double = Defaults.weight
 	var newWeight: NewWeight = NewWeight.top
 	var scale: Scale = Scale.lbs
+
+	func heightForFontSize() -> CGFloat {
+		return fontSize * (1.0 + 2*Defaults.spacing)
+	}
+
+	func font() -> UIFont {
+		return UIFont.systemFont(ofSize: fontSize)
+	}
+
 }
 
 var settings = Settings()

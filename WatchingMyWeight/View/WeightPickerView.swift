@@ -19,16 +19,7 @@ class WeightPickerView: UIPickerView {
 		}
 	}
 
-	func update(_ pickerView: UIPickerView) {
-		for pos in 0..<digits.count {
-			if (pos == dotComponent) {
-				continue
-			}
-			pickerView.selectRow(Int(digits[pos])!, inComponent: pos, animated: true)
-		}
-	}
-
-	func setDigits(fromWeight weight: Double) {
+	func set(fromWeight weight: Double) {
 		var w10 = Int(weight * 10.0)
 		var pos = digits.count
 		for _ in 0..<digits.count {
@@ -38,6 +29,15 @@ class WeightPickerView: UIPickerView {
 			}
 			digits[pos] = String(w10 % 10)
 			w10 = w10/10
+		}
+	}
+
+	func update(_ pickerView: UIPickerView) {
+		for pos in 0..<digits.count {
+			if (pos == dotComponent) {
+				continue
+			}
+			pickerView.selectRow(Int(digits[pos])!, inComponent: pos, animated: true)
 		}
 	}
 
@@ -68,7 +68,7 @@ extension WeightPickerView: UIPickerViewDataSource {
 extension WeightPickerView: UIPickerViewDelegate {
 
 	func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-		return settings.fontSize * (1.0 + 2*Defaults.spacing)
+		return settings.heightForFontSize()
 	}
 
 	func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
@@ -82,7 +82,7 @@ extension WeightPickerView: UIPickerViewDelegate {
 		var pickerLabel: UILabel? = (view as? UILabel)
 		if pickerLabel == nil {
 			pickerLabel = UILabel()
-			pickerLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
+			pickerLabel?.font = settings.font()
 		}
 
 		if component == dotComponent {

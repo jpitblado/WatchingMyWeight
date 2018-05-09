@@ -25,9 +25,6 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 
 		// data setup
 		readEntries()
-
-		// table settings
-		tableView.rowHeight = settings.fontSize * (1.0 + 2*Defaults.spacing)
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +40,10 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return entries.count
+	}
+
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return settings.heightForFontSize()
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -44,21 +44,21 @@ class EntryViewController: UIViewController {
 		weightPickerOutlet.delegate = weightPicker
 		weightPickerOutlet.dataSource = weightPicker
 
-		dateLabel.font = UIFont.systemFont(ofSize: settings.fontSize)
-		submitButton.titleLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
+		dateLabel.font = settings.font()
+		submitButton.titleLabel?.font = settings.font()
 
 		if let indexPath = fromIndexPath {
-			weightPicker.setDigits(fromWeight: entries[indexPath.row].weight)
+			weightPicker.set(fromWeight: entries[indexPath.row].weight)
 			datePicker.date = entries[indexPath.row].date
 			navigationItem.title = "Edit"
 			submitButton.setTitle("Submit changes", for: .normal)
 		}
 		else {
 			if entries.count > 0 && settings.newWeight == NewWeight.top {
-				weightPicker.setDigits(fromWeight: entries[0].weight)
+				weightPicker.set(fromWeight: entries[0].weight)
 			}
 			else {
-				weightPicker.setDigits(fromWeight: settings.weightDefault)
+				weightPicker.set(fromWeight: settings.weightDefault)
 			}
 			// datePicker defaults to current date/time
 			navigationItem.title = "Add"
