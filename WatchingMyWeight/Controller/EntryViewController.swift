@@ -27,9 +27,11 @@ class EntryViewController: UIViewController {
 		if let indexPath = fromIndexPath {
 			entries[indexPath.row].weight = weight
 			entries[indexPath.row].date = date
+			entries[indexPath.row].weightScale = settings.weightScale
 		}
 		else {
-			let newEntry = Entry(weight: weight, date: date)
+			let newEntry = Entry(weight: weight, weightScale: settings.weightScale, date: date)
+//			let newEntry = Entry(weight: weight, date: date)
 			entries.insert(newEntry, at: 0)
 		}
 		writeEntries()
@@ -44,6 +46,7 @@ class EntryViewController: UIViewController {
 		super.viewDidLoad()
 
 		weightLabel.font = settings.font()
+		weightLabel.text = "Weight (\(settings.weightScale))"
 		weightPicker = WeightPickerView()
 		weightPickerOutlet.delegate = weightPicker
 		weightPickerOutlet.dataSource = weightPicker
@@ -53,17 +56,17 @@ class EntryViewController: UIViewController {
 		submitButton.titleLabel?.font = settings.font()
 
 		if let indexPath = fromIndexPath {
-			weightPicker.set(fromWeight: entries[indexPath.row].weight)
+			weightPicker.set(fromWeight: entries[indexPath.row].weight, inScale: entries[indexPath.row].weightScale)
 			datePicker.date = entries[indexPath.row].date
 			navigationItem.title = "Edit"
 			submitButton.setTitle("Submit changes", for: .normal)
 		}
 		else {
 			if entries.count > 0 && settings.newWeight == NewWeight.top {
-				weightPicker.set(fromWeight: entries[0].weight)
+				weightPicker.set(fromWeight: entries[0].weight, inScale: entries[0].weightScale)
 			}
 			else {
-				weightPicker.set(fromWeight: settings.weightDefault)
+				weightPicker.set(fromWeight: settings.weightDefault, inScale: settings.weightScale)
 			}
 			// datePicker defaults to current date/time
 			navigationItem.title = "Add"

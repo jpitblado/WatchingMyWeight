@@ -51,11 +51,11 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-		// Date label
-		cell.detailTextLabel?.text = String(format: "%.1f", entry.weight)
+		// Weight label
+		cell.detailTextLabel?.text = String(format: "%.1f \(settings.weightScale)", settings.weightValue(forWeight: entry.weight, inScale: entry.weightScale))
 		cell.detailTextLabel?.font = settings.font()
 
-		// Weight label
+		// Date label
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateStyle = DateFormatter.Style.medium
 		dateFormatter.timeStyle = DateFormatter.Style.none

@@ -44,7 +44,7 @@ class SettingsTableViewController: UITableViewController {
 			cell.detailTextLabel?.text = "\(settings.fontSize)"
 		case 1:		// weight default
 			cell.textLabel?.text = "Default Weight"
-			cell.detailTextLabel?.text = "\(settings.weightDefault)"
+			cell.detailTextLabel?.text = String(format: "%.1f", settings.weightDefault)
 		case 2:		// new weight
 			cell.textLabel?.text = "New Weight"
 			switch settings.newWeight {
@@ -55,7 +55,7 @@ class SettingsTableViewController: UITableViewController {
 			}
 		default:	// scale
 			cell.textLabel?.text = "Weight Scale"
-			cell.detailTextLabel?.text = "\(settings.scale.rawValue)"
+			cell.detailTextLabel?.text = "\(settings.weightScale.rawValue)"
 		}
 
 		return cell
@@ -76,7 +76,7 @@ class SettingsTableViewController: UITableViewController {
 						case 0:		dest.settingType = .fontSize
 						case 1:		dest.settingType = .weightDefault
 						case 2:		dest.settingType = .newWeight
-						default:	dest.settingType = .scale
+						default:	dest.settingType = .weightScale
 						}
 					}
 				}

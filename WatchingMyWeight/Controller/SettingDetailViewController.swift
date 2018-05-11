@@ -23,8 +23,8 @@ class SettingDetailViewController: UIViewController {
 			settings.weightDefault = weightPicker?.value ?? Defaults.weight
 		case .newWeight:
 			settings.newWeight = newWeightPicker?.value ?? NewWeight.top
-		case .scale:
-			print("!! no submit logic for scale")
+		case .weightScale:
+			settings.weightScale = weightScalePicker?.value ?? WeightScale.kg
 		}
 		writeSettings()
 		navigationController?.popViewController(animated: true)
@@ -35,6 +35,7 @@ class SettingDetailViewController: UIViewController {
 	var weightPicker: WeightPickerView?
 	var fontSizePicker: FontSizePickerView?
 	var newWeightPicker: NewWeightPickerView?
+	var weightScalePicker: WeightScalePickerView?
 
 	var settingName: String = ""
 	var settingType: SettingType = SettingType.fontSize
@@ -57,9 +58,9 @@ class SettingDetailViewController: UIViewController {
 			weightPicker = WeightPickerView()
 			pickerOutlet.dataSource = weightPicker
 			pickerOutlet.delegate = weightPicker
-			weightPicker?.set(fromWeight: settings.weightDefault)
+			weightPicker?.set(fromWeight: settings.weightDefault, inScale: settings.weightScale)
 			weightPicker?.update(pickerOutlet)
-			settingDescriptionLabel.text = "Change the \(settingName)"
+			settingDescriptionLabel.text = "Change the \(settingName) (\(settings.weightScale))"
 		case .newWeight:
 			newWeightPicker = NewWeightPickerView()
 			pickerOutlet.dataSource = newWeightPicker
@@ -67,8 +68,13 @@ class SettingDetailViewController: UIViewController {
 			newWeightPicker?.set(fromNewWeight: settings.newWeight)
 			newWeightPicker?.update(pickerOutlet)
 			settingDescriptionLabel.text = "\(settingName) From"
-		case .scale:
-			settingDescriptionLabel.text = "!! not implemented yet !!"
+		case .weightScale:
+			weightScalePicker = WeightScalePickerView()
+			pickerOutlet.dataSource = weightScalePicker
+			pickerOutlet.delegate = weightScalePicker
+			weightScalePicker?.set(fromWeightScale: settings.weightScale)
+			weightScalePicker?.update(pickerOutlet)
+			settingDescriptionLabel.text = "Change the \(settingName)"
 		}
 
 		pickerOutletHeightConstraint = pickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())

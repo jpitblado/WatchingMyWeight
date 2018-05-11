@@ -13,12 +13,14 @@ enum Defaults {
 	static let fontSize: CGFloat = 24.0
 	static let spacing: CGFloat = 0.25		// fraction of settings.fontSize
 
-	static let weight: Double = 150.0
+	static let weight: Double = 175.0
+
+	static let lbs_per_kg = 2.20462
 }
 
-enum Scale: String, Codable {
-	case kg
-	case lbs
+enum WeightScale: String, Codable {
+	case kg = "kg"
+	case lbs = "lbs"
 }
 
 enum NewWeight: String, Codable {
@@ -30,7 +32,7 @@ enum SettingType {
 	case fontSize
 	case weightDefault
 	case newWeight
-	case scale
+	case weightScale
 }
 
 struct Settings: Codable {
@@ -40,7 +42,11 @@ struct Settings: Codable {
 	// Weight settings
 	var weightDefault: Double = Defaults.weight
 	var newWeight: NewWeight = NewWeight.top
-	var scale: Scale = Scale.lbs
+	var weightScale: WeightScale = WeightScale.lbs {
+		didSet {
+			weightDefault = weightValue(forWeight: weightDefault, inScale: oldValue)
+		}
+	}
 
 	func heightForLabel() -> CGFloat {
 		return fontSize * (1.0 + 2*Defaults.spacing)
@@ -56,6 +62,18 @@ struct Settings: Codable {
 
 	func font() -> UIFont {
 		return UIFont.systemFont(ofSize: fontSize)
+	}
+
+	func weightValue(forWeight weight: Double, inScale weightScale: WeightScale) -> Double {
+		if weightScale == self.weightScale {
+			return weight
+		}
+		switch self.weightScale {
+		case .kg:
+			return weight/Defaults.lbs_per_kg
+		case .lbs:
+			return weight*Defaults.lbs_per_kg
+		}
 	}
 
 }

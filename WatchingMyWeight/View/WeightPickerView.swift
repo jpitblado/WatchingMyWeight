@@ -19,8 +19,9 @@ class WeightPickerView: UIPickerView {
 		}
 	}
 
-	func set(fromWeight weight: Double) {
-		var w10 = Int(weight * 10.0)
+	func set(fromWeight weight: Double, inScale weightScale: WeightScale) {
+		let w = settings.weightValue(forWeight: weight, inScale: weightScale)
+		var w10 = Int(round(w * 10.0))
 		var pos = digits.count
 		for _ in 0..<digits.count {
 			pos -= 1
