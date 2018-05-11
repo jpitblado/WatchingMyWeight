@@ -42,8 +42,16 @@ struct Settings: Codable {
 	var newWeight: NewWeight = NewWeight.top
 	var scale: Scale = Scale.lbs
 
-	func heightForFontSize() -> CGFloat {
+	func heightForLabel() -> CGFloat {
 		return fontSize * (1.0 + 2*Defaults.spacing)
+	}
+
+	func heightForPicker() -> CGFloat {
+		return 2*fontSize + 4*Defaults.spacing
+	}
+
+	func widthForWeightPicker() -> CGFloat {
+		return 6*fontSize
 	}
 
 	func font() -> UIFont {

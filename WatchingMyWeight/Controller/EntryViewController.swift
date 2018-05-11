@@ -36,15 +36,20 @@ class EntryViewController: UIViewController {
 		navigationController?.popViewController(animated: true)
 	}
 
-	override func viewDidLoad() {
-        super.viewDidLoad()
+	var weightPickerOutletHeightConstraint: NSLayoutConstraint?
+	var weightPickerOutletWidthConstraint: NSLayoutConstraint?
+	var datePickerOutletHeightConstraint: NSLayoutConstraint?
 
-		weightLabel.font = UIFont.systemFont(ofSize: settings.fontSize)
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		weightLabel.font = settings.font()
 		weightPicker = WeightPickerView()
 		weightPickerOutlet.delegate = weightPicker
 		weightPickerOutlet.dataSource = weightPicker
 
 		dateLabel.font = settings.font()
+
 		submitButton.titleLabel?.font = settings.font()
 
 		if let indexPath = fromIndexPath {
@@ -65,6 +70,31 @@ class EntryViewController: UIViewController {
 			submitButton.setTitle("Submit new data", for: .normal)
 		}
 		weightPicker.update(weightPickerOutlet)
-    }
+
+		weightPickerOutletHeightConstraint = weightPickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
+		weightPickerOutletHeightConstraint?.isActive = true
+		weightPickerOutletWidthConstraint = weightPickerOutlet?.widthAnchor.constraint(equalToConstant: settings.widthForWeightPicker())
+		weightPickerOutletWidthConstraint?.isActive = true
+		// weightPickerOutlet?.backgroundColor = UIColor.green		// !! debug
+
+		datePickerOutletHeightConstraint = datePicker.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
+		datePickerOutletHeightConstraint?.isActive = true
+
+		updateUI()
+	}
+
+	override func viewDidAppear(_ animated: Bool) {
+		updateUI()
+	}
+
+	func updateUI() {
+		weightLabel?.frame.size.height = settings.heightForPicker()
+		weightPickerOutlet?.frame.size.height = settings.heightForPicker()
+		weightPickerOutletHeightConstraint?.constant = settings.heightForPicker()
+		weightPickerOutletWidthConstraint?.constant = settings.widthForWeightPicker()
+
+		dateLabel?.frame.size.height = settings.heightForPicker()
+		datePickerOutletHeightConstraint?.constant = settings.heightForPicker()
+	}
 
 }

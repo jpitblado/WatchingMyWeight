@@ -36,6 +36,13 @@ class NewWeightPickerView: UIPickerView {
 extension NewWeightPickerView: UIPickerViewDataSource {
 
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		// hide the lines that delimit the picked row
+		/*
+		pickerView.subviews.forEach {
+			$0.isHidden = $0.frame.height < 1.0
+		}
+		*/
+
 		return 1
 	}
 
@@ -48,7 +55,7 @@ extension NewWeightPickerView: UIPickerViewDataSource {
 extension NewWeightPickerView: UIPickerViewDelegate {
 
 	func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-		return settings.heightForFontSize()
+		return settings.heightForLabel()
 	}
 
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

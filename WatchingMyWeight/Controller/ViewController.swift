@@ -15,7 +15,7 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 
 		// navigation bar settings
 		/*
-		let att = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: settings.fontSize)]
+		let att = [NSAttributedStringKey.font: settings.font()
 		self.navigationController?.navigationBar.titleTextAttributes = att
 		*/
 		navigationItem.title = "Weight Data"
@@ -43,7 +43,7 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 	}
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return settings.heightForFontSize()
+		return settings.heightForLabel()
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,16 +51,16 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-		// Weight label
-		cell.textLabel?.text = "\(entry.weight)"
-		cell.textLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
-
 		// Date label
+		cell.detailTextLabel?.text = String(format: "%.1f", entry.weight)
+		cell.detailTextLabel?.font = settings.font()
+
+		// Weight label
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateStyle = DateFormatter.Style.medium
 		dateFormatter.timeStyle = DateFormatter.Style.none
-		cell.detailTextLabel?.text = dateFormatter.string(from: entry.date)
-		cell.detailTextLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
+		cell.textLabel?.text = dateFormatter.string(from: entry.date)
+		cell.textLabel?.font = settings.font()
 
 		return cell
 	}

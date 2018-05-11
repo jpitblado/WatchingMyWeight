@@ -10,6 +10,7 @@ import UIKit
 
 class SettingDetailViewController: UIViewController {
 
+	// Date label
 	@IBOutlet var settingDescriptionLabel: UILabel!
 	@IBOutlet var pickerOutlet: UIPickerView!
 	@IBOutlet var submitButton: UIButton!
@@ -29,6 +30,8 @@ class SettingDetailViewController: UIViewController {
 		navigationController?.popViewController(animated: true)
 	}
 
+	var pickerOutletHeightConstraint: NSLayoutConstraint?
+
 	var weightPicker: WeightPickerView?
 	var fontSizePicker: FontSizePickerView?
 	var newWeightPicker: NewWeightPickerView?
@@ -39,7 +42,7 @@ class SettingDetailViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		settingDescriptionLabel.font = UIFont.systemFont(ofSize: settings.fontSize)
+		settingDescriptionLabel.font = settings.font()
 
 		navigationItem.title = settingName
 		switch settingType {
@@ -68,7 +71,21 @@ class SettingDetailViewController: UIViewController {
 			settingDescriptionLabel.text = "!! not implemented yet !!"
 		}
 
-		submitButton.titleLabel?.font = UIFont.systemFont(ofSize: settings.fontSize)
+		pickerOutletHeightConstraint = pickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
+		pickerOutletHeightConstraint?.isActive = true
+
+		submitButton.titleLabel?.font = settings.font()
+
+		updateUI()
+	}
+
+	override func viewDidAppear(_ animated: Bool) {
+		updateUI()
+	}
+
+	func updateUI() {
+		pickerOutlet?.frame.size.height = settings.heightForPicker()
+		pickerOutletHeightConstraint?.constant = settings.heightForPicker()
 	}
 
 }
