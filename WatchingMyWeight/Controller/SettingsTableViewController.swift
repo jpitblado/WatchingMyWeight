@@ -34,18 +34,19 @@ class SettingsTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
-		cell.textLabel?.font = settings.font()
-		cell.detailTextLabel?.font = settings.font()
+		var cell: UITableViewCell
 
 		switch indexPath.row {
 		case 0:		// font size
+			cell = tableView.dequeueReusableCell(withIdentifier: "Font Size Setting Cell", for: indexPath)
 			cell.textLabel?.text = "Font Size"
 			cell.detailTextLabel?.text = "\(settings.fontSize)"
 		case 1:		// weight default
+			cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
 			cell.textLabel?.text = "Default Weight"
 			cell.detailTextLabel?.text = String(format: "%.1f", settings.weightDefault)
 		case 2:		// new weight
+			cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
 			cell.textLabel?.text = "New Weight"
 			switch settings.newWeight {
 			case .fixed:
@@ -54,9 +55,13 @@ class SettingsTableViewController: UITableViewController {
 				cell.detailTextLabel?.text = "Top"
 			}
 		default:	// scale
+			cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
 			cell.textLabel?.text = "Weight Scale"
 			cell.detailTextLabel?.text = "\(settings.weightScale.rawValue)"
 		}
+
+		cell.textLabel?.font = settings.font()
+		cell.detailTextLabel?.font = settings.font()
 
 		return cell
 	}
@@ -64,10 +69,11 @@ class SettingsTableViewController: UITableViewController {
 	// MARK: Navigation
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let backItem = UIBarButtonItem()
+		backItem.title = "Back"
+		navigationItem.backBarButtonItem = backItem
+
 		if segue.identifier == "Setting Detail" {
-			let backItem = UIBarButtonItem()
-			backItem.title = "Discard"
-			navigationItem.backBarButtonItem = backItem
 			if let dest = segue.destination as? SettingDetailViewController {
 				if let selectedCell = sender as? UITableViewCell {
 					dest.settingName = selectedCell.textLabel?.text ?? ""

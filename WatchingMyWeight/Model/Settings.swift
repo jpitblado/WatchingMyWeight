@@ -11,6 +11,10 @@ import UIKit
 
 enum Defaults {
 	static let fontSize: CGFloat = 24.0
+	static let fontSizeMin: CGFloat = 20.0
+	static let fontSizeMax: CGFloat = 48.0
+	static let fontSizeStep: CGFloat = 2.0
+
 	static let spacing: CGFloat = 0.25		// fraction of settings.fontSize
 
 	static let weight: Double = 175.0
@@ -48,8 +52,12 @@ struct Settings: Codable {
 		}
 	}
 
-	func heightForLabel() -> CGFloat {
+	func heightForLabel(withFontSize fontSize: CGFloat) -> CGFloat {
 		return fontSize * (1.0 + 2*Defaults.spacing)
+	}
+
+	func heightForLabel() -> CGFloat {
+		return heightForLabel(withFontSize: fontSize)
 	}
 
 	func heightForPicker() -> CGFloat {
@@ -60,8 +68,12 @@ struct Settings: Codable {
 		return 6*fontSize
 	}
 
+	func font(ofSize size: CGFloat) -> UIFont {
+		return UIFont.systemFont(ofSize: size)
+	}
+
 	func font() -> UIFont {
-		return UIFont.systemFont(ofSize: fontSize)
+		return font(ofSize: fontSize)
 	}
 
 	func weightValue(forWeight weight: Double, inScale weightScale: WeightScale) -> Double {

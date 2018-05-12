@@ -17,8 +17,8 @@
 		77A0F87A20A00BEE008BD461 /* WeightPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A0F87920A00BEE008BD461 /* WeightPickerView.swift */; };
 		77A9F0F2209FB0B3002FA3EF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A9F0F1209FB0B3002FA3EF /* Settings.swift */; };
 		77C5083620A554D80058C515 /* WeightScalePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5083520A554D80058C515 /* WeightScalePickerView.swift */; };
+		77C56AF820A7557600387BC1 /* FontSizeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C56AF720A7557600387BC1 /* FontSizeTableViewController.swift */; };
 		77DB027F20A28E4E0028D06A /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DB027E20A28E4E0028D06A /* SettingDetailViewController.swift */; };
-		77DB028120A2A4040028D06A /* FontSizePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DB028020A2A4040028D06A /* FontSizePickerView.swift */; };
 		77DB028320A2BA9C0028D06A /* NewWeightPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DB028220A2BA9C0028D06A /* NewWeightPickerView.swift */; };
 		77FE57AF20A1596F001B1B72 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,8 +36,8 @@
 		77A0F87920A00BEE008BD461 /* WeightPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightPickerView.swift; sourceTree = "<group>"; };
 		77A9F0F1209FB0B3002FA3EF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		77C5083520A554D80058C515 /* WeightScalePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightScalePickerView.swift; sourceTree = "<group>"; };
+		77C56AF720A7557600387BC1 /* FontSizeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FontSizeTableViewController.swift; path = WatchingMyWeight/Controller/FontSizeTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		77DB027E20A28E4E0028D06A /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
-		77DB028020A2A4040028D06A /* FontSizePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FontSizePickerView.swift; path = WatchingMyWeight/View/FontSizePickerView.swift; sourceTree = SOURCE_ROOT; };
 		77DB028220A2BA9C0028D06A /* NewWeightPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWeightPickerView.swift; sourceTree = "<group>"; };
 		77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,7 +86,6 @@
 			children = (
 				7714059A209BF75C00213BBA /* LaunchScreen.storyboard */,
 				77140595209BF75B00213BBA /* Main.storyboard */,
-				77DB028020A2A4040028D06A /* FontSizePickerView.swift */,
 				77A0F87920A00BEE008BD461 /* WeightPickerView.swift */,
 				77DB028220A2BA9C0028D06A /* NewWeightPickerView.swift */,
 				77C5083520A554D80058C515 /* WeightScalePickerView.swift */,
@@ -99,6 +98,7 @@
 			children = (
 				77140591209BF75B00213BBA /* AppDelegate.swift */,
 				778ABAB7209E4CC500D1C955 /* EntryViewController.swift */,
+				77C56AF720A7557600387BC1 /* FontSizeTableViewController.swift */,
 				77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */,
 				77DB027E20A28E4E0028D06A /* SettingDetailViewController.swift */,
 				77140593209BF75B00213BBA /* ViewController.swift */,
@@ -186,7 +186,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77DB028120A2A4040028D06A /* FontSizePickerView.swift in Sources */,
 				77DB028320A2BA9C0028D06A /* NewWeightPickerView.swift in Sources */,
 				77C5083620A554D80058C515 /* WeightScalePickerView.swift in Sources */,
 				77A0F87A20A00BEE008BD461 /* WeightPickerView.swift in Sources */,
@@ -197,6 +196,7 @@
 				77140592209BF75B00213BBA /* AppDelegate.swift in Sources */,
 				77A9F0F2209FB0B3002FA3EF /* Settings.swift in Sources */,
 				77FE57AF20A1596F001B1B72 /* SettingsTableViewController.swift in Sources */,
+				77C56AF820A7557600387BC1 /* FontSizeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

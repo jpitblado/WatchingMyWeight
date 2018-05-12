@@ -18,7 +18,7 @@ class SettingDetailViewController: UIViewController {
 	@IBAction func submitPressed(_ sender: UIButton) {
 		switch settingType {
 		case .fontSize:
-			settings.fontSize = fontSizePicker?.value ?? Defaults.fontSize
+			print("!!! should not happen !!!")
 		case .weightDefault:
 			settings.weightDefault = weightPicker?.value ?? Defaults.weight
 		case .newWeight:
@@ -33,7 +33,6 @@ class SettingDetailViewController: UIViewController {
 	var pickerOutletHeightConstraint: NSLayoutConstraint?
 
 	var weightPicker: WeightPickerView?
-	var fontSizePicker: FontSizePickerView?
 	var newWeightPicker: NewWeightPickerView?
 	var weightScalePicker: WeightScalePickerView?
 
@@ -48,12 +47,7 @@ class SettingDetailViewController: UIViewController {
 		navigationItem.title = settingName
 		switch settingType {
 		case .fontSize:
-			fontSizePicker = FontSizePickerView()
-			pickerOutlet.dataSource = fontSizePicker
-			pickerOutlet.delegate = fontSizePicker
-			fontSizePicker?.set(fromFontSize: settings.fontSize)
-			fontSizePicker?.update(pickerOutlet)
-			settingDescriptionLabel.text = "Change the \(settingName)"
+			print("!!! should not happen !!!")
 		case .weightDefault:
 			weightPicker = WeightPickerView()
 			pickerOutlet.dataSource = weightPicker
