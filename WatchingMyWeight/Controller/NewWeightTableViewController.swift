@@ -90,4 +90,5 @@ class NewWeightTableViewController: UITableViewController {
 		writeSettings()
 		selectedRow = indexPath.row
 	}
+
 }
