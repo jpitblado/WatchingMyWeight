@@ -40,7 +40,7 @@ class WeightScaleTableViewController: UITableViewController {
 		case .lbs:
 			selectedRow = 1
 		}
-		navigationItem.title = "Weight Scale"
+		navigationItem.title = "Weight Units"
 
 		// prevent filling with empty rows
 		tableView.tableFooterView = UIView()
@@ -59,7 +59,7 @@ class WeightScaleTableViewController: UITableViewController {
 	// MARK: delegate
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Weight Scale Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Weight Units Cell", for: indexPath)
 
 		if indexPath.row == 0 {
 			cell.textLabel?.text = "Kilograms (\(Units.kg))"

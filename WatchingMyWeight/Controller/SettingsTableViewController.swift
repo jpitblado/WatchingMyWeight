@@ -61,17 +61,9 @@ class SettingsTableViewController: UITableViewController {
 				cell.detailTextLabel?.text = "Most Recent"
 			}
 		default:	// scale
-			cell = tableView.dequeueReusableCell(withIdentifier: "Weight Scale Setting Cell", for: indexPath)
-			cell.textLabel?.text = "Weight Scale"
+			cell = tableView.dequeueReusableCell(withIdentifier: "Weight Units Setting Cell", for: indexPath)
+			cell.textLabel?.text = "Weight Units"
 			cell.detailTextLabel?.text = "\(settings.weightScale)"
-/*
-			switch settings.weightScale {
-			case .kg:
-				cell.detailTextLabel?.text = "Kilograms"
-			case .lbs:
-				cell.detailTextLabel?.text = "Pounds"
-			}
-*/
 		}
 
 		cell.textLabel?.font = settings.font()

@@ -160,7 +160,7 @@
                                     <segue destination="Vwx-eU-e98" kind="show" identifier="New Weight Setting Detail" id="HvA-Qg-g9y"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Weight Scale Setting Cell" textLabel="LnY-mN-vWT" detailTextLabel="7eb-Nz-BmH" rowHeight="44" style="IBUITableViewCellStyleValue1" id="AvD-26-7OD">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Weight Units Setting Cell" textLabel="LnY-mN-vWT" detailTextLabel="7eb-Nz-BmH" rowHeight="44" style="IBUITableViewCellStyleValue1" id="AvD-26-7OD">
                                 <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AvD-26-7OD" id="jEB-gA-E6N">
@@ -441,7 +441,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Weight Scale Cell" textLabel="NR0-wV-K5r" detailTextLabel="tIo-4c-qWD" style="IBUITableViewCellStyleValue1" id="d0u-W4-LpH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Weight Units Cell" textLabel="NR0-wV-K5r" detailTextLabel="tIo-4c-qWD" style="IBUITableViewCellStyleValue1" id="d0u-W4-LpH">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d0u-W4-LpH" id="Tx8-dU-tAH">
