@@ -22,11 +22,11 @@ class WeightScaleTableViewController: UITableViewController {
 		tableView.reloadData()
 	}
 
-	private func value(fromRow row: Int) -> WeightScale {
+	private func value(fromRow row: Int) -> Units {
 		if row == 0 {
-			return WeightScale.kg
+			return Units.kg
 		}
-		return WeightScale.lbs
+		return Units.lbs
 	}
 
 	// MARK: loading
@@ -62,10 +62,10 @@ class WeightScaleTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Weight Scale Cell", for: indexPath)
 
 		if indexPath.row == 0 {
-			cell.textLabel?.text = "Kilograms (\(WeightScale.kg))"
+			cell.textLabel?.text = "Kilograms (\(Units.kg))"
 		}
 		else {
-			cell.textLabel?.text = "Pounds (\(WeightScale.lbs))"
+			cell.textLabel?.text = "Pounds (\(Units.lbs))"
 		}
 		cell.textLabel?.font = settings.font()
 

@@ -22,7 +22,7 @@ enum Defaults {
 	static let lbs_per_kg = 2.20462
 }
 
-enum WeightScale: String, Codable {
+enum Units: String, Codable {
 	case kg = "kg"
 	case lbs = "lbs"
 }
@@ -46,7 +46,7 @@ struct Settings: Codable {
 	// Weight
 	var weightDefault: Double = Defaults.weight
 	var newWeight: NewWeight = NewWeight.MostRecent
-	var weightScale: WeightScale = WeightScale.lbs {
+	var weightScale: Units = Units.lbs {
 		didSet {
 			weightDefault = weightValue(forWeight: weightDefault, inScale: oldValue)
 		}
@@ -76,7 +76,7 @@ struct Settings: Codable {
 		return font(ofSize: fontSize)
 	}
 
-	func weightValue(forWeight weight: Double, inScale weightScale: WeightScale) -> Double {
+	func weightValue(forWeight weight: Double, inScale weightScale: Units) -> Double {
 		if weightScale == self.weightScale {
 			return weight
 		}
