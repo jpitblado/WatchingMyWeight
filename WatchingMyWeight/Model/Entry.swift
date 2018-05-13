@@ -11,12 +11,12 @@ import Foundation
 class Entry : Codable {
 
 	var weight: Double
-	var weightScale: Units
+	var units: Units
 	var date: Date
 
 	init(weight: Double, weightScale: Units, date: Date) {
 		self.weight = weight
-		self.weightScale = weightScale
+		self.units = weightScale
 		self.date = date
 	}
 

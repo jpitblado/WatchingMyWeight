@@ -27,7 +27,7 @@ class EntryViewController: UIViewController {
 		if let indexPath = fromIndexPath {
 			entries[indexPath.row].weight = weight
 			entries[indexPath.row].date = date
-			entries[indexPath.row].weightScale = settings.weightScale
+			entries[indexPath.row].units = settings.weightScale
 		}
 		else {
 			let newEntry = Entry(weight: weight, weightScale: settings.weightScale, date: date)
@@ -56,14 +56,14 @@ class EntryViewController: UIViewController {
 		submitButton.titleLabel?.font = settings.font()
 
 		if let indexPath = fromIndexPath {
-			weightPicker.set(fromWeight: entries[indexPath.row].weight, inScale: entries[indexPath.row].weightScale)
+			weightPicker.set(fromWeight: entries[indexPath.row].weight, inScale: entries[indexPath.row].units)
 			datePicker.date = entries[indexPath.row].date
 			navigationItem.title = "Edit"
 			submitButton.setTitle("Submit changes", for: .normal)
 		}
 		else {
 			if entries.count > 0 && settings.newWeight == NewWeight.MostRecent {
-				weightPicker.set(fromWeight: entries[0].weight, inScale: entries[0].weightScale)
+				weightPicker.set(fromWeight: entries[0].weight, inScale: entries[0].units)
 			}
 			else {
 				weightPicker.set(fromWeight: settings.weightDefault, inScale: settings.weightScale)
