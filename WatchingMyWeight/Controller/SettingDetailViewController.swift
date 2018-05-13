@@ -24,7 +24,7 @@ class SettingDetailViewController: UIViewController {
 		case .newWeight:
 			print("!!! should not happen !!!")
 		case .weightScale:
-			settings.weightScale = weightScalePicker?.value ?? WeightScale.kg
+			print("!!! should not happen !!!")
 		}
 		writeSettings()
 		navigationController?.popViewController(animated: true)
@@ -33,7 +33,6 @@ class SettingDetailViewController: UIViewController {
 	var pickerOutletHeightConstraint: NSLayoutConstraint?
 
 	var weightPicker: WeightPickerView?
-	var weightScalePicker: WeightScalePickerView?
 
 	var settingName: String = ""
 	var settingType: SettingType = SettingType.fontSize
@@ -57,12 +56,7 @@ class SettingDetailViewController: UIViewController {
 		case .newWeight:
 			print("!!! should not happen !!!")
 		case .weightScale:
-			weightScalePicker = WeightScalePickerView()
-			pickerOutlet.dataSource = weightScalePicker
-			pickerOutlet.delegate = weightScalePicker
-			weightScalePicker?.set(fromWeightScale: settings.weightScale)
-			weightScalePicker?.update(pickerOutlet)
-			settingDescriptionLabel.text = "Change the \(settingName)"
+			print("!!! should not happen !!!")
 		}
 
 		pickerOutletHeightConstraint = pickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
