@@ -27,10 +27,10 @@ class EntryViewController: UIViewController {
 		if let indexPath = fromIndexPath {
 			entries[indexPath.row].weight = weight
 			entries[indexPath.row].date = date
-			entries[indexPath.row].units = settings.weightScale
+			entries[indexPath.row].units = settings.units
 		}
 		else {
-			let newEntry = Entry(weight: weight, units: settings.weightScale, date: date)
+			let newEntry = Entry(weight: weight, units: settings.units, date: date)
 //			let newEntry = Entry(weight: weight, date: date)
 			entries.insert(newEntry, at: 0)
 		}
@@ -46,7 +46,7 @@ class EntryViewController: UIViewController {
 		super.viewDidLoad()
 
 		weightLabel.font = settings.font()
-		weightLabel.text = "Weight (\(settings.weightScale))"
+		weightLabel.text = "Weight (\(settings.units))"
 		weightPicker = WeightPickerView()
 		weightPickerOutlet.delegate = weightPicker
 		weightPickerOutlet.dataSource = weightPicker
@@ -66,7 +66,7 @@ class EntryViewController: UIViewController {
 				weightPicker.set(fromWeight: entries[0].weight, inScale: entries[0].units)
 			}
 			else {
-				weightPicker.set(fromWeight: settings.weightDefault, inScale: settings.weightScale)
+				weightPicker.set(fromWeight: settings.weightDefault, inScale: settings.units)
 			}
 			// datePicker defaults to current date/time
 			navigationItem.title = "Add"

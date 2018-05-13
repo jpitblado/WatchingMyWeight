@@ -34,7 +34,7 @@ class WeightScaleTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		switch settings.weightScale {
+		switch settings.units {
 		case .kg:
 			selectedRow = 0
 		case .lbs:
@@ -82,7 +82,7 @@ class WeightScaleTableViewController: UITableViewController {
 	// MARK: actions
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		settings.weightScale = value(fromRow: indexPath.row)
+		settings.units = value(fromRow: indexPath.row)
 		writeSettings()
 		selectedRow = indexPath.row
 	}

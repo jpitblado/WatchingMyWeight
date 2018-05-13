@@ -17,6 +17,9 @@ class SettingsTableViewController: UITableViewController {
 
 		// navigation bar settings
 		navigationItem.title = "Settings"
+
+		// prevent filling with empty rows
+		tableView.tableFooterView = UIView()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +53,7 @@ class SettingsTableViewController: UITableViewController {
 		case 1:		// weight default
 			cell = tableView.dequeueReusableCell(withIdentifier: "Default Weight Setting Cell", for: indexPath)
 			cell.textLabel?.text = "Default Weight"
-			cell.detailTextLabel?.text = String(format: "%.1f \(settings.weightScale)", settings.weightDefault)
+			cell.detailTextLabel?.text = String(format: "%.1f \(settings.units)", settings.weightDefault)
 		case 2:		// new weight
 			cell = tableView.dequeueReusableCell(withIdentifier: "New Weight Setting Cell", for: indexPath)
 			cell.textLabel?.text = "New Weight"
@@ -63,7 +66,7 @@ class SettingsTableViewController: UITableViewController {
 		default:	// scale
 			cell = tableView.dequeueReusableCell(withIdentifier: "Weight Units Setting Cell", for: indexPath)
 			cell.textLabel?.text = "Weight Units"
-			cell.detailTextLabel?.text = "\(settings.weightScale)"
+			cell.detailTextLabel?.text = "\(settings.units)"
 		}
 
 		cell.textLabel?.font = settings.font()

@@ -32,13 +32,6 @@ enum NewWeight: String, Codable {
 	case MostRecent
 }
 
-enum SettingType {
-	case fontSize
-	case weightDefault
-	case newWeight
-	case weightScale
-}
-
 struct Settings: Codable {
 	// Appearance
 	var fontSize: CGFloat = Defaults.fontSize
@@ -46,7 +39,7 @@ struct Settings: Codable {
 	// Weight
 	var weightDefault: Double = Defaults.weight
 	var newWeight: NewWeight = NewWeight.MostRecent
-	var weightScale: Units = Units.lbs {
+	var units: Units = Units.lbs {
 		didSet {
 			weightDefault = weightValue(forWeight: weightDefault, inScale: oldValue)
 		}
@@ -77,10 +70,10 @@ struct Settings: Codable {
 	}
 
 	func weightValue(forWeight weight: Double, inScale weightScale: Units) -> Double {
-		if weightScale == self.weightScale {
+		if weightScale == self.units {
 			return weight
 		}
-		switch self.weightScale {
+		switch self.units {
 		case .kg:
 			return weight/Defaults.lbs_per_kg
 		case .lbs:

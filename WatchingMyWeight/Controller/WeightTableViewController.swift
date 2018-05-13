@@ -55,7 +55,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
 		// Weight label
-		cell.detailTextLabel?.text = String(format: "%.1f \(settings.weightScale)", settings.weightValue(forWeight: entry.weight, inScale: entry.units))
+		cell.detailTextLabel?.text = String(format: "%.1f \(settings.units)", settings.weightValue(forWeight: entry.weight, inScale: entry.units))
 		cell.detailTextLabel?.font = settings.font()
 
 		// Date label

@@ -37,12 +37,12 @@ class DefaultWeightViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		navigationItem.title = "Default Weight (\(settings.weightScale))"
+		navigationItem.title = "Default Weight (\(settings.units))"
 
 		weightPicker = WeightPickerView()
 		pickerOutlet.dataSource = weightPicker
 		pickerOutlet.delegate = weightPicker
-		weightPicker?.set(fromWeight: settings.weightDefault, inScale: settings.weightScale)
+		weightPicker?.set(fromWeight: settings.weightDefault, inScale: settings.units)
 		weightPicker?.update(pickerOutlet)
 
 		pickerOutletHeightConstraint = pickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
