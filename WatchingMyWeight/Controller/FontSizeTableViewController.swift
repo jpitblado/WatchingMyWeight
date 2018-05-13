@@ -10,34 +10,46 @@ import UIKit
 
 class FontSizeTableViewController: UITableViewController {
 
-	var selectedRow: Int? {
+	// MARK: - Table view private data and methods
+
+	private let min: CGFloat = 20.0
+	private let max: CGFloat = 48.0
+	private let step: CGFloat = 2.0
+
+	private var selectedRow: Int? {
 		didSet {
 			updateUI()
 		}
 	}
 
-	func updateUI() {
+	private func updateUI() {
 		tableView.reloadData()
-		tableView.scrollToRow(at: IndexPath(row: selectedRow!, section: 0), at: .middle, animated: false)
 	}
 
-	func value(fromRow row: Int) -> CGFloat {
-		return Defaults.fontSizeMin + CGFloat(row)*Defaults.fontSizeStep
+	private func value(fromRow row: Int) -> CGFloat {
+		return min + CGFloat(row)*step
 	}
 
-	func height(forRow row: Int) -> CGFloat {
-		return settings.heightForLabel(withFontSize: value(fromRow: row))
-	}
+	// MARK: - Table view loading and appearing
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		selectedRow = Int((settings.fontSize - Defaults.fontSizeMin)/Defaults.fontSizeStep)
+		var size = settings.fontSize
+		if (size < min) {
+			size = min
+		}
+		else if (size > max) {
+			size = max
+		}
+		selectedRow = Int((size - min)/step)
+
 		navigationItem.title = "Font Size"
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
 		updateUI()
+		tableView.scrollToRow(at: IndexPath(row: selectedRow!, section: 0), at: .middle, animated: false)
 	}
 
 	// MARK: - Table view data source
@@ -49,6 +61,12 @@ class FontSizeTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		let rows = Int((Defaults.fontSizeMax - Defaults.fontSizeMin)/Defaults.fontSizeStep) + 1
 		return rows
+	}
+
+	// MARK: - Table view delegate
+
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return settings.heightForLabel(withFontSize: value(fromRow: indexPath.row))
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,6 +85,8 @@ class FontSizeTableViewController: UITableViewController {
 
 		return cell
 	}
+
+	// MARK: - Table view actions
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		settings.fontSize = value(fromRow: indexPath.row)

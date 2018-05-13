@@ -40,10 +40,10 @@ enum SettingType {
 }
 
 struct Settings: Codable {
-	// Cosmetic settings
+	// Appearance
 	var fontSize: CGFloat = Defaults.fontSize
 
-	// Weight settings
+	// Weight
 	var weightDefault: Double = Defaults.weight
 	var newWeight: NewWeight = NewWeight.top
 	var weightScale: WeightScale = WeightScale.lbs {
