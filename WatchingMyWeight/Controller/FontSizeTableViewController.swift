@@ -48,8 +48,11 @@ class FontSizeTableViewController: UITableViewController {
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
-		updateUI()
-		tableView.scrollToRow(at: IndexPath(row: selectedRow!, section: 0), at: .middle, animated: false)
+		super.viewDidAppear(animated)
+
+		if let row = selectedRow {
+			tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .middle, animated: false)
+		}
 	}
 
 	// MARK: - Table view data source
