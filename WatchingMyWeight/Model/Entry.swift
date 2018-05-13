@@ -14,9 +14,9 @@ class Entry : Codable {
 	var units: Units
 	var date: Date
 
-	init(weight: Double, weightScale: Units, date: Date) {
+	init(weight: Double, units: Units, date: Date) {
 		self.weight = weight
-		self.units = weightScale
+		self.units = units
 		self.date = date
 	}
 

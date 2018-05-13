@@ -30,7 +30,7 @@ class EntryViewController: UIViewController {
 			entries[indexPath.row].units = settings.weightScale
 		}
 		else {
-			let newEntry = Entry(weight: weight, weightScale: settings.weightScale, date: date)
+			let newEntry = Entry(weight: weight, units: settings.weightScale, date: date)
 //			let newEntry = Entry(weight: weight, date: date)
 			entries.insert(newEntry, at: 0)
 		}
