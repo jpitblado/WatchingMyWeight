@@ -42,7 +42,7 @@ class DefaultWeightViewController: UIViewController {
 		weightPicker = WeightPickerView()
 		pickerOutlet.dataSource = weightPicker
 		pickerOutlet.delegate = weightPicker
-		weightPicker?.set(fromWeight: settings.weightDefault, inScale: settings.units)
+		weightPicker?.set(fromWeight: settings.weightDefault, inUnits: settings.units)
 		weightPicker?.update(pickerOutlet)
 
 		pickerOutletHeightConstraint = pickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())

@@ -41,7 +41,7 @@ struct Settings: Codable {
 	var newWeight: NewWeight = NewWeight.MostRecent
 	var units: Units = Units.lbs {
 		didSet {
-			weightDefault = weightValue(forWeight: weightDefault, inScale: oldValue)
+			weightDefault = weightValue(forWeight: weightDefault, inUnits: oldValue)
 		}
 	}
 
@@ -69,8 +69,8 @@ struct Settings: Codable {
 		return font(ofSize: fontSize)
 	}
 
-	func weightValue(forWeight weight: Double, inScale weightScale: Units) -> Double {
-		if weightScale == self.units {
+	func weightValue(forWeight weight: Double, inUnits units: Units) -> Double {
+		if units == self.units {
 			return weight
 		}
 		switch self.units {
