@@ -10,7 +10,7 @@ import UIKit
 
 class FontSizeTableViewController: UITableViewController {
 
-	// MARK: - Table view private data and methods
+	// MARK: private data and methods
 
 	private let min: CGFloat = 20.0
 	private let max: CGFloat = 48.0
@@ -30,7 +30,7 @@ class FontSizeTableViewController: UITableViewController {
 		return min + CGFloat(row)*step
 	}
 
-	// MARK: - Table view loading and appearing
+	// MARK: loading and appearing
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -45,6 +45,9 @@ class FontSizeTableViewController: UITableViewController {
 		selectedRow = Int((size - min)/step)
 
 		navigationItem.title = "Font Size"
+
+		// prevent filling with empty rows
+		tableView.tableFooterView = UIView()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -55,7 +58,7 @@ class FontSizeTableViewController: UITableViewController {
 		}
 	}
 
-	// MARK: - Table view data source
+	// MARK: data source
 
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -66,7 +69,7 @@ class FontSizeTableViewController: UITableViewController {
 		return rows
 	}
 
-	// MARK: - Table view delegate
+	// MARK: delegate
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return settings.heightForLabel(withFontSize: value(fromRow: indexPath.row))
@@ -89,7 +92,7 @@ class FontSizeTableViewController: UITableViewController {
 		return cell
 	}
 
-	// MARK: - Table view actions
+	// MARK: actions
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		settings.fontSize = value(fromRow: indexPath.row)

@@ -62,7 +62,7 @@ class EntryViewController: UIViewController {
 			submitButton.setTitle("Submit changes", for: .normal)
 		}
 		else {
-			if entries.count > 0 && settings.newWeight == NewWeight.top {
+			if entries.count > 0 && settings.newWeight == NewWeight.MostRecent {
 				weightPicker.set(fromWeight: entries[0].weight, inScale: entries[0].weightScale)
 			}
 			else {

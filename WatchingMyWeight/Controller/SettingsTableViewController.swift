@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
+	// MARK: loading and appearing
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -25,6 +27,8 @@ class SettingsTableViewController: UITableViewController {
 		return 1
 	}
 
+	// MARK: data source
+
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 4
 	}
@@ -32,6 +36,8 @@ class SettingsTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return settings.heightForLabel()
 	}
+
+	// MARK: delegate
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		var cell: UITableViewCell
@@ -46,13 +52,13 @@ class SettingsTableViewController: UITableViewController {
 			cell.textLabel?.text = "Default Weight"
 			cell.detailTextLabel?.text = String(format: "%.1f", settings.weightDefault)
 		case 2:		// new weight
-			cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
+			cell = tableView.dequeueReusableCell(withIdentifier: "New Weight Setting Cell", for: indexPath)
 			cell.textLabel?.text = "New Weight"
 			switch settings.newWeight {
-			case .fixed:
+			case .Default:
 				cell.detailTextLabel?.text = "Default"
-			case .top:
-				cell.detailTextLabel?.text = "Top"
+			case .MostRecent:
+				cell.detailTextLabel?.text = "Most Recent"
 			}
 		default:	// scale
 			cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
@@ -66,7 +72,7 @@ class SettingsTableViewController: UITableViewController {
 		return cell
 	}
 
-	// MARK: Navigation
+	// MARK: navigation
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let backItem = UIBarButtonItem()

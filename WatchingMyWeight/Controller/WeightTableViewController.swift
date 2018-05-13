@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WeigthTableViewController.swift
 //  WatchingMyWeight
 //
 //  Created by Jeffrey Pitblado on 5/3/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController, UINavigationControllerDelegate {
+class WeightTableViewController: UITableViewController, UINavigationControllerDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -19,6 +19,9 @@ class ViewController: UITableViewController, UINavigationControllerDelegate {
 		self.navigationController?.navigationBar.titleTextAttributes = att
 		*/
 		navigationItem.title = "Weight Data"
+
+		// prevent filling with empty rows
+		tableView.tableFooterView = UIView()
 
 		// settings setup
 		readSettings()

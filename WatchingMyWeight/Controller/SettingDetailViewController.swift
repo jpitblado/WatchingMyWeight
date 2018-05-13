@@ -22,7 +22,7 @@ class SettingDetailViewController: UIViewController {
 		case .weightDefault:
 			settings.weightDefault = weightPicker?.value ?? Defaults.weight
 		case .newWeight:
-			settings.newWeight = newWeightPicker?.value ?? NewWeight.top
+			print("!!! should not happen !!!")
 		case .weightScale:
 			settings.weightScale = weightScalePicker?.value ?? WeightScale.kg
 		}
@@ -33,7 +33,6 @@ class SettingDetailViewController: UIViewController {
 	var pickerOutletHeightConstraint: NSLayoutConstraint?
 
 	var weightPicker: WeightPickerView?
-	var newWeightPicker: NewWeightPickerView?
 	var weightScalePicker: WeightScalePickerView?
 
 	var settingName: String = ""
@@ -56,12 +55,7 @@ class SettingDetailViewController: UIViewController {
 			weightPicker?.update(pickerOutlet)
 			settingDescriptionLabel.text = "Change the \(settingName) (\(settings.weightScale))"
 		case .newWeight:
-			newWeightPicker = NewWeightPickerView()
-			pickerOutlet.dataSource = newWeightPicker
-			pickerOutlet.delegate = newWeightPicker
-			newWeightPicker?.set(fromNewWeight: settings.newWeight)
-			newWeightPicker?.update(pickerOutlet)
-			settingDescriptionLabel.text = "\(settingName) From"
+			print("!!! should not happen !!!")
 		case .weightScale:
 			weightScalePicker = WeightScalePickerView()
 			pickerOutlet.dataSource = weightScalePicker

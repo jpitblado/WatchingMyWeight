@@ -28,8 +28,8 @@ enum WeightScale: String, Codable {
 }
 
 enum NewWeight: String, Codable {
-	case fixed
-	case top
+	case Default
+	case MostRecent
 }
 
 enum SettingType {
@@ -45,7 +45,7 @@ struct Settings: Codable {
 
 	// Weight
 	var weightDefault: Double = Defaults.weight
-	var newWeight: NewWeight = NewWeight.top
+	var newWeight: NewWeight = NewWeight.MostRecent
 	var weightScale: WeightScale = WeightScale.lbs {
 		didSet {
 			weightDefault = weightValue(forWeight: weightDefault, inScale: oldValue)
