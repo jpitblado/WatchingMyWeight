@@ -79,7 +79,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Setting Cell" textLabel="gV2-3T-23V" detailTextLabel="7hb-Nx-gbs" rowHeight="44" style="IBUITableViewCellStyleValue1" id="GST-W9-tYZ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Default Weight Setting Cell" textLabel="gV2-3T-23V" detailTextLabel="7hb-Nx-gbs" rowHeight="44" style="IBUITableViewCellStyleValue1" id="GST-W9-tYZ">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GST-W9-tYZ" id="Yqs-Lf-dQw">
@@ -103,7 +103,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="iDI-Ff-HOo" kind="show" identifier="Setting Detail" id="v2j-Y6-d4K"/>
+                                    <segue destination="iDI-Ff-HOo" kind="show" identifier="Default Weight Setting Detail" id="v2j-Y6-d4K"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Font Size Setting Cell" textLabel="KHe-CY-bNd" detailTextLabel="8I6-bZ-gz6" rowHeight="44" style="IBUITableViewCellStyleValue1" id="fO5-DX-9AR">
@@ -199,37 +199,29 @@
             </objects>
             <point key="canvasLocation" x="1942" y="-869"/>
         </scene>
-        <!--Setting Detail View Controller-->
+        <!--Default Weight View Controller-->
         <scene sceneID="6z6-qf-Oem">
             <objects>
-                <viewController id="iDI-Ff-HOo" customClass="SettingDetailViewController" customModule="WatchingMyWeight" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iDI-Ff-HOo" customClass="DefaultWeightViewController" customModule="WatchingMyWeight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Suq-OM-oZ8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-6B-5RA">
-                                <rect key="frame" x="27.5" y="160.5" width="320" height="346.5"/>
+                                <rect key="frame" x="27.5" y="191" width="320" height="286"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMH-mU-khn">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxz-Hr-nhy">
-                                        <rect key="frame" x="0.0" y="60.5" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTJ-WY-v02">
-                                        <rect key="frame" x="135.5" y="316.5" width="49" height="30"/>
+                                        <rect key="frame" x="135.5" y="256" width="49" height="30"/>
                                         <state key="normal" title="Submit"/>
                                         <connections>
-                                            <action selector="submitPressed:" destination="iDI-Ff-HOo" eventType="touchUpInside" id="giV-G7-CxY"/>
+                                            <action selector="submitPressed:" destination="iDI-Ff-HOo" eventType="touchUpInside" id="ucn-v7-dlq"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="CMH-mU-khn" firstAttribute="leading" secondItem="Pga-6B-5RA" secondAttribute="leading" id="0Lm-j4-lMg"/>
-                                    <constraint firstAttribute="trailing" secondItem="CMH-mU-khn" secondAttribute="trailing" id="NtJ-Vo-TZ9"/>
                                     <constraint firstItem="pxz-Hr-nhy" firstAttribute="centerX" secondItem="Pga-6B-5RA" secondAttribute="centerX" id="b6b-Uf-yn1"/>
                                 </constraints>
                             </stackView>
@@ -242,9 +234,8 @@
                         <viewLayoutGuide key="safeArea" id="eHH-gk-ovC"/>
                     </view>
                     <connections>
-                        <outlet property="pickerOutlet" destination="pxz-Hr-nhy" id="2VV-oA-4CF"/>
-                        <outlet property="settingDescriptionLabel" destination="CMH-mU-khn" id="y2G-6l-xI1"/>
-                        <outlet property="submitButton" destination="sTJ-WY-v02" id="82n-ei-bJv"/>
+                        <outlet property="pickerOutlet" destination="pxz-Hr-nhy" id="X0W-aM-SLW"/>
+                        <outlet property="submitButton" destination="sTJ-WY-v02" id="991-M4-rcb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izF-QO-dxc" userLabel="First Responder" sceneMemberID="firstResponder"/>
