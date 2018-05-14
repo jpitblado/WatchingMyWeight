@@ -1,5 +1,5 @@
 //
-//  Entry.swift
+//  Weight.swift
 //  WatchingMyWeight
 //
 //  Created by Jeffrey Pitblado on 5/3/18.
