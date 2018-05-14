@@ -1,5 +1,5 @@
 //
-//  WeightScaleTableViewController.swift
+//  UnitsTableViewController.swift
 //  WatchingMyWeight
 //
 //  Created by Jeffrey Pitblado on 5/13/18.
