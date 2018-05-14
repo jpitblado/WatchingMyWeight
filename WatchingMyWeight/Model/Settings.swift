@@ -22,11 +22,6 @@ enum Defaults {
 	static let lbs_per_kg = 2.20462
 }
 
-enum Units: String, Codable {
-	case kg = "kg"
-	case lbs = "lbs"
-}
-
 enum NewWeight: String, Codable {
 	case Default
 	case MostRecent

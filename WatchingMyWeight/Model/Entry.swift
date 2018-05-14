@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum Units: String, Codable {
+	case kg = "kg"
+	case lbs = "lbs"
+}
+
 class Entry : Codable {
 
 	var weight: Double
