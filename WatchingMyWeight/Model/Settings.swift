@@ -78,7 +78,7 @@ struct Settings: Codable {
 	}
 
 	func randomWeightValue() -> Double {
-		return weightDefault + Double(Defaults.randomSource.nextInt(upperBound: 11) - 5)
+		return weightDefault + Double(Defaults.randomSource.nextInt(upperBound: 101) - 50)/10.0
 	}
 
 }
