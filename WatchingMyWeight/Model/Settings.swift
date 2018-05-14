@@ -11,9 +11,6 @@ import UIKit
 
 enum Defaults {
 	static let fontSize: CGFloat = 24.0
-	static let fontSizeMin: CGFloat = 20.0
-	static let fontSizeMax: CGFloat = 48.0
-	static let fontSizeStep: CGFloat = 2.0
 
 	static let spacing: CGFloat = 0.25		// fraction of settings.fontSize
 

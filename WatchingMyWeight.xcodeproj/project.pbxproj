@@ -96,12 +96,12 @@
 			children = (
 				77140591209BF75B00213BBA /* AppDelegate.swift */,
 				77C56B1120A8138400387BC1 /* DefaultWeightViewController.swift */,
-				778ABAB7209E4CC500D1C955 /* WeightViewController.swift */,
 				77C56AF720A7557600387BC1 /* FontSizeTableViewController.swift */,
 				77C56AF920A7E7A800387BC1 /* NewWeightTableViewController.swift */,
-				77C56B0F20A801E100387BC1 /* UnitsTableViewController.swift */,
 				77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */,
+				77C56B0F20A801E100387BC1 /* UnitsTableViewController.swift */,
 				77140593209BF75B00213BBA /* WeightTableViewController.swift */,
+				778ABAB7209E4CC500D1C955 /* WeightViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

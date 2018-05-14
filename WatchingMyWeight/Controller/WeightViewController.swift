@@ -10,11 +10,44 @@ import UIKit
 
 class WeightViewController: UIViewController {
 
+	// MARK: public data
+
 	var fromIndexPath: IndexPath?
+
+	// MARK: private data and methods
+
+	private var added: Int = 0
+
+	private var weightPicker: WeightPickerView!
+
+	private func updateUI() {
+		if fromIndexPath == nil {
+			if added > 0 {
+				if added == 1 {
+					weightsRecordedLabel.text = "Weight Added"
+				}
+				else {
+					weightsRecordedLabel.text = "\(added) Weights Added"
+				}
+				weightsRecordedLabel.isHidden = false
+			}
+		}
+
+		weightLabel?.frame.size.height = settings.heightForPicker()
+		weightPickerOutlet?.frame.size.height = settings.heightForPicker()
+		weightPickerOutletHeightConstraint?.constant = settings.heightForPicker()
+		weightPickerOutletWidthConstraint?.constant = settings.widthForWeightPicker()
+
+		dateLabel?.frame.size.height = settings.heightForPicker()
+		datePickerOutletHeightConstraint?.constant = settings.heightForPicker()
+	}
+
+	// MARK: outlets
+	
+	@IBOutlet var weightsRecordedLabel: UILabel!
 
 	@IBOutlet var weightLabel: UILabel!
 	@IBOutlet var weightPickerOutlet: UIPickerView!
-	var weightPicker: WeightPickerView!
 
 	@IBOutlet var dateLabel: UILabel!
 	@IBOutlet var datePicker: UIDatePicker!
@@ -32,17 +65,27 @@ class WeightViewController: UIViewController {
 		else {
 			let newWeight = Weight(weight: weight, units: settings.units, date: date)
 			weights.insert(newWeight, at: 0)
+			added += 1
 		}
 		writeEntries()
-		navigationController?.popViewController(animated: true)
+		updateUI()
+		if added == 0 {
+			navigationController?.popViewController(animated: true)
+		}
 	}
 
-	var weightPickerOutletHeightConstraint: NSLayoutConstraint?
-	var weightPickerOutletWidthConstraint: NSLayoutConstraint?
-	var datePickerOutletHeightConstraint: NSLayoutConstraint?
+	private var weightPickerOutletHeightConstraint: NSLayoutConstraint?
+	private var weightPickerOutletWidthConstraint: NSLayoutConstraint?
+	private var datePickerOutletHeightConstraint: NSLayoutConstraint?
+
+	// MARK: loading and appearing
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		weightsRecordedLabel.font = settings.font(ofSize: settings.fontSize*0.8)
+		weightsRecordedLabel.textColor = UIColor.lightGray
+		weightsRecordedLabel.isHidden = true
 
 		weightLabel.font = settings.font()
 		weightLabel.text = "Weight (\(settings.units))"
@@ -55,7 +98,8 @@ class WeightViewController: UIViewController {
 		if let indexPath = fromIndexPath {
 			weightPicker.set(fromWeight: weights[indexPath.row].weight, inUnits: weights[indexPath.row].units)
 			datePicker.date = weights[indexPath.row].date
-			navigationItem.title = "Edit"
+			navigationItem.title = "Edit Weight Data"
+			submitButton.setTitle("Submit", for: .normal)
 		}
 		else {
 			if weights.count > 0 && settings.newWeight == NewWeight.MostRecent {
@@ -65,12 +109,13 @@ class WeightViewController: UIViewController {
 				weightPicker.set(fromWeight: settings.weightDefault, inUnits: settings.units)
 			}
 			// datePicker defaults to current date/time
-			navigationItem.title = "Add"
+			navigationItem.title = "Add Weight Data"
+			submitButton.setTitle("Add", for: .normal)
 		}
 		weightPicker.update(weightPickerOutlet)
 
 		submitButton.titleLabel?.font = settings.font()
-		submitButton.setTitle("Submit", for: .normal)
+//		submitButton.setTitle("Submit", for: .normal)
 
 		weightPickerOutletHeightConstraint = weightPickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
 		weightPickerOutletHeightConstraint?.isActive = true
@@ -80,22 +125,10 @@ class WeightViewController: UIViewController {
 
 		datePickerOutletHeightConstraint = datePicker.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
 		datePickerOutletHeightConstraint?.isActive = true
-
-		updateUI()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
 		updateUI()
-	}
-
-	func updateUI() {
-		weightLabel?.frame.size.height = settings.heightForPicker()
-		weightPickerOutlet?.frame.size.height = settings.heightForPicker()
-		weightPickerOutletHeightConstraint?.constant = settings.heightForPicker()
-		weightPickerOutletWidthConstraint?.constant = settings.widthForWeightPicker()
-
-		dateLabel?.frame.size.height = settings.heightForPicker()
-		datePickerOutletHeightConstraint?.constant = settings.heightForPicker()
 	}
 
 }

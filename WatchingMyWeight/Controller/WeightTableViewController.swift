@@ -73,14 +73,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let backItem = UIBarButtonItem()
-
-		if segue.identifier == "Settings" {
-			backItem.title = "Back"
-			navigationItem.backBarButtonItem = backItem
-			return
-		}
-
-		backItem.title = "Discard"
+		backItem.title = "Back"
 		navigationItem.backBarButtonItem = backItem
 
 		if segue.identifier == "Edit Weight" {

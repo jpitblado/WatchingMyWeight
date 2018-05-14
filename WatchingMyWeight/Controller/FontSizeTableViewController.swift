@@ -13,7 +13,7 @@ class FontSizeTableViewController: UITableViewController {
 	// MARK: private data and methods
 
 	private let min: CGFloat = 20.0
-	private let max: CGFloat = 48.0
+	private let max: CGFloat = 30.0
 	private let step: CGFloat = 2.0
 
 	private var selectedRow: Int? {
@@ -65,7 +65,7 @@ class FontSizeTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		let rows = Int((Defaults.fontSizeMax - Defaults.fontSizeMin)/Defaults.fontSizeStep) + 1
+		let rows = Int((max - min)/step) + 1
 		return rows
 	}
 
