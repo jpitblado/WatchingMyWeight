@@ -63,7 +63,7 @@ class SettingsTableViewController: UITableViewController {
 			case .MostRecent:
 				cell.detailTextLabel?.text = "Most Recent"
 			}
-		default:	// scale
+		default:	// units
 			cell = tableView.dequeueReusableCell(withIdentifier: "Weight Units Setting Cell", for: indexPath)
 			cell.textLabel?.text = "Weight Units"
 			cell.detailTextLabel?.text = "\(settings.units)"
