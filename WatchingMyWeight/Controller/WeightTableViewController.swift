@@ -82,8 +82,8 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		backItem.title = "Discard"
 		navigationItem.backBarButtonItem = backItem
 
-		if segue.identifier == "Edit Entry" {
-			if let dest = segue.destination as? EntryViewController {
+		if segue.identifier == "Edit Weight" {
+			if let dest = segue.destination as? WeightViewController {
 				if let selectedCell = sender as? UITableViewCell {
 					if let indexPath = tableView.indexPath(for: selectedCell) {
 						dest.fromIndexPath = indexPath

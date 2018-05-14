@@ -1,5 +1,5 @@
 //
-//  EntryViewController.swift
+//  WeightViewController.swift
 //  WatchingMyWeight
 //
 //  Created by Jeffrey Pitblado on 5/5/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EntryViewController: UIViewController {
+class WeightViewController: UIViewController {
 
 	var fromIndexPath: IndexPath?
 
@@ -30,9 +30,8 @@ class EntryViewController: UIViewController {
 			weights[indexPath.row].units = settings.units
 		}
 		else {
-			let newEntry = Weight(weight: weight, units: settings.units, date: date)
-//			let newEntry = Entry(weight: weight, date: date)
-			weights.insert(newEntry, at: 0)
+			let newWeight = Weight(weight: weight, units: settings.units, date: date)
+			weights.insert(newWeight, at: 0)
 		}
 		writeEntries()
 		navigationController?.popViewController(animated: true)
