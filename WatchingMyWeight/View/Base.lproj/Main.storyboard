@@ -184,7 +184,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="f4N-Im-tgs" kind="show" identifier="Weight Scale Setting Detail" id="gdt-S6-bNP"/>
+                                    <segue destination="f4N-Im-tgs" kind="show" identifier="Weight Units Setting Detail" id="gdt-S6-bNP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
