@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GameplayKit
 
 enum Defaults {
 	static let fontSize: CGFloat = 24.0
@@ -17,11 +18,14 @@ enum Defaults {
 	static let weight: Double = 175.0
 
 	static let lbs_per_kg = 2.20462
+
+	static let randomSource = GKLinearCongruentialRandomSource()
 }
 
 enum NewWeight: String, Codable {
-	case Default
-	case MostRecent
+	case Default = "Default"
+	case MostRecent = "Most Recent"
+	case Random = "Random"
 }
 
 struct Settings: Codable {
@@ -71,6 +75,10 @@ struct Settings: Codable {
 		case .lbs:
 			return weight*Defaults.lbs_per_kg
 		}
+	}
+
+	func randomWeightValue() -> Double {
+		return weightDefault + Double(Defaults.randomSource.nextInt(upperBound: 11) - 5)
 	}
 
 }

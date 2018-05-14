@@ -26,7 +26,10 @@ class NewWeightTableViewController: UITableViewController {
 		if row == 0 {
 			return NewWeight.Default
 		}
-		return NewWeight.MostRecent
+		if row == 1 {
+			return NewWeight.MostRecent
+		}
+		return NewWeight.Random
 	}
 
 	// MARK: loading
@@ -39,6 +42,8 @@ class NewWeightTableViewController: UITableViewController {
 			selectedRow = 0
 		case .MostRecent:
 			selectedRow = 1
+		case .Random:
+			selectedRow = 2
 		}
 		navigationItem.title = "New Weight"
 
@@ -53,7 +58,7 @@ class NewWeightTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
 
 	// MARK: delegate
@@ -68,8 +73,11 @@ class NewWeightTableViewController: UITableViewController {
 		if indexPath.row == 0 {
 			cell.textLabel?.text = "Use Default Weight"
 		}
-		else {
+		else if indexPath.row == 1 {
 			cell.textLabel?.text = "Use Most Recent Weight"
+		}
+		else if indexPath.row == 2 {
+			cell.textLabel?.text = "Use Random Weight"
 		}
 		cell.textLabel?.font = settings.font()
 

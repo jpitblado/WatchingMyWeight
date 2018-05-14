@@ -350,8 +350,8 @@
                                     <action selector="submitPressed:" destination="Zyw-do-Lpb" eventType="touchUpInside" id="mjP-71-xas"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Weights Recorded" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDo-oh-ohY">
-                                <rect key="frame" x="209.5" y="74" width="155.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Weights Recorded" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDo-oh-ohY">
+                                <rect key="frame" x="10" y="74" width="355" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -364,6 +364,7 @@
                             <constraint firstItem="W07-A5-dms" firstAttribute="top" secondItem="ujR-yM-rkC" secondAttribute="bottom" constant="8" symbolic="YES" id="beW-sh-DZp"/>
                             <constraint firstItem="rDo-oh-ohY" firstAttribute="top" secondItem="j7u-TL-ATd" secondAttribute="top" constant="10" id="gDZ-dZ-emQ"/>
                             <constraint firstItem="W07-A5-dms" firstAttribute="centerX" secondItem="uZc-Rq-mDW" secondAttribute="centerX" id="i7d-pt-But"/>
+                            <constraint firstItem="rDo-oh-ohY" firstAttribute="leading" secondItem="j7u-TL-ATd" secondAttribute="leading" constant="10" id="jIl-eY-Yaq"/>
                             <constraint firstItem="ujR-yM-rkC" firstAttribute="centerX" secondItem="uZc-Rq-mDW" secondAttribute="centerX" id="qUv-7H-3ob"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j7u-TL-ATd"/>

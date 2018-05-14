@@ -62,6 +62,8 @@ class SettingsTableViewController: UITableViewController {
 				cell.detailTextLabel?.text = "Default"
 			case .MostRecent:
 				cell.detailTextLabel?.text = "Most Recent"
+			case .Random:
+				cell.detailTextLabel?.text = "Random"
 			}
 		default:	// units
 			cell = tableView.dequeueReusableCell(withIdentifier: "Weight Units Setting Cell", for: indexPath)

@@ -20,6 +20,18 @@ class WeightViewController: UIViewController {
 
 	private var weightPicker: WeightPickerView!
 
+	private func randomizeWeightPicker() {
+		var weight = settings.randomWeightValue()
+
+		if weight < 0.0 {
+			weight = 0.0
+		}
+		else if weight > 999.9 {
+			weight = 999.9
+		}
+		weightPicker.set(fromWeight: weight, inUnits: settings.units)
+	}
+
 	private func updateUI() {
 		if fromIndexPath == nil {
 			if added > 0 {
@@ -30,6 +42,10 @@ class WeightViewController: UIViewController {
 					weightsRecordedLabel.text = "\(added) Weights Added"
 				}
 				weightsRecordedLabel.isHidden = false
+				if settings.newWeight == .Random {
+					randomizeWeightPicker()
+					weightPicker.update(weightPickerOutlet)
+				}
 			}
 		}
 
@@ -102,11 +118,18 @@ class WeightViewController: UIViewController {
 			submitButton.setTitle("Submit", for: .normal)
 		}
 		else {
-			if weights.count > 0 && settings.newWeight == NewWeight.MostRecent {
-				weightPicker.set(fromWeight: weights[0].weight, inUnits: weights[0].units)
-			}
-			else {
+			switch settings.newWeight {
+			case .Default:
 				weightPicker.set(fromWeight: settings.weightDefault, inUnits: settings.units)
+			case .MostRecent:
+				if weights.count > 0 {
+					weightPicker.set(fromWeight: weights[0].weight, inUnits: weights[0].units)
+				}
+				else {
+					weightPicker.set(fromWeight: settings.weightDefault, inUnits: settings.units)
+				}
+			case .Random:
+				randomizeWeightPicker()
 			}
 			// datePicker defaults to current date/time
 			navigationItem.title = "Add Weight Data"
