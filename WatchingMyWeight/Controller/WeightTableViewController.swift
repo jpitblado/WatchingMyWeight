@@ -10,6 +10,10 @@ import UIKit
 
 class WeightTableViewController: UITableViewController, UINavigationControllerDelegate {
 
+	// MARK: private methods
+
+	// MARK: loading and appearing
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -34,12 +38,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		tableView.reloadData()
 	}
 	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-	// MARK: Table view
+	// MARK: data source
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return weights.count
@@ -48,6 +47,8 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return settings.heightForLabel()
 	}
+
+	// MARK: delegate
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let entry = weights[indexPath.row]
