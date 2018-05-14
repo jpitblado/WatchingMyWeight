@@ -34,10 +34,18 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		readEntries()
 	}
 
-	override func viewDidAppear(_ animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		weights.sort {
+			if $0.date > $1.date {
+				return true
+			}
+			return false
+		}
 		tableView.reloadData()
 	}
-	
+
 	// MARK: data source
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
