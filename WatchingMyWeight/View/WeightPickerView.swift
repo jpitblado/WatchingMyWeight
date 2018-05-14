@@ -11,7 +11,7 @@ import UIKit
 class WeightPickerView: UIPickerView {
 
 	private var digits = ["0","0","0",".","0"]
-	private let dotComponent = 3						// digits.count - 2
+	private let dotComponent = 3
 
 	var value : Double {
 		get {
