@@ -42,7 +42,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	// MARK: Table view
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return entries.count
+		return weights.count
 	}
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,7 +50,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let entry = entries[indexPath.row]
+		let entry = weights[indexPath.row]
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 

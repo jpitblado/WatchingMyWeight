@@ -25,14 +25,14 @@ class EntryViewController: UIViewController {
 		let weight = weightPicker.value
 		let date = datePicker.date
 		if let indexPath = fromIndexPath {
-			entries[indexPath.row].weight = weight
-			entries[indexPath.row].date = date
-			entries[indexPath.row].units = settings.units
+			weights[indexPath.row].weight = weight
+			weights[indexPath.row].date = date
+			weights[indexPath.row].units = settings.units
 		}
 		else {
-			let newEntry = Entry(weight: weight, units: settings.units, date: date)
+			let newEntry = Weight(weight: weight, units: settings.units, date: date)
 //			let newEntry = Entry(weight: weight, date: date)
-			entries.insert(newEntry, at: 0)
+			weights.insert(newEntry, at: 0)
 		}
 		writeEntries()
 		navigationController?.popViewController(animated: true)
@@ -56,14 +56,14 @@ class EntryViewController: UIViewController {
 		submitButton.titleLabel?.font = settings.font()
 
 		if let indexPath = fromIndexPath {
-			weightPicker.set(fromWeight: entries[indexPath.row].weight, inUnits: entries[indexPath.row].units)
-			datePicker.date = entries[indexPath.row].date
+			weightPicker.set(fromWeight: weights[indexPath.row].weight, inUnits: weights[indexPath.row].units)
+			datePicker.date = weights[indexPath.row].date
 			navigationItem.title = "Edit"
 			submitButton.setTitle("Submit changes", for: .normal)
 		}
 		else {
-			if entries.count > 0 && settings.newWeight == NewWeight.MostRecent {
-				weightPicker.set(fromWeight: entries[0].weight, inUnits: entries[0].units)
+			if weights.count > 0 && settings.newWeight == NewWeight.MostRecent {
+				weightPicker.set(fromWeight: weights[0].weight, inUnits: weights[0].units)
 			}
 			else {
 				weightPicker.set(fromWeight: settings.weightDefault, inUnits: settings.units)

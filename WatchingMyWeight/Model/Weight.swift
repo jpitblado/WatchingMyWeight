@@ -27,30 +27,30 @@ class Weight : Codable {
 
 }
 
-var entries = [Weight]()
+var weights = [Weight]()
 
 func readEntries() {
 	let defaults = UserDefaults.standard
 
-	if let savedData = defaults.object(forKey: "entries") as? Data {
+	if let savedData = defaults.object(forKey: "weights") as? Data {
 		let jsonDecoder = JSONDecoder()
 
 		do {
-			entries = try jsonDecoder.decode([Weight].self, from: savedData)
+			weights = try jsonDecoder.decode([Weight].self, from: savedData)
 		}
 		catch {
-			print("Failed to load entries!")
+			print("Failed to load weights!")
 		}
 	}
 }
 
 func writeEntries() {
 	let jsonEncoder = JSONEncoder()
-	if let savedData = try? jsonEncoder.encode(entries) {
+	if let savedData = try? jsonEncoder.encode(weights) {
 		let defaults = UserDefaults.standard
-		defaults.set(savedData, forKey: "entries")
+		defaults.set(savedData, forKey: "weights")
 	}
 	else {
-		print("Failed to save entries!")
+		print("Failed to save weights!")
 	}
 }

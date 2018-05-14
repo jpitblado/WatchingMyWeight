@@ -90,7 +90,7 @@ func readSettings() {
 			settings = try jsonDecoder.decode(Settings.self, from: savedData)
 		}
 		catch {
-			print("Failed to load entries!")
+			print("Failed to load settings!")
 		}
 	}
 }
