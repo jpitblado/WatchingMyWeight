@@ -52,13 +52,10 @@ class WeightViewController: UIViewController {
 
 		dateLabel.font = settings.font()
 
-		submitButton.titleLabel?.font = settings.font()
-
 		if let indexPath = fromIndexPath {
 			weightPicker.set(fromWeight: weights[indexPath.row].weight, inUnits: weights[indexPath.row].units)
 			datePicker.date = weights[indexPath.row].date
 			navigationItem.title = "Edit"
-			submitButton.setTitle("Submit changes", for: .normal)
 		}
 		else {
 			if weights.count > 0 && settings.newWeight == NewWeight.MostRecent {
@@ -69,9 +66,11 @@ class WeightViewController: UIViewController {
 			}
 			// datePicker defaults to current date/time
 			navigationItem.title = "Add"
-			submitButton.setTitle("Submit new data", for: .normal)
 		}
 		weightPicker.update(weightPickerOutlet)
+
+		submitButton.titleLabel?.font = settings.font()
+		submitButton.setTitle("Submit", for: .normal)
 
 		weightPickerOutletHeightConstraint = weightPickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
 		weightPickerOutletHeightConstraint?.isActive = true
