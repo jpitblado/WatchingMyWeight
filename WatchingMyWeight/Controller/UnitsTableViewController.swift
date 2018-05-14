@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeightScaleTableViewController: UITableViewController {
+class UnitsTableViewController: UITableViewController {
 
 	// MARK: private data and methods
 

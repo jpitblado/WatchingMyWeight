@@ -432,10 +432,10 @@
             </objects>
             <point key="canvasLocation" x="2918" y="-485"/>
         </scene>
-        <!--Weight Scale Table View Controller-->
+        <!--Units Table View Controller-->
         <scene sceneID="yRT-Zi-qjo">
             <objects>
-                <tableViewController id="f4N-Im-tgs" customClass="WeightScaleTableViewController" customModule="WatchingMyWeight" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="f4N-Im-tgs" customClass="UnitsTableViewController" customModule="WatchingMyWeight" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="935-E2-VZw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
