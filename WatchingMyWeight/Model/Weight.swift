@@ -13,7 +13,7 @@ enum Units: String, Codable {
 	case lbs = "lbs"
 }
 
-class Entry : Codable {
+class Weight : Codable {
 
 	var weight: Double
 	var units: Units
@@ -27,7 +27,7 @@ class Entry : Codable {
 
 }
 
-var entries = [Entry]()
+var entries = [Weight]()
 
 func readEntries() {
 	let defaults = UserDefaults.standard
@@ -36,7 +36,7 @@ func readEntries() {
 		let jsonDecoder = JSONDecoder()
 
 		do {
-			entries = try jsonDecoder.decode([Entry].self, from: savedData)
+			entries = try jsonDecoder.decode([Weight].self, from: savedData)
 		}
 		catch {
 			print("Failed to load entries!")
