@@ -31,18 +31,14 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		readSettings()
 
 		// data setup
-		readEntries()
+		readWeights()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
-		weights.sort {
-			if $0.date > $1.date {
-				return true
-			}
-			return false
-		}
+		sortWeights()
+
 		tableView.reloadData()
 	}
 

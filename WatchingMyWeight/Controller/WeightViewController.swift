@@ -83,7 +83,7 @@ class WeightViewController: UIViewController {
 			weights.insert(newWeight, at: 0)
 			added += 1
 		}
-		writeEntries()
+		writeWeights()
 		updateUI()
 		if added == 0 {
 			navigationController?.popViewController(animated: true)

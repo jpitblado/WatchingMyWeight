@@ -29,7 +29,16 @@ class Weight : Codable {
 
 var weights = [Weight]()
 
-func readEntries() {
+func sortWeights() {
+	weights.sort {
+		if $0.date > $1.date {
+			return true
+		}
+		return false
+	}
+}
+
+func readWeights() {
 	let defaults = UserDefaults.standard
 
 	if let savedData = defaults.object(forKey: "weights") as? Data {
@@ -44,7 +53,7 @@ func readEntries() {
 	}
 }
 
-func writeEntries() {
+func writeWeights() {
 	let jsonEncoder = JSONEncoder()
 	if let savedData = try? jsonEncoder.encode(weights) {
 		let defaults = UserDefaults.standard
