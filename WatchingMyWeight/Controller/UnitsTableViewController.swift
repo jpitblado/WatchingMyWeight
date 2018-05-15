@@ -58,6 +58,10 @@ class UnitsTableViewController: UITableViewController {
 
 	// MARK: delegate
 
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return settings.heightForLabel()
+	}
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Weight Units Cell", for: indexPath)
 
