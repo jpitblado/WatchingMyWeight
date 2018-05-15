@@ -10,7 +10,7 @@ import UIKit
 
 class DefaultWeightViewController: UIViewController {
 
-	// MARK: outlets
+	// MARK: outlets and actions
 
 	@IBOutlet var pickerOutlet: UIPickerView!
 	@IBOutlet var submitButton: UIButton!
