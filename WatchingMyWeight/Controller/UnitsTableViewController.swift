@@ -79,7 +79,7 @@ class UnitsTableViewController: UITableViewController {
         return cell
     }
 
-	// MARK: actions
+	// MARK: selections
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		settings.units = value(fromRow: indexPath.row)
