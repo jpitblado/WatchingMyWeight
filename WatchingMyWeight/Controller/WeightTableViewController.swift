@@ -10,7 +10,15 @@ import UIKit
 
 class WeightTableViewController: UITableViewController, UINavigationControllerDelegate {
 
+	// MARK: outlets
+
+	@IBOutlet var addButtonItem: UIBarButtonItem!
+
 	// MARK: private methods
+
+	private func updateUI() {
+		navigationItem.title = "Weight Data (\(weights.count) entries)"
+	}
 
 	// MARK: loading and appearing
 
@@ -22,7 +30,6 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		let att = [NSAttributedStringKey.font: settings.font()
 		self.navigationController?.navigationBar.titleTextAttributes = att
 		*/
-		navigationItem.title = "Weight Data"
 
 		// prevent filling with empty rows
 		tableView.tableFooterView = UIView()
@@ -40,6 +47,8 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		sortWeights()
 
 		tableView.reloadData()
+
+		updateUI()
 	}
 
 	// MARK: data source
@@ -71,6 +80,32 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		cell.textLabel?.font = settings.font()
 
 		return cell
+	}
+
+	// MARK: editing cells
+
+	override func setEditing(_ editing: Bool, animated: Bool) {
+		super.setEditing(editing, animated: animated)
+
+		if editing == true {
+			addButtonItem.isEnabled = false
+		}
+		else {
+			addButtonItem.isEnabled = true
+		}
+	}
+
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			weights.remove(at: indexPath.row)
+			tableView.deleteRows(at: [indexPath], with: .automatic)
+			writeWeights()
+			updateUI()
+		}
 	}
 
 	// MARK: Navigation
