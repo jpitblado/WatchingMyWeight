@@ -92,7 +92,7 @@ class FontSizeTableViewController: UITableViewController {
 		return cell
 	}
 
-	// MARK: actions
+	// MARK: selections
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		settings.fontSize = value(fromRow: indexPath.row)
