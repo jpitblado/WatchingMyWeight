@@ -36,11 +36,11 @@ class SettingsTableViewController: UITableViewController {
 		return 4
 	}
 
+	// MARK: delegate
+
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return settings.heightForLabel()
 	}
-
-	// MARK: delegate
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		var cell: UITableViewCell
