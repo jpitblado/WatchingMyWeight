@@ -10,14 +10,20 @@ import UIKit
 
 class WeightPickerView: UIPickerView {
 
+	// MARK: private properties
+
 	private var digits = ["0","0","0",".","0"]
 	private let dotComponent = 3
+
+	// MARK: public properties
 
 	var value : Double {
 		get {
 			return Double(digits.joined(separator: "")) ?? 0.0
 		}
 	}
+
+	// MARK: public methods
 
 	func set(fromWeight weight: Double, inUnits units: Units) {
 		let w = settings.weightValue(forWeight: weight, inUnits: units)
@@ -94,7 +100,6 @@ extension WeightPickerView: UIPickerViewDelegate {
 		else {
 			pickerLabel?.text = String(row)
 		}
-		// pickerLabel?.backgroundColor = UIColor.yellow		// !! debug
 		pickerLabel?.textAlignment = NSTextAlignment.center
 
 		return pickerLabel!
