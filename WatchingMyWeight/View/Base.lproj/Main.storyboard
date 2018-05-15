@@ -346,7 +346,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="submitPressed:" destination="Zyw-do-Lpb" eventType="touchUpInside" id="mjP-71-xas"/>
+                                    <action selector="buttonPressed:" destination="Zyw-do-Lpb" eventType="touchUpInside" id="mjP-71-xas"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Weights Recorded" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDo-oh-ohY">
@@ -369,9 +369,9 @@
                         <viewLayoutGuide key="safeArea" id="j7u-TL-ATd"/>
                     </view>
                     <connections>
+                        <outlet property="button" destination="W07-A5-dms" id="XvY-oP-qL5"/>
                         <outlet property="dateLabel" destination="yf4-0h-ddu" id="tE9-kJ-wH3"/>
                         <outlet property="datePicker" destination="Ogo-lK-dZK" id="fNc-w1-lqg"/>
-                        <outlet property="submitButton" destination="W07-A5-dms" id="XvY-oP-qL5"/>
                         <outlet property="weightLabel" destination="CEd-ME-bhB" id="4aW-FX-sdC"/>
                         <outlet property="weightPickerOutlet" destination="ca8-V6-dCW" id="0Df-TI-a6r"/>
                         <outlet property="weightsRecordedLabel" destination="rDo-oh-ohY" id="D3w-1T-swL"/>

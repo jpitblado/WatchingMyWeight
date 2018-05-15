@@ -10,15 +10,47 @@ import UIKit
 
 class WeightViewController: UIViewController {
 
-	// MARK: public data
+	// MARK: outlets and actions
 
-	var fromIndexPath: IndexPath?
+	@IBOutlet var weightsRecordedLabel: UILabel!
 
-	// MARK: private data and methods
+	@IBOutlet var weightLabel: UILabel!
+	@IBOutlet var weightPickerOutlet: UIPickerView!
+
+	@IBOutlet var dateLabel: UILabel!
+	@IBOutlet var datePicker: UIDatePicker!
+
+	@IBOutlet var button: UIButton!
+
+	@IBAction func buttonPressed(_ sender: UIButton) {
+		let weight = weightPicker.value
+		let date = datePicker.date
+		if let indexPath = fromIndexPath {
+			weights[indexPath.row].weight = weight
+			weights[indexPath.row].date = date
+			weights[indexPath.row].units = settings.units
+		}
+		else {
+			let newWeight = Weight(weight: weight, units: settings.units, date: date)
+			weights.insert(newWeight, at: 0)
+			added += 1
+		}
+		writeWeights()
+		updateUI()
+		if added == 0 {
+			navigationController?.popViewController(animated: true)
+		}
+	}
+
+	// MARK: private poperties and methods
 
 	private var added: Int = 0
 
 	private var weightPicker: WeightPickerView!
+
+	private var weightPickerOutletHeightConstraint: NSLayoutConstraint?
+	private var weightPickerOutletWidthConstraint: NSLayoutConstraint?
+	private var datePickerOutletHeightConstraint: NSLayoutConstraint?
 
 	private func randomizeWeightPicker() {
 		var weight = settings.randomWeightValue()
@@ -58,41 +90,9 @@ class WeightViewController: UIViewController {
 		datePickerOutletHeightConstraint?.constant = settings.heightForPicker()
 	}
 
-	// MARK: outlets
-	
-	@IBOutlet var weightsRecordedLabel: UILabel!
+	// MARK: public properties
 
-	@IBOutlet var weightLabel: UILabel!
-	@IBOutlet var weightPickerOutlet: UIPickerView!
-
-	@IBOutlet var dateLabel: UILabel!
-	@IBOutlet var datePicker: UIDatePicker!
-
-	@IBOutlet var submitButton: UIButton!
-
-	@IBAction func submitPressed(_ sender: UIButton) {
-		let weight = weightPicker.value
-		let date = datePicker.date
-		if let indexPath = fromIndexPath {
-			weights[indexPath.row].weight = weight
-			weights[indexPath.row].date = date
-			weights[indexPath.row].units = settings.units
-		}
-		else {
-			let newWeight = Weight(weight: weight, units: settings.units, date: date)
-			weights.insert(newWeight, at: 0)
-			added += 1
-		}
-		writeWeights()
-		updateUI()
-		if added == 0 {
-			navigationController?.popViewController(animated: true)
-		}
-	}
-
-	private var weightPickerOutletHeightConstraint: NSLayoutConstraint?
-	private var weightPickerOutletWidthConstraint: NSLayoutConstraint?
-	private var datePickerOutletHeightConstraint: NSLayoutConstraint?
+	var fromIndexPath: IndexPath?
 
 	// MARK: loading and appearing
 
@@ -115,7 +115,7 @@ class WeightViewController: UIViewController {
 			weightPicker.set(fromWeight: weights[indexPath.row].weight, inUnits: weights[indexPath.row].units)
 			datePicker.date = weights[indexPath.row].date
 			navigationItem.title = "Edit Weight Data"
-			submitButton.setTitle("Submit", for: .normal)
+			button.setTitle("Submit", for: .normal)
 		}
 		else {
 			switch settings.newWeight {
@@ -133,18 +133,16 @@ class WeightViewController: UIViewController {
 			}
 			// datePicker defaults to current date/time
 			navigationItem.title = "Add Weight Data"
-			submitButton.setTitle("Add", for: .normal)
+			button.setTitle("Add", for: .normal)
 		}
 		weightPicker.update(weightPickerOutlet)
 
-		submitButton.titleLabel?.font = settings.font()
-//		submitButton.setTitle("Submit", for: .normal)
+		button.titleLabel?.font = settings.font()
 
 		weightPickerOutletHeightConstraint = weightPickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
 		weightPickerOutletHeightConstraint?.isActive = true
 		weightPickerOutletWidthConstraint = weightPickerOutlet?.widthAnchor.constraint(equalToConstant: settings.widthForWeightPicker())
 		weightPickerOutletWidthConstraint?.isActive = true
-		// weightPickerOutlet?.backgroundColor = UIColor.green		// !! debug
 
 		datePickerOutletHeightConstraint = datePicker.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
 		datePickerOutletHeightConstraint?.isActive = true
