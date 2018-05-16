@@ -12,8 +12,9 @@ import GameplayKit
 
 enum Defaults {
 	static let fontSize: CGFloat = 24.0
+	static let uiFontSize: CGFloat = 28.0
 
-	static let spacing: CGFloat = 0.3		// fraction of settings.fontSize
+	static let spacing: CGFloat = 0.5		// fraction of font size
 
 	static let weight: Double = 175.0
 
@@ -50,7 +51,7 @@ struct Settings: Codable {
 	}
 
 	func heightForPicker() -> CGFloat {
-		return 2*fontSize + 4*Defaults.spacing
+		return heightForLabel(withFontSize: fontSize)
 	}
 
 	func widthForWeightPicker() -> CGFloat {

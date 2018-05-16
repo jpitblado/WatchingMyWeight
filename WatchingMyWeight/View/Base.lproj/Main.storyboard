@@ -54,7 +54,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Xf7-3c-GAw">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="kqe-LG-N7m">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kqe-LG-N7m">
                             <connections>
                                 <segue destination="Zyw-do-Lpb" kind="show" identifier="Add Weight" id="vNc-Cm-5Si"/>
                             </connections>

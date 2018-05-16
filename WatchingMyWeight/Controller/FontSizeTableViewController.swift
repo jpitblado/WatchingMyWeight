@@ -45,9 +45,6 @@ class FontSizeTableViewController: UITableViewController {
 		selectedRow = Int((size - min)/step)
 
 		navigationItem.title = "Font Size"
-
-		// prevent filling with empty rows
-		tableView.tableFooterView = UIView()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -70,10 +67,6 @@ class FontSizeTableViewController: UITableViewController {
 	}
 
 	// MARK: delegate
-
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return settings.heightForLabel(withFontSize: value(fromRow: indexPath.row))
-	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Font Size Cell", for: indexPath)

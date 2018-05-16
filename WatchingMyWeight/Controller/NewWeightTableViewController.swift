@@ -46,9 +46,6 @@ class NewWeightTableViewController: UITableViewController {
 			selectedRow = 2
 		}
 		navigationItem.title = "New Weight"
-
-		// prevent filling with empty rows
-		tableView.tableFooterView = UIView()
     }
 
     // MARK: data source
@@ -62,10 +59,6 @@ class NewWeightTableViewController: UITableViewController {
     }
 
 	// MARK: delegate
-
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return settings.heightForLabel()
-	}
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "New Weight Cell", for: indexPath)

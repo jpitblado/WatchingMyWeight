@@ -25,18 +25,6 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// navigation bar settings
-		/*
-		let att = [NSAttributedStringKey.font: settings.font()
-		self.navigationController?.navigationBar.titleTextAttributes = att
-		*/
-
-		// prevent filling with empty rows
-		tableView.tableFooterView = UIView()
-
-		// settings setup
-		readSettings()
-
 		// data setup
 		readWeights()
 	}
@@ -55,10 +43,6 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return weights.count
-	}
-
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return settings.heightForLabel()
 	}
 
 	// MARK: delegate

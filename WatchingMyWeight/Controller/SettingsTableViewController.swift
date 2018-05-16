@@ -17,9 +17,6 @@ class SettingsTableViewController: UITableViewController {
 
 		// navigation bar settings
 		navigationItem.title = "Settings"
-
-		// prevent filling with empty rows
-		tableView.tableFooterView = UIView()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -37,10 +34,6 @@ class SettingsTableViewController: UITableViewController {
 	}
 
 	// MARK: delegate
-
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return settings.heightForLabel()
-	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		var cell: UITableViewCell
