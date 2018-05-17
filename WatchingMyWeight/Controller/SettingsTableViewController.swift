@@ -30,7 +30,7 @@ class SettingsTableViewController: UITableViewController {
 	// MARK: data source
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 4
+		return 5
 	}
 
 	// MARK: delegate
@@ -43,11 +43,20 @@ class SettingsTableViewController: UITableViewController {
 			cell = tableView.dequeueReusableCell(withIdentifier: "Font Size Setting Cell", for: indexPath)
 			cell.textLabel?.text = "Font Size"
 			cell.detailTextLabel?.text = "\(settings.fontSize)"
-		case 1:		// weight default
+		case 1:		// font name
+			cell = tableView.dequeueReusableCell(withIdentifier: "Font Name Setting Cell", for: indexPath)
+			cell.textLabel?.text = "Font Name"
+			if settings.fontName == "" {
+				cell.detailTextLabel?.text = "System"
+			}
+			else {
+				cell.detailTextLabel?.text = "\(settings.fontName)"
+			}
+		case 2:		// weight default
 			cell = tableView.dequeueReusableCell(withIdentifier: "Default Weight Setting Cell", for: indexPath)
 			cell.textLabel?.text = "Default Weight"
 			cell.detailTextLabel?.text = String(format: "%.1f \(settings.units)", settings.weightDefault)
-		case 2:		// new weight
+		case 3:		// new weight
 			cell = tableView.dequeueReusableCell(withIdentifier: "New Weight Setting Cell", for: indexPath)
 			cell.textLabel?.text = "New Weight"
 			switch settings.newWeight {

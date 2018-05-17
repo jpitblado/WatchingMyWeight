@@ -11,27 +11,53 @@ import UIKit
 
 extension UITabBarController {
 
-	override open func viewDidLoad() {
+	func updateBarItems() {
+		// tab bar item title setup
+		let att = [NSAttributedStringKey.font: settings.uiFont()]
+		if let items = tabBar.items {
+			for item in items {
+				item.setTitleTextAttributes(att, for: .normal)
+			}
+		}
+	}
+
+	open override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// tab bar item setup
-		let att = [NSAttributedStringKey.font: settings.font(ofSize: Defaults.uiFontSize())]
-		UITabBarItem.appearance().setTitleTextAttributes(att, for: .normal)
+		updateBarItems()
 	}
 
 }
 
 extension UITableViewController {
 
-	override open func viewDidLoad() {
+	func updateNavBar() {
+		// nav bar title setup
+		let att = [NSAttributedStringKey.font: settings.uiFont()]
+		navigationController?.navigationBar.titleTextAttributes = att
+	}
+
+	func updateTabBarItems() {
+		if let nav = self.parent as? UINavigationController {
+			if let tbc = nav.parent as? UITabBarController {
+				tbc.updateBarItems()
+			}
+		}
+	}
+
+	open override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// navigation bar setup
-		let att = [NSAttributedStringKey.font : settings.font(ofSize: Defaults.uiFontSize())]
-		navigationController?.navigationBar.titleTextAttributes = att
+		updateNavBar()
 
 		// prevent filling with empty rows
 		tableView.tableFooterView = UIView()
+	}
+
+	open override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
+		updateNavBar()
 	}
 
 }

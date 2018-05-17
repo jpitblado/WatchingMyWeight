@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7704808020AD216C006A77D2 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704807F20AD216C006A77D2 /* Device.swift */; };
+		7704808220AD3B36006A77D2 /* FontNameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704808120AD3B36006A77D2 /* FontNameTableViewController.swift */; };
 		77140592209BF75B00213BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77140591209BF75B00213BBA /* AppDelegate.swift */; };
 		77140594209BF75B00213BBA /* WeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77140593209BF75B00213BBA /* WeightTableViewController.swift */; };
 		77140597209BF75B00213BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77140595209BF75B00213BBA /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		7704807F20AD216C006A77D2 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		7704808120AD3B36006A77D2 /* FontNameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FontNameTableViewController.swift; path = WatchingMyWeight/Controller/FontNameTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		7714058E209BF75B00213BBA /* WatchingMyWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchingMyWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77140591209BF75B00213BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77140593209BF75B00213BBA /* WeightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				77C56B1120A8138400387BC1 /* DefaultWeightViewController.swift */,
 				7766571D20ABF60E00504921 /* Extensions.swift */,
 				77C56AF720A7557600387BC1 /* FontSizeTableViewController.swift */,
+				7704808120AD3B36006A77D2 /* FontNameTableViewController.swift */,
 				77C56AF920A7E7A800387BC1 /* NewWeightTableViewController.swift */,
 				77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */,
 				77C56B0F20A801E100387BC1 /* UnitsTableViewController.swift */,
@@ -202,6 +205,7 @@
 				77140592209BF75B00213BBA /* AppDelegate.swift in Sources */,
 				7766571E20ABF60E00504921 /* Extensions.swift in Sources */,
 				77C56B1220A8138400387BC1 /* DefaultWeightViewController.swift in Sources */,
+				7704808220AD3B36006A77D2 /* FontNameTableViewController.swift in Sources */,
 				77A9F0F2209FB0B3002FA3EF /* Settings.swift in Sources */,
 				77FE57AF20A1596F001B1B72 /* SettingsTableViewController.swift in Sources */,
 				77C56AF820A7557600387BC1 /* FontSizeTableViewController.swift in Sources */,

@@ -29,6 +29,13 @@ struct Defaults {
 		}
 		return ipadFontSize
 	}
+
+	static func uiFont() -> UIFont {
+		if Device.is_iphone {
+			return UIFont.systemFont(ofSize: iphoneFontSize)
+		}
+		return UIFont.systemFont(ofSize: ipadFontSize)
+	}
 }
 
 enum NewWeight: String, Codable {
@@ -40,6 +47,7 @@ enum NewWeight: String, Codable {
 struct Settings: Codable {
 	// Appearance
 	var fontSize: CGFloat = Defaults.fontSize
+	var fontName: String = ""
 
 	// Weight
 	var weightDefault: Double = Defaults.weight
@@ -67,11 +75,21 @@ struct Settings: Codable {
 	}
 
 	func font(ofSize size: CGFloat) -> UIFont {
+		if fontName == "" {
+			return UIFont.systemFont(ofSize: size)
+		}
+		if let font = UIFont(name: fontName, size: size) {
+			return font
+		}
 		return UIFont.systemFont(ofSize: size)
 	}
 
 	func font() -> UIFont {
 		return font(ofSize: fontSize)
+	}
+
+	func uiFont() -> UIFont {
+		return font(ofSize: Defaults.uiFontSize())
 	}
 
 	func weightValue(forWeight weight: Double, inUnits units: Units) -> Double {
