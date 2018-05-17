@@ -15,7 +15,7 @@ extension UITabBarController {
 		super.viewDidLoad()
 
 		// tab bar item setup
-		let att = [NSAttributedStringKey.font: settings.font(ofSize: Defaults.uiFontSize)]
+		let att = [NSAttributedStringKey.font: settings.font(ofSize: Defaults.uiFontSize())]
 		UITabBarItem.appearance().setTitleTextAttributes(att, for: .normal)
 	}
 
@@ -27,7 +27,7 @@ extension UITableViewController {
 		super.viewDidLoad()
 
 		// navigation bar setup
-		let att = [NSAttributedStringKey.font : settings.font(ofSize: Defaults.uiFontSize)]
+		let att = [NSAttributedStringKey.font : settings.font(ofSize: Defaults.uiFontSize())]
 		navigationController?.navigationBar.titleTextAttributes = att
 
 		// prevent filling with empty rows

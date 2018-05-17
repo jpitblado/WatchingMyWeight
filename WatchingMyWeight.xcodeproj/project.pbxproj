@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7704808020AD216C006A77D2 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704807F20AD216C006A77D2 /* Device.swift */; };
 		77140592209BF75B00213BBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77140591209BF75B00213BBA /* AppDelegate.swift */; };
 		77140594209BF75B00213BBA /* WeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77140593209BF75B00213BBA /* WeightTableViewController.swift */; };
 		77140597209BF75B00213BBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77140595209BF75B00213BBA /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7704807F20AD216C006A77D2 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		7714058E209BF75B00213BBA /* WatchingMyWeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchingMyWeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77140591209BF75B00213BBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77140593209BF75B00213BBA /* WeightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				771405A3209BF87E00213BBA /* Weight.swift */,
 				77A9F0F1209FB0B3002FA3EF /* Settings.swift */,
+				7704807F20AD216C006A77D2 /* Device.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7704808020AD216C006A77D2 /* Device.swift in Sources */,
 				77C56AFA20A7E7A800387BC1 /* NewWeightTableViewController.swift in Sources */,
 				77C56B1020A801E100387BC1 /* UnitsTableViewController.swift in Sources */,
 				77A0F87A20A00BEE008BD461 /* WeightPickerView.swift in Sources */,

@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 import GameplayKit
 
-enum Defaults {
+struct Defaults {
 	static let fontSize: CGFloat = 24.0
-	static let uiFontSize: CGFloat = 28.0
+	static let ipadFontSize: CGFloat = 24.0
+	static let iphoneFontSize: CGFloat = 22.0
 
 	static let spacing: CGFloat = 0.5		// fraction of font size
 
@@ -21,6 +22,13 @@ enum Defaults {
 	static let lbs_per_kg = 2.20462
 
 	static let randomSource = GKLinearCongruentialRandomSource()
+
+	static func uiFontSize() -> CGFloat {
+		if Device.is_iphone {
+			return iphoneFontSize
+		}
+		return ipadFontSize
+	}
 }
 
 enum NewWeight: String, Codable {
