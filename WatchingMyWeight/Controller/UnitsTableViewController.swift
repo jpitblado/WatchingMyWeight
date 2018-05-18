@@ -67,7 +67,7 @@ class UnitsTableViewController: UITableViewController {
 		cell.textLabel?.font = settings.font()
 
 		cell.detailTextLabel?.text = ""
-		cell.detailTextLabel?.font = settings.font()
+		cell.detailTextLabel?.font = Defaults.uiFont()
 		if selectedRow == indexPath.row {
 			cell.detailTextLabel?.text = "✓"
 			cell.detailTextLabel?.textColor = UIColor.blue

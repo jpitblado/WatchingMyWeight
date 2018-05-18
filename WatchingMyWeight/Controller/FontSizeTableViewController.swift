@@ -76,7 +76,7 @@ class FontSizeTableViewController: UITableViewController {
 		cell.textLabel?.font = settings.font(ofSize: size)
 
 		cell.detailTextLabel?.text = ""
-		cell.detailTextLabel?.font = settings.font(ofSize: size)
+		cell.detailTextLabel?.font = Defaults.uiFont()
 		if selectedRow == indexPath.row {
 			cell.detailTextLabel?.text = "✓"
 			cell.detailTextLabel?.textColor = UIColor.blue
