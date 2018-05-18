@@ -9,6 +9,24 @@
 import Foundation
 import UIKit
 
+extension UIViewController {
+
+	func updateNavBar() {
+		// nav bar title setup
+		let att = [NSAttributedStringKey.font: settings.uiFont()]
+		navigationController?.navigationBar.titleTextAttributes = att
+	}
+
+	func updateTabBarItems() {
+		if let nav = self.parent as? UINavigationController {
+			if let tbc = nav.parent as? UITabBarController {
+				tbc.updateBarItems()
+			}
+		}
+	}
+
+}
+
 extension UITabBarController {
 
 	func updateBarItems() {
@@ -30,20 +48,6 @@ extension UITabBarController {
 }
 
 extension UITableViewController {
-
-	func updateNavBar() {
-		// nav bar title setup
-		let att = [NSAttributedStringKey.font: settings.uiFont()]
-		navigationController?.navigationBar.titleTextAttributes = att
-	}
-
-	func updateTabBarItems() {
-		if let nav = self.parent as? UINavigationController {
-			if let tbc = nav.parent as? UITabBarController {
-				tbc.updateBarItems()
-			}
-		}
-	}
 
 	open override func viewDidLoad() {
 		super.viewDidLoad()

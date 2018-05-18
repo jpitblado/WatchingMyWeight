@@ -14,9 +14,11 @@ class WeightViewController: UIViewController {
 
 	@IBOutlet var weightsRecordedLabel: UILabel!
 
+	@IBOutlet var weightStackView: UIStackView!
 	@IBOutlet var weightLabel: UILabel!
 	@IBOutlet var weightPickerOutlet: UIPickerView!
 
+	@IBOutlet var dateStackView: UIStackView!
 	@IBOutlet var dateLabel: UILabel!
 	@IBOutlet var datePicker: UIDatePicker!
 
@@ -64,6 +66,22 @@ class WeightViewController: UIViewController {
 		weightPicker.set(fromWeight: weight, inUnits: settings.units)
 	}
 
+	private func updateUI(forStackView stackView: UIStackView) {
+		if Device.is_iphone {
+			if UIDevice.current.orientation.isPortrait {
+				stackView.axis = UILayoutConstraintAxis.vertical
+				stackView.alignment = UIStackViewAlignment.center
+				stackView.distribution = UIStackViewDistribution.fill
+			}
+			else {
+				stackView.axis = UILayoutConstraintAxis.horizontal
+				stackView.alignment = UIStackViewAlignment.fill
+				stackView.distribution = UIStackViewDistribution.equalSpacing
+			}
+			stackView.contentMode = UIViewContentMode.scaleToFill
+		}
+	}
+
 	private func updateUI() {
 		if fromIndexPath == nil {
 			if added > 0 {
@@ -81,13 +99,17 @@ class WeightViewController: UIViewController {
 			}
 		}
 
-		weightLabel?.frame.size.height = settings.heightForPicker()
-		weightPickerOutlet?.frame.size.height = settings.heightForPicker()
+		weightLabel.font = settings.font()
 		weightPickerOutletHeightConstraint?.constant = settings.heightForPicker()
 		weightPickerOutletWidthConstraint?.constant = settings.widthForWeightPicker()
+		weightPicker.update(weightPickerOutlet)
+		updateUI(forStackView: weightStackView)
 
-		dateLabel?.frame.size.height = settings.heightForPicker()
+		dateLabel.font = settings.font()
 		datePickerOutletHeightConstraint?.constant = settings.heightForPicker()
+		updateUI(forStackView: dateStackView)
+
+		button.titleLabel?.font = settings.font()
 	}
 
 	// MARK: public properties
@@ -99,22 +121,21 @@ class WeightViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		updateNavBar()
+
 		weightsRecordedLabel.font = settings.font(ofSize: settings.fontSize*0.8)
 		weightsRecordedLabel.textColor = UIColor.lightGray
 		weightsRecordedLabel.isHidden = true
 
-		weightLabel.font = settings.font()
 		weightLabel.text = "Weight (\(settings.units))"
 		weightPicker = WeightPickerView()
 		weightPickerOutlet.delegate = weightPicker
 		weightPickerOutlet.dataSource = weightPicker
 
-		dateLabel.font = settings.font()
-
 		if let indexPath = fromIndexPath {
 			weightPicker.set(fromWeight: weights[indexPath.row].weight, inUnits: weights[indexPath.row].units)
 			datePicker.date = weights[indexPath.row].date
-			navigationItem.title = "Edit Weight Data"
+			navigationItem.title = "Edit Weight"
 			button.setTitle("Submit", for: .normal)
 		}
 		else {
@@ -132,12 +153,10 @@ class WeightViewController: UIViewController {
 				randomizeWeightPicker()
 			}
 			// datePicker defaults to current date/time
-			navigationItem.title = "Add Weight Data"
+			navigationItem.title = "Add Weight"
 			button.setTitle("Add", for: .normal)
 		}
 		weightPicker.update(weightPickerOutlet)
-
-		button.titleLabel?.font = settings.font()
 
 		weightPickerOutletHeightConstraint = weightPickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
 		weightPickerOutletHeightConstraint?.isActive = true
@@ -146,9 +165,21 @@ class WeightViewController: UIViewController {
 
 		datePickerOutletHeightConstraint = datePicker.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
 		datePickerOutletHeightConstraint?.isActive = true
+
+		updateUI()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
+		updateNavBar()
+
+		updateUI()
+	}
+
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+
 		updateUI()
 	}
 

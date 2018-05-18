@@ -11,6 +11,9 @@ import UIKit
 import GameplayKit
 
 struct Defaults {
+
+	// MARK: constants
+
 	static let fontSize: CGFloat = 24.0
 	static let ipadFontSize: CGFloat = 24.0
 	static let iphoneFontSize: CGFloat = 22.0
@@ -22,6 +25,8 @@ struct Defaults {
 	static let lbs_per_kg = 2.20462
 
 	static let randomSource = GKLinearCongruentialRandomSource()
+
+	// MARK: methods
 
 	static func uiFontSize() -> CGFloat {
 		if Device.is_iphone {
@@ -36,6 +41,7 @@ struct Defaults {
 		}
 		return UIFont.systemFont(ofSize: ipadFontSize)
 	}
+
 }
 
 enum NewWeight: String, Codable {
@@ -45,6 +51,9 @@ enum NewWeight: String, Codable {
 }
 
 struct Settings: Codable {
+
+	// MARK: properties
+
 	// Appearance
 	var fontSize: CGFloat = Defaults.fontSize
 	var fontName: String = ""
@@ -58,6 +67,8 @@ struct Settings: Codable {
 		}
 	}
 
+	// MARK: methods
+
 	func heightForLabel(withFontSize fontSize: CGFloat) -> CGFloat {
 		return fontSize * (1.0 + 2.0*Defaults.spacing)
 	}
@@ -67,7 +78,7 @@ struct Settings: Codable {
 	}
 
 	func heightForPicker() -> CGFloat {
-		return heightForLabel(withFontSize: fontSize)
+		return heightForLabel(withFontSize: fontSize*1.25)
 	}
 
 	func widthForWeightPicker() -> CGFloat {
@@ -79,6 +90,12 @@ struct Settings: Codable {
 			return UIFont.systemFont(ofSize: size)
 		}
 		if let font = UIFont(name: fontName, size: size) {
+			let ratio = UIFont.systemFont(ofSize: size).lineHeight / font.lineHeight
+			if ratio != 1.0 {
+				if let altFont = UIFont(name: fontName, size: size*ratio) {
+					return altFont
+				}
+			}
 			return font
 		}
 		return UIFont.systemFont(ofSize: size)

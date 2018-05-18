@@ -17,7 +17,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	// MARK: private methods
 
 	private func updateUI() {
-		navigationItem.title = "Weight Data (\(weights.count) entries)"
+		navigationItem.title = "Weight Data (\(weights.count))"
 	}
 
 	// MARK: loading and appearing

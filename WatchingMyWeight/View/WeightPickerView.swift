@@ -46,6 +46,7 @@ class WeightPickerView: UIPickerView {
 			}
 			pickerView.selectRow(Int(digits[pos])!, inComponent: pos, animated: true)
 		}
+		pickerView.reloadAllComponents()
 	}
 
 }
@@ -91,8 +92,8 @@ extension WeightPickerView: UIPickerViewDelegate {
 		var pickerLabel: UILabel? = (view as? UILabel)
 		if pickerLabel == nil {
 			pickerLabel = UILabel()
-			pickerLabel?.font = settings.font()
 		}
+		pickerLabel?.font = settings.font()
 
 		if component == dotComponent {
 			pickerLabel?.text = "."
