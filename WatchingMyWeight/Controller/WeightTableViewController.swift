@@ -16,8 +16,27 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 
 	// MARK: private methods
 
+	private let keyStore = NSUbiquitousKeyValueStore.default
+
 	private func updateUI() {
 		navigationItem.title = "Weight Data (\(weights.count))"
+	}
+
+	// MARK: notification action
+
+	@objc func ubiquitousKeyValueStoreDidChange(notification: NSNotification) {
+		let alert = UIAlertController(title: "Change detected",
+									  message: "Weight data changed in iCloud",
+									  preferredStyle: UIAlertControllerStyle.alert)
+		let cancelAction = UIAlertAction(title: "OK",
+										 style: .cancel,
+										 handler: nil)
+		alert.addAction(cancelAction)
+		self.present(alert, animated: true, completion: nil)
+		readWeights()
+		sortWeights()
+		tableView.reloadData()
+		updateUI()
 	}
 
 	// MARK: loading and appearing
@@ -27,15 +46,21 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 
 		// data setup
 		readWeights()
+
+		// set up observer to pull changes from iCloud
+		NotificationCenter.default.addObserver(
+			self,
+			selector: #selector(ubiquitousKeyValueStoreDidChange),
+			name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+			object: keyStore
+		)
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
 		sortWeights()
-
 		tableView.reloadData()
-
 		updateUI()
 	}
 

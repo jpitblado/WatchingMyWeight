@@ -107,7 +107,9 @@ extension WeightPickerView: UIPickerViewDelegate {
 	}
 
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		digits[component] = String(row)
+		if component != dotComponent {
+			digits[component] = String(row)
+		}
 	}
 
 }

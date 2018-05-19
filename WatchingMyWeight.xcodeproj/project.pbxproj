@@ -45,6 +45,7 @@
 		77C56AF920A7E7A800387BC1 /* NewWeightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewWeightTableViewController.swift; path = WatchingMyWeight/Controller/NewWeightTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		77C56B0F20A801E100387BC1 /* UnitsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnitsTableViewController.swift; path = WatchingMyWeight/Controller/UnitsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		77C56B1120A8138400387BC1 /* DefaultWeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultWeightViewController.swift; sourceTree = "<group>"; };
+		77E48C0720AFDBBD002C0EE1 /* WatchingMyWeight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchingMyWeight.entitlements; sourceTree = "<group>"; };
 		77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +65,7 @@
 			children = (
 				77140590209BF75B00213BBA /* WatchingMyWeight */,
 				7714058F209BF75B00213BBA /* Products */,
+				77E48C0820AFDEB6002C0EE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,11 +80,12 @@
 		77140590209BF75B00213BBA /* WatchingMyWeight */ = {
 			isa = PBXGroup;
 			children = (
+				77140598209BF75C00213BBA /* Assets.xcassets */,
+				7714059D209BF75C00213BBA /* Info.plist */,
+				77E48C0720AFDBBD002C0EE1 /* WatchingMyWeight.entitlements */,
 				77A0F87820A00B0B008BD461 /* Model */,
 				77A0F87620A00ABF008BD461 /* View */,
 				77A0F87720A00AF4008BD461 /* Controller */,
-				77140598209BF75C00213BBA /* Assets.xcassets */,
-				7714059D209BF75C00213BBA /* Info.plist */,
 			);
 			path = WatchingMyWeight;
 			sourceTree = "<group>";
@@ -124,6 +127,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		77E48C0820AFDEB6002C0EE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,6 +166,14 @@
 				TargetAttributes = {
 					7714058D209BF75B00213BBA = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -352,6 +370,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WatchingMyWeight/WatchingMyWeight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3U4FQ93Q6K;
 				INFOPLIST_FILE = WatchingMyWeight/Info.plist;
@@ -370,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WatchingMyWeight/WatchingMyWeight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3U4FQ93Q6K;
 				INFOPLIST_FILE = WatchingMyWeight/Info.plist;

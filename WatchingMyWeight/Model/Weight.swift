@@ -39,7 +39,9 @@ func sortWeights() {
 }
 
 func readWeights() {
-	let defaults = UserDefaults.standard
+//	let defaults = UserDefaults.standard
+	let defaults = NSUbiquitousKeyValueStore.default
+	defaults.synchronize()
 
 	if let savedData = defaults.object(forKey: "weights") as? Data {
 		let jsonDecoder = JSONDecoder()
@@ -56,8 +58,10 @@ func readWeights() {
 func writeWeights() {
 	let jsonEncoder = JSONEncoder()
 	if let savedData = try? jsonEncoder.encode(weights) {
-		let defaults = UserDefaults.standard
+//		let defaults = UserDefaults.standard
+		let defaults = NSUbiquitousKeyValueStore.default
 		defaults.set(savedData, forKey: "weights")
+		defaults.synchronize()
 	}
 	else {
 		print("Failed to save weights!")
