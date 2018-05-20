@@ -101,9 +101,11 @@ class FontNameTableViewController: UITableViewController {
 	// MARK: selections
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		settings.fontName = data[indexPath.row]
-		writeSettings()
-		selectedRow = indexPath.row
+		if selectedRow != indexPath.row {
+			settings.fontName = data[indexPath.row]
+			writeSettings()
+			selectedRow = indexPath.row
+		}
 	}
 
 }

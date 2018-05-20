@@ -68,9 +68,11 @@ class NewWeightTableViewController: UITableViewController {
 	// MARK: selections
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		settings.newWeight = data[indexPath.row]
-		writeSettings()
-		selectedRow = indexPath.row
+		if selectedRow != indexPath.row {
+			settings.newWeight = data[indexPath.row]
+			writeSettings()
+			selectedRow = indexPath.row
+		}
 	}
 
 }

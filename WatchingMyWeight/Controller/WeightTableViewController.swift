@@ -20,6 +20,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 
 	private func updateUI() {
 		navigationItem.title = "Weight Data (\(weights.count))"
+		self.updateTabBarItems()
 	}
 
 	// MARK: notification action
@@ -47,13 +48,15 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		// data setup
 		readWeights()
 
-		// set up observer to pull changes from iCloud
-		NotificationCenter.default.addObserver(
-			self,
-			selector: #selector(ubiquitousKeyValueStoreDidChange),
-			name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-			object: keyStore
-		)
+		if settings.dataStorage == DataStorage.iCloud {
+			// set up observer to pull changes from iCloud
+			NotificationCenter.default.addObserver(
+				self,
+				selector: #selector(ubiquitousKeyValueStoreDidChange),
+				name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+				object: keyStore
+			)
+		}
 	}
 
 	override func viewWillAppear(_ animated: Bool) {

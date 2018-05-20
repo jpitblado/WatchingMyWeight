@@ -1,18 +1,18 @@
 //
-//  UnitsTableViewController.swift
+//  DataStorageTableViewController.swift
 //  WatchingMyWeight
 //
-//  Created by Jeffrey Pitblado on 5/13/18.
+//  Created by Jeffrey Pitblado on 5/20/18.
 //  Copyright © 2018 Jeffrey Pitblado. All rights reserved.
 //
 
 import UIKit
 
-class UnitsTableViewController: UITableViewController {
+class DataStorageTableViewController: UITableViewController {
 
 	// MARK: private data and methods
 
-	var data = [Units]()
+	var data = [DataStorage]()
 
 	private var selectedRow: Int? {
 		didSet {
@@ -29,12 +29,11 @@ class UnitsTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		data.append(Units.kg)
-		data.append(Units.lbs)
+		data.append(DataStorage.Local)
+		data.append(DataStorage.iCloud)
+		selectedRow = data.index(of: settings.dataStorage)
 
-		selectedRow = data.index(of: settings.units)
-
-		navigationItem.title = "Weight Units"
+		navigationItem.title = "Data Storage"
 	}
 
 	// MARK: data source
@@ -49,35 +48,34 @@ class UnitsTableViewController: UITableViewController {
 
 	// MARK: delegate
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Weight Units Cell", for: indexPath)
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Data Storage Cell", for: indexPath)
 
 		switch data[indexPath.row] {
-		case .kg:
-			cell.textLabel?.text = "Kilograms (\(Units.kg))"
-		case .lbs:
-			cell.textLabel?.text = "Pounds (\(Units.lbs))"
+		case .Local:
+			cell.textLabel?.text = "This device"
+		case .iCloud:
+			cell.textLabel?.text = "Use iCloud"
 		}
 		cell.textLabel?.font = settings.font()
 
-		cell.detailTextLabel?.text = ""
-		cell.detailTextLabel?.font = Defaults.uiFont()
+		cell.accessoryType = UITableViewCellAccessoryType.none
 		if selectedRow == indexPath.row {
-			cell.detailTextLabel?.text = "✓"
-			cell.detailTextLabel?.textColor = UIColor.blue
+			cell.accessoryType = UITableViewCellAccessoryType.checkmark
 		}
 
-        return cell
-    }
+		return cell
+	}
 
 	// MARK: selections
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if selectedRow != indexPath.row {
-			settings.units = data[indexPath.row]
+			settings.dataStorage = data[indexPath.row]
 			writeSettings()
 			selectedRow = indexPath.row
+			askToLoad(fromStorage: settings.dataStorage)
 		}
 	}
-	
+
 }

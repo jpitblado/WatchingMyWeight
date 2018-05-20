@@ -50,6 +50,11 @@ enum NewWeight: String, Codable {
 	case Random = "Random"
 }
 
+enum DataStorage: String, Codable {
+	case Local = "Local"
+	case iCloud = "iCloud"
+}
+
 struct Settings: Codable {
 
 	// MARK: properties
@@ -58,7 +63,7 @@ struct Settings: Codable {
 	var fontSize: CGFloat = Defaults.fontSize
 	var fontName: String = ""
 
-	// Weight
+	// Weight Properties
 	var weightDefault: Double = Defaults.weight
 	var newWeight: NewWeight = NewWeight.MostRecent
 	var units: Units = Units.lbs {
@@ -66,6 +71,9 @@ struct Settings: Codable {
 			weightDefault = weightValue(forWeight: weightDefault, inUnits: oldValue)
 		}
 	}
+
+	// Data Storage
+	var dataStorage: DataStorage = DataStorage.Local
 
 	// MARK: methods
 
@@ -147,7 +155,7 @@ func readSettings() {
 			settings = try jsonDecoder.decode(Settings.self, from: savedData)
 		}
 		catch {
-			print("Failed to load settings!")
+			NSLog("Failed to load settings!")
 		}
 	}
 }
@@ -159,6 +167,6 @@ func writeSettings() {
 		defaults.set(savedData, forKey: "settings")
 	}
 	else {
-		print("Failed to save settings!")
+		NSLog("Failed to save settings!")
 	}
 }

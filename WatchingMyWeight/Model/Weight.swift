@@ -39,7 +39,34 @@ func sortWeights() {
 }
 
 func readWeights() {
-//	let defaults = UserDefaults.standard
+	switch settings.dataStorage {
+	case .Local:
+		localReadWeights()
+	case .iCloud:
+		iCloudReadWeights()
+	}
+}
+
+func localReadWeights() {
+	let defaults = UserDefaults.standard
+
+	if let savedData = defaults.object(forKey: "weights") as? Data {
+		let jsonDecoder = JSONDecoder()
+
+		do {
+			weights = try jsonDecoder.decode([Weight].self, from: savedData)
+		}
+		catch {
+			NSLog("Failed to read weights from device!")
+		}
+	}
+	else {
+		NSLog("No weights stored on device. Using empty array.")
+		weights = [Weight]()
+	}
+}
+
+func iCloudReadWeights() {
 	let defaults = NSUbiquitousKeyValueStore.default
 	defaults.synchronize()
 
@@ -50,20 +77,44 @@ func readWeights() {
 			weights = try jsonDecoder.decode([Weight].self, from: savedData)
 		}
 		catch {
-			print("Failed to load weights!")
+			NSLog("Failed to read weights from iCloud!")
 		}
+	}
+	else {
+		NSLog("No weights stored in iCloud. Using empty array.")
+		weights = [Weight]()
 	}
 }
 
 func writeWeights() {
+	switch settings.dataStorage {
+	case .Local:
+		localWriteWeights()
+	case .iCloud:
+		iCloudWriteWeights()
+	}
+}
+
+func localWriteWeights() {
 	let jsonEncoder = JSONEncoder()
 	if let savedData = try? jsonEncoder.encode(weights) {
-//		let defaults = UserDefaults.standard
+		let defaults = UserDefaults.standard
+		defaults.set(savedData, forKey: "weights")
+		defaults.synchronize()
+	}
+	else {
+		NSLog("Failed to write weights to device!")
+	}
+}
+
+func iCloudWriteWeights() {
+	let jsonEncoder = JSONEncoder()
+	if let savedData = try? jsonEncoder.encode(weights) {
 		let defaults = NSUbiquitousKeyValueStore.default
 		defaults.set(savedData, forKey: "weights")
 		defaults.synchronize()
 	}
 	else {
-		print("Failed to save weights!")
+		NSLog("Failed to write weights to iCloud!")
 	}
 }

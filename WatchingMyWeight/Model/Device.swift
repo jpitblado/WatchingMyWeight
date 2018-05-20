@@ -30,18 +30,18 @@ struct Device {
 	static let is_iphone_x		= is_iphone && max_length == 812
 
 	static func report() {
-		print("width           = \(Device.width)")
-		print("height          = \(Device.height)")
-		print("is_pad          = \(Device.is_ipad)")
-		print("is_iphone       = \(Device.is_iphone)")
-		print("is_retina       = \(Device.is_retina)")
-		print("is_plus         = \(Device.is_plus)")
-		print("is_ipad_pro10p5 = \(Device.is_ipad_pro10p5)")
-		print("is_ipad_pro12p9 = \(Device.is_ipad_pro12p9)")
-		print("is_iphone_se    = \(Device.is_iphone_se)")
-		print("is_iphone_6     = \(Device.is_iphone_6)")
-		print("is_iphone_6p    = \(Device.is_iphone_6p)")
-		print("is_iphone_7p    = \(Device.is_iphone_7p)")
-		print("is_iphone_x     = \(Device.is_iphone_x)")
+		NSLog("width           = \(Device.width)")
+		NSLog("height          = \(Device.height)")
+		NSLog("is_pad          = \(Device.is_ipad)")
+		NSLog("is_iphone       = \(Device.is_iphone)")
+		NSLog("is_retina       = \(Device.is_retina)")
+		NSLog("is_plus         = \(Device.is_plus)")
+		NSLog("is_ipad_pro10p5 = \(Device.is_ipad_pro10p5)")
+		NSLog("is_ipad_pro12p9 = \(Device.is_ipad_pro12p9)")
+		NSLog("is_iphone_se    = \(Device.is_iphone_se)")
+		NSLog("is_iphone_6     = \(Device.is_iphone_6)")
+		NSLog("is_iphone_6p    = \(Device.is_iphone_6p)")
+		NSLog("is_iphone_7p    = \(Device.is_iphone_7p)")
+		NSLog("is_iphone_x     = \(Device.is_iphone_x)")
 	}
 }

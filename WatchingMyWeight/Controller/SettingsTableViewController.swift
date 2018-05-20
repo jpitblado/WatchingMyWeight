@@ -66,6 +66,15 @@ func getUnits(_ settings: Settings) -> String {
 	return "\(settings.units)"
 }
 
+func getStorage(_ settings: Settings) -> String {
+	switch settings.dataStorage {
+	case .Local:
+		return "This device"
+	case .iCloud:
+		return "Use iCloud"
+	}
+}
+
 class SettingsTableViewController: UITableViewController {
 
 	// MARK: private data and methods
@@ -100,6 +109,17 @@ class SettingsTableViewController: UITableViewController {
 		info = SettingCellInfo(id: "Weight Units Setting Cell",
 							   title: "Units",
 							   detail: getUnits)
+		data.append(info)
+
+		// Data Storage
+		info = SettingCellInfo(id: "Header Cell",
+							   title: "Data",
+							   isHeader: true,
+							   usingSystemFont: false)
+		data.append(info)
+		info = SettingCellInfo(id: "Data Storage Setting Cell",
+							   title: "Storage",
+							   detail: getStorage)
 		data.append(info)
 
 		// Font Appearance
@@ -202,8 +222,12 @@ class SettingsTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if data[indexPath.row].title == "Reset" && data[indexPath.row].detail == nil {
+			let store = settings.dataStorage
 			settings = Settings()
 			writeSettings()
+			if store != settings.dataStorage {
+				askToLoad(fromStorage: settings.dataStorage)
+			}
 			updateUI()
 			updateNavBar()
 			updateTabBarItems()
