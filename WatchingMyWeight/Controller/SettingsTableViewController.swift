@@ -83,9 +83,28 @@ class SettingsTableViewController: UITableViewController {
 
 		var info : SettingCellInfo
 
+		// Weight Properties
+		info = SettingCellInfo(id: "Header Cell",
+							   title: "Weight Properties",
+							   isHeader: true,
+							   usingSystemFont: false)
+		data.append(info)
+		info = SettingCellInfo(id: "Default Weight Setting Cell",
+							   title: "Default",
+							   detail: getDefaultWeight)
+		data.append(info)
+		info = SettingCellInfo(id: "New Weight Setting Cell",
+							   title: "New",
+							   detail: getNewWeight)
+		data.append(info)
+		info = SettingCellInfo(id: "Weight Units Setting Cell",
+							   title: "Units",
+							   detail: getUnits)
+		data.append(info)
+
 		// Font Appearance
 		info = SettingCellInfo(id: "Header Cell",
-							   title: "Font Appearance",
+							   title: "Appearance",
 							   isHeader: true,
 							   usingSystemFont: false)
 		data.append(info)
@@ -96,25 +115,6 @@ class SettingsTableViewController: UITableViewController {
 		info = SettingCellInfo(id: "Font Name Setting Cell",
 							   title: "Font Name",
 							   detail: getFontName)
-		data.append(info)
-
-		// Weight Properties
-		info = SettingCellInfo(id: "Header Cell",
-							   title: "Weight Properties",
-							   isHeader: true,
-							   usingSystemFont: false)
-		data.append(info)
-		info = SettingCellInfo(id: "Default Weight Setting Cell",
-							   title: "Default Weight",
-							   detail: getDefaultWeight)
-		data.append(info)
-		info = SettingCellInfo(id: "New Weight Setting Cell",
-							   title: "New Weight",
-							   detail: getNewWeight)
-		data.append(info)
-		info = SettingCellInfo(id: "Weight Units Setting Cell",
-							   title: "Weight Units",
-							   detail: getUnits)
 		data.append(info)
 
 		// Settings

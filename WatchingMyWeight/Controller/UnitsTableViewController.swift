@@ -12,6 +12,8 @@ class UnitsTableViewController: UITableViewController {
 
 	// MARK: private data and methods
 
+	var data = [Units]()
+
 	private var selectedRow: Int? {
 		didSet {
 			updateUI()
@@ -22,24 +24,16 @@ class UnitsTableViewController: UITableViewController {
 		tableView.reloadData()
 	}
 
-	private func value(fromRow row: Int) -> Units {
-		if row == 0 {
-			return Units.kg
-		}
-		return Units.lbs
-	}
-
 	// MARK: loading
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		switch settings.units {
-		case .kg:
-			selectedRow = 0
-		case .lbs:
-			selectedRow = 1
-		}
+		data.append(Units.kg)
+		data.append(Units.lbs)
+
+		selectedRow = data.index(of: settings.units)
+
 		navigationItem.title = "Weight Units"
 	}
 
@@ -50,7 +44,7 @@ class UnitsTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 2
+		return data.count
 	}
 
 	// MARK: delegate
@@ -58,10 +52,10 @@ class UnitsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Weight Units Cell", for: indexPath)
 
-		if indexPath.row == 0 {
+		switch data[indexPath.row] {
+		case .kg:
 			cell.textLabel?.text = "Kilograms (\(Units.kg))"
-		}
-		else {
+		case .lbs:
 			cell.textLabel?.text = "Pounds (\(Units.lbs))"
 		}
 		cell.textLabel?.font = settings.font()
@@ -79,7 +73,7 @@ class UnitsTableViewController: UITableViewController {
 	// MARK: selections
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		settings.units = value(fromRow: indexPath.row)
+		settings.units = data[indexPath.row]
 		writeSettings()
 		selectedRow = indexPath.row
 	}

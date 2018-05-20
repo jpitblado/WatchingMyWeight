@@ -12,6 +12,8 @@ class NewWeightTableViewController: UITableViewController {
 
 	// MARK: private data and methods
 
+	private var data = [NewWeight]()
+
 	private var selectedRow: Int? {
 		didSet {
 			updateUI()
@@ -22,29 +24,16 @@ class NewWeightTableViewController: UITableViewController {
 		tableView.reloadData()
 	}
 
-	private func value(fromRow row: Int) -> NewWeight {
-		if row == 0 {
-			return NewWeight.Default
-		}
-		if row == 1 {
-			return NewWeight.MostRecent
-		}
-		return NewWeight.Random
-	}
-
 	// MARK: loading
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		switch settings.newWeight {
-		case .Default:
-			selectedRow = 0
-		case .MostRecent:
-			selectedRow = 1
-		case .Random:
-			selectedRow = 2
-		}
+		data.append(NewWeight.Default)
+		data.append(NewWeight.MostRecent)
+		data.append(NewWeight.Random)
+		selectedRow = data.index(of: settings.newWeight)
+
 		navigationItem.title = "New Weight"
     }
 
@@ -55,7 +44,7 @@ class NewWeightTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return data.count
     }
 
 	// MARK: delegate
@@ -63,15 +52,7 @@ class NewWeightTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "New Weight Cell", for: indexPath)
 
-		if indexPath.row == 0 {
-			cell.textLabel?.text = "Use Default Weight"
-		}
-		else if indexPath.row == 1 {
-			cell.textLabel?.text = "Use Most Recent Weight"
-		}
-		else if indexPath.row == 2 {
-			cell.textLabel?.text = "Use Random Weight"
-		}
+		cell.textLabel?.text = data[indexPath.row].rawValue
 		cell.textLabel?.font = settings.font()
 
 		cell.detailTextLabel?.text = ""
@@ -87,7 +68,7 @@ class NewWeightTableViewController: UITableViewController {
 	// MARK: selections
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		settings.newWeight = value(fromRow: indexPath.row)
+		settings.newWeight = data[indexPath.row]
 		writeSettings()
 		selectedRow = indexPath.row
 	}
