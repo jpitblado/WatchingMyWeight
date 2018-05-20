@@ -85,6 +85,14 @@ struct Settings: Codable {
 		return 6*fontSize
 	}
 
+	func systemFont(ofSize size: CGFloat) -> UIFont {
+		return UIFont.systemFont(ofSize: size)
+	}
+
+	func systemFont() -> UIFont {
+		return systemFont(ofSize: fontSize)
+	}
+
 	func font(ofSize size: CGFloat) -> UIFont {
 		if fontName == "" {
 			return UIFont.systemFont(ofSize: size)
