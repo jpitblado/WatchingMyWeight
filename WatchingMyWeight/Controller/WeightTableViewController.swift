@@ -83,6 +83,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		// Weight label
 		cell.detailTextLabel?.text = String(format: "%.1f \(settings.units)", settings.weightValue(forWeight: entry.weight, inUnits: entry.units))
 		cell.detailTextLabel?.font = settings.font()
+		cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
 
 		// Date label
 		let dateFormatter = DateFormatter()
@@ -90,6 +91,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		dateFormatter.timeStyle = DateFormatter.Style.none
 		cell.textLabel?.text = dateFormatter.string(from: entry.date)
 		cell.textLabel?.font = settings.font()
+		cell.textLabel?.adjustsFontSizeToFitWidth = true
 
 		return cell
 	}

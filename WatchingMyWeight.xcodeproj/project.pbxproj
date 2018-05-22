@@ -20,7 +20,6 @@
 		778ABAB8209E4CC500D1C955 /* WeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABAB7209E4CC500D1C955 /* WeightViewController.swift */; };
 		77A0F87A20A00BEE008BD461 /* WeightPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A0F87920A00BEE008BD461 /* WeightPickerView.swift */; };
 		77A9F0F2209FB0B3002FA3EF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A9F0F1209FB0B3002FA3EF /* Settings.swift */; };
-		77C56AF820A7557600387BC1 /* FontSizeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C56AF720A7557600387BC1 /* FontSizeTableViewController.swift */; };
 		77C56AFA20A7E7A800387BC1 /* NewWeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C56AF920A7E7A800387BC1 /* NewWeightTableViewController.swift */; };
 		77C56B1020A801E100387BC1 /* UnitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C56B0F20A801E100387BC1 /* UnitsTableViewController.swift */; };
 		77C56B1220A8138400387BC1 /* DefaultWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C56B1120A8138400387BC1 /* DefaultWeightViewController.swift */; };
@@ -44,7 +43,6 @@
 		778ABAB7209E4CC500D1C955 /* WeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightViewController.swift; sourceTree = "<group>"; };
 		77A0F87920A00BEE008BD461 /* WeightPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightPickerView.swift; sourceTree = "<group>"; };
 		77A9F0F1209FB0B3002FA3EF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		77C56AF720A7557600387BC1 /* FontSizeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FontSizeTableViewController.swift; path = WatchingMyWeight/Controller/FontSizeTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		77C56AF920A7E7A800387BC1 /* NewWeightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewWeightTableViewController.swift; path = WatchingMyWeight/Controller/NewWeightTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		77C56B0F20A801E100387BC1 /* UnitsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnitsTableViewController.swift; path = WatchingMyWeight/Controller/UnitsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		77C56B1120A8138400387BC1 /* DefaultWeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultWeightViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 				77FB8CED20B1FCE600A73457 /* DataStorageTableViewController.swift */,
 				77C56B1120A8138400387BC1 /* DefaultWeightViewController.swift */,
 				7766571D20ABF60E00504921 /* Extensions.swift */,
-				77C56AF720A7557600387BC1 /* FontSizeTableViewController.swift */,
 				7704808120AD3B36006A77D2 /* FontNameTableViewController.swift */,
 				77C56AF920A7E7A800387BC1 /* NewWeightTableViewController.swift */,
 				77FE57AE20A1596F001B1B72 /* SettingsTableViewController.swift */,
@@ -234,7 +231,6 @@
 				7704808220AD3B36006A77D2 /* FontNameTableViewController.swift in Sources */,
 				77A9F0F2209FB0B3002FA3EF /* Settings.swift in Sources */,
 				77FE57AF20A1596F001B1B72 /* SettingsTableViewController.swift in Sources */,
-				77C56AF820A7557600387BC1 /* FontSizeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -365,7 +361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

@@ -23,6 +23,20 @@ class WeightPickerView: UIPickerView {
 		}
 	}
 
+	var height: CGFloat {
+		get {
+			let font = settings.font()
+			return font.lineHeight*2.5
+		}
+	}
+
+	var width: CGFloat {
+		get {
+			let font = settings.font()
+			return font.lineHeight*10.0
+		}
+	}
+
 	// MARK: public methods
 
 	func set(fromWeight weight: Double, inUnits units: Units) {
@@ -78,14 +92,16 @@ extension WeightPickerView: UIPickerViewDataSource {
 extension WeightPickerView: UIPickerViewDelegate {
 
 	func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-		return settings.heightForLabel()
+		let font = settings.font()
+		return font.lineHeight*2.0
 	}
 
 	func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+		let font = settings.font()
 		if component == dotComponent {
-			return settings.fontSize/2
+			return font.lineHeight
 		}
-		return settings.fontSize
+		return font.lineHeight*2.0
 	}
 
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

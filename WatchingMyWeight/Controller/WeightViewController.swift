@@ -99,14 +99,16 @@ class WeightViewController: UIViewController {
 			}
 		}
 
+		let height = weightPicker.height
+
 		weightLabel.font = settings.font()
-		weightPickerOutletHeightConstraint?.constant = settings.heightForPicker()
-		weightPickerOutletWidthConstraint?.constant = settings.widthForWeightPicker()
+		weightPickerOutletHeightConstraint?.constant = height
+		weightPickerOutletWidthConstraint?.constant = weightPicker.width
 		weightPicker.update(weightPickerOutlet)
 		updateUI(forStackView: weightStackView)
 
 		dateLabel.font = settings.font()
-		datePickerOutletHeightConstraint?.constant = settings.heightForPicker()
+		datePickerOutletHeightConstraint?.constant = height
 		updateUI(forStackView: dateStackView)
 
 		button.titleLabel?.font = settings.font()
@@ -123,7 +125,7 @@ class WeightViewController: UIViewController {
 
 		updateNavBar()
 
-		weightsRecordedLabel.font = settings.font(ofSize: settings.fontSize*0.8)
+		weightsRecordedLabel.font = settings.font()
 		weightsRecordedLabel.textColor = UIColor.lightGray
 		weightsRecordedLabel.isHidden = true
 
@@ -158,12 +160,14 @@ class WeightViewController: UIViewController {
 		}
 		weightPicker.update(weightPickerOutlet)
 
-		weightPickerOutletHeightConstraint = weightPickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
+		let height = weightPicker.height
+
+		weightPickerOutletHeightConstraint = weightPickerOutlet?.heightAnchor.constraint(equalToConstant: height)
 		weightPickerOutletHeightConstraint?.isActive = true
-		weightPickerOutletWidthConstraint = weightPickerOutlet?.widthAnchor.constraint(equalToConstant: settings.widthForWeightPicker())
+		weightPickerOutletWidthConstraint = weightPickerOutlet?.widthAnchor.constraint(equalToConstant: weightPicker.width)
 		weightPickerOutletWidthConstraint?.isActive = true
 
-		datePickerOutletHeightConstraint = datePicker.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
+		datePickerOutletHeightConstraint = datePicker.heightAnchor.constraint(equalToConstant: height)
 		datePickerOutletHeightConstraint?.isActive = true
 
 		updateUI()

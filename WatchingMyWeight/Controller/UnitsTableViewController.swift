@@ -59,9 +59,11 @@ class UnitsTableViewController: UITableViewController {
 			cell.textLabel?.text = "Pounds (\(Units.lbs))"
 		}
 		cell.textLabel?.font = settings.font()
+		cell.textLabel?.adjustsFontSizeToFitWidth = true
 
 		cell.detailTextLabel?.text = ""
-		cell.detailTextLabel?.font = Defaults.uiFont()
+		cell.detailTextLabel?.font = settings.preferredFont(forTextStyle: .body)
+		cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
 		if selectedRow == indexPath.row {
 			cell.detailTextLabel?.text = "✓"
 			cell.detailTextLabel?.textColor = UIColor.blue

@@ -25,11 +25,10 @@ class DefaultWeightViewController: UIViewController {
 
 	private var pickerOutletHeightConstraint: NSLayoutConstraint?
 
-	private var weightPicker: WeightPickerView?
+	private var weightPicker: WeightPickerView!
 
 	private func updateUI() {
-		pickerOutlet?.frame.size.height = settings.heightForPicker()
-		pickerOutletHeightConstraint?.constant = settings.heightForPicker()
+		pickerOutletHeightConstraint?.constant = weightPicker.height
 	}
 
 	// MARK: loading and appearing
@@ -45,7 +44,7 @@ class DefaultWeightViewController: UIViewController {
 		weightPicker?.set(fromWeight: settings.weightDefault, inUnits: settings.units)
 		weightPicker?.update(pickerOutlet)
 
-		pickerOutletHeightConstraint = pickerOutlet?.heightAnchor.constraint(equalToConstant: settings.heightForPicker())
+		pickerOutletHeightConstraint = pickerOutlet?.heightAnchor.constraint(equalToConstant: weightPicker.height)
 		pickerOutletHeightConstraint?.isActive = true
 
 		submitButton.titleLabel?.font = settings.font()

@@ -69,27 +69,21 @@ class FontNameTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Font Name Cell", for: indexPath)
 
-		let sysFont = UIFont.systemFont(ofSize: settings.fontSize)
 		let name = data[indexPath.row]
 
-		cell.textLabel?.text = "System"
-		cell.textLabel?.font = sysFont
-
-		if name != "" {
-			if let font = UIFont(name: name, size: settings.fontSize) {
-				cell.textLabel?.text = name
-				cell.textLabel?.font = font
-				let ratio = sysFont.lineHeight / font.lineHeight
-				if ratio != 1.0 {
-					if let altFont = UIFont(name: name, size: settings.fontSize*ratio) {
-						cell.textLabel?.font = altFont
-					}
-				}
-			}
+		if name == "" {
+			cell.textLabel?.text = "System"
+			cell.textLabel?.font = settings.preferredFont(forTextStyle: .body)
 		}
+		else {
+			cell.textLabel?.text = name
+			cell.textLabel?.font = settings.font(name: name, forTextStyle: .body)
+		}
+		cell.textLabel?.adjustsFontSizeToFitWidth = true
 
 		cell.detailTextLabel?.text = ""
-		cell.detailTextLabel?.font = Defaults.uiFont()
+		cell.detailTextLabel?.font = settings.preferredFont(forTextStyle: .body)
+		cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
 		if selectedRow == indexPath.row {
 			cell.detailTextLabel?.text = "✓"
 			cell.detailTextLabel?.textColor = UIColor.blue

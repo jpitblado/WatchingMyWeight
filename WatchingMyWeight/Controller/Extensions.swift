@@ -13,7 +13,7 @@ extension UIViewController {
 
 	func updateNavBar() {
 		// nav bar title setup
-		let att = [NSAttributedStringKey.font: settings.uiFont()]
+		let att = [NSAttributedStringKey.font: settings.font()]
 		navigationController?.navigationBar.titleTextAttributes = att
 	}
 
@@ -61,7 +61,7 @@ extension UITabBarController {
 
 	func updateBarItems() {
 		// tab bar item title setup
-		let att = [NSAttributedStringKey.font: settings.uiFont()]
+		let att = [NSAttributedStringKey.font: settings.font()]
 		if let items = tabBar.items {
 			for item in items {
 				item.setTitleTextAttributes(att, for: .normal)

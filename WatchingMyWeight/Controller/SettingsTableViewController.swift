@@ -36,10 +36,6 @@ struct SettingCellInfo {
 
 }
 
-func getFontSize(_ settings: Settings) -> String {
-	return "\(settings.fontSize)"
-}
-
 func getFontName(_ settings: Settings) -> String {
 	if settings.fontName == "" {
 		return "System"
@@ -128,10 +124,6 @@ class SettingsTableViewController: UITableViewController {
 							   isHeader: true,
 							   usingSystemFont: false)
 		data.append(info)
-		info = SettingCellInfo(id: "Font Size Setting Cell",
-							   title: "Font Size",
-							   detail: getFontSize)
-		data.append(info)
 		info = SettingCellInfo(id: "Font Name Setting Cell",
 							   title: "Font Name",
 							   detail: getFontName)
@@ -170,28 +162,35 @@ class SettingsTableViewController: UITableViewController {
 	// MARK: delegate
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		var height = settings.heightForLabel()
+		var style: UIFontTextStyle
 		if data[indexPath.row].isHeader {
-			height *= 1.5
+			style = .title1
 		}
-		return height
+		else {
+			style = .body
+		}
+		let font = settings.font(forTextStyle: style)
+		return font.lineHeight*2.0
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let row = indexPath.row
 		let cell = tableView.dequeueReusableCell(withIdentifier: data[row].id, for: indexPath)
-		var fontSize: CGFloat
-		var font: UIFont
 
-		fontSize = settings.fontSize
+		var style: UIFontTextStyle
 		if data[row].isHeader {
-			fontSize *= 1.25
-		}
-		if data[row].useSystemFont {
-			font = settings.systemFont(ofSize: fontSize)
+			style = .title1
 		}
 		else {
-			font = settings.font(ofSize: fontSize)
+			style = .body
+		}
+
+		var font: UIFont
+		if  data[row].useSystemFont {
+			font = settings.preferredFont(forTextStyle: style)
+		}
+		else {
+			font = settings.font(forTextStyle: style)
 		}
 
 		if data[row].isHeader {
