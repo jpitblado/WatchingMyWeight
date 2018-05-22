@@ -52,7 +52,9 @@ class DefaultWeightViewController: UIViewController {
 		updateUI()
 	}
 
-	override func viewDidAppear(_ animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
 		updateUI()
 	}
 

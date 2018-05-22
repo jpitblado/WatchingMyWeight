@@ -123,9 +123,9 @@
 		77A0F87820A00B0B008BD461 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				771405A3209BF87E00213BBA /* Weight.swift */,
-				77A9F0F1209FB0B3002FA3EF /* Settings.swift */,
 				7704807F20AD216C006A77D2 /* Device.swift */,
+				77A9F0F1209FB0B3002FA3EF /* Settings.swift */,
+				771405A3209BF87E00213BBA /* Weight.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
