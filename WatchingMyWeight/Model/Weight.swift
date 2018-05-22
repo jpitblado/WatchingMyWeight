@@ -13,7 +13,7 @@ enum Units: String, Codable {
 	case lbs = "lbs"
 }
 
-class Weight : Codable {
+struct Weight : Codable {
 
 	var weight: Double
 	var units: Units
