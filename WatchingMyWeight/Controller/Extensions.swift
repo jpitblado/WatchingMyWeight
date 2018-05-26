@@ -69,6 +69,14 @@ extension UITabBarController {
 					if title.starts(with: "Weights") {
 						item.title = "Weights (\(weights.count))"
 					}
+					else if title.starts(with: "Steps") {
+						if steps.count > 0 {
+							item.title = "Steps (\(steps.count))"
+						}
+						else {
+							item.title = "Steps"
+						}
+					}
 				}
 			}
 		}

@@ -44,5 +44,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSHealthShareUsageDescription</key>
+	<string>!!! WatchingMyWeight would like to read Health data to help you keep track of your weight.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>!!! WatchingMyWeight would like to write Health data to help you keep track of your weight.</string>
 </dict>
 </plist>
