@@ -60,9 +60,6 @@ class StepsTableViewController: UITableViewController {
 		// quantity type
 		let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)
 
-//		let sampleTypes = Set([HKSampleType.quantityType(forIdentifier: .stepCount)!])
-//		let objectTypes = Set([HKObjectType.quantityType(forIdentifier: .stepCount)!])
-
 		healthStore.requestAuthorization(toShare: [], read: Set([stepsCount!])) {
 			(success, error) in
 			if !success {
@@ -126,11 +123,11 @@ class StepsTableViewController: UITableViewController {
 
 	// MARK: loading and appearing
 
-		override func viewDidLoad() {
-				super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
 		getSteps()
-		}
+	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -139,15 +136,15 @@ class StepsTableViewController: UITableViewController {
 		updateUI()
 	}
 
-		// MARK: data source
+	// MARK: data source
 
-		override func numberOfSections(in tableView: UITableView) -> Int {
-				return 1
-		}
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
 
-		override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-				return steps.count
-		}
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return steps.count
+	}
 
 	// MARK: delegate
 
