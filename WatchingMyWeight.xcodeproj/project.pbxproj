@@ -15,6 +15,7 @@
 		77140599209BF75C00213BBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77140598209BF75C00213BBA /* Assets.xcassets */; };
 		7714059C209BF75C00213BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7714059A209BF75C00213BBA /* LaunchScreen.storyboard */; };
 		771405A4209BF87E00213BBA /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771405A3209BF87E00213BBA /* Weight.swift */; };
+		771D013420BA6C8700D871DC /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771D013320BA6C8700D871DC /* HealthData.swift */; };
 		774B893620B893CC00EA9990 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774B893520B893CC00EA9990 /* HealthKit.framework */; };
 		774B893820B8A13200EA9990 /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774B893720B8A13200EA9990 /* StepsTableViewController.swift */; };
 		774B893A20B915CF00EA9990 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774B893920B915CF00EA9990 /* Step.swift */; };
@@ -41,6 +42,7 @@
 		7714059B209BF75C00213BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7714059D209BF75C00213BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		771405A3209BF87E00213BBA /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
+		771D013320BA6C8700D871DC /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		774B893520B893CC00EA9990 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		774B893720B8A13200EA9990 /* StepsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTableViewController.swift; sourceTree = "<group>"; };
 		774B893920B915CF00EA9990 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				7704807F20AD216C006A77D2 /* Device.swift */,
 				77A9F0F1209FB0B3002FA3EF /* Settings.swift */,
+				771D013320BA6C8700D871DC /* HealthData.swift */,
 				774B893920B915CF00EA9990 /* Step.swift */,
 				771405A3209BF87E00213BBA /* Weight.swift */,
 			);
@@ -232,6 +235,7 @@
 				7704808020AD216C006A77D2 /* Device.swift in Sources */,
 				7775B14520B0BEC900D3F5B8 /* HeaderTableViewCell.swift in Sources */,
 				774B893A20B915CF00EA9990 /* Step.swift in Sources */,
+				771D013420BA6C8700D871DC /* HealthData.swift in Sources */,
 				77C56AFA20A7E7A800387BC1 /* NewWeightTableViewController.swift in Sources */,
 				77C56B1020A801E100387BC1 /* UnitsTableViewController.swift in Sources */,
 				77A0F87A20A00BEE008BD461 /* WeightPickerView.swift in Sources */,

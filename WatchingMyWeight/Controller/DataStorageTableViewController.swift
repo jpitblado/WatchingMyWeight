@@ -31,6 +31,7 @@ class DataStorageTableViewController: UITableViewController {
 
 		data.append(DataStorage.Local)
 		data.append(DataStorage.iCloud)
+		data.append(DataStorage.HealthApp)
 		selectedRow = data.index(of: settings.dataStorage)
 
 		navigationItem.title = "Data Storage"
@@ -56,6 +57,8 @@ class DataStorageTableViewController: UITableViewController {
 			cell.textLabel?.text = "This device"
 		case .iCloud:
 			cell.textLabel?.text = "Use iCloud"
+		case .HealthApp:
+			cell.textLabel?.text = "Use Health App"
 		}
 		cell.textLabel?.font = settings.font()
 

@@ -68,6 +68,8 @@ func getStorage(_ settings: Settings) -> String {
 		return "This device"
 	case .iCloud:
 		return "Use iCloud"
+	case .HealthApp:
+		return "Use Health App"
 	}
 }
 

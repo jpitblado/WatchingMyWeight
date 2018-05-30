@@ -44,6 +44,8 @@ func readWeights() {
 		localReadWeights()
 	case .iCloud:
 		iCloudReadWeights()
+	case .HealthApp:
+		break
 	}
 }
 
@@ -92,6 +94,8 @@ func writeWeights() {
 		localWriteWeights()
 	case .iCloud:
 		iCloudWriteWeights()
+	case .HealthApp:
+		break
 	}
 }
 

@@ -33,6 +33,8 @@ extension UIViewController {
 			message = "this device"
 		case .iCloud:
 			message = "iCloud"
+		case .HealthApp:
+			message = "Health App"
 		}
 		let alert = UIAlertController(
 			title: "Changing Data Storage",
@@ -47,6 +49,8 @@ extension UIViewController {
 					localReadWeights()
 				case .iCloud:
 					iCloudReadWeights()
+				case .HealthApp:
+					print("!!! doing nothing in askToLoad()")
 				}
 				self.updateTabBarItems()
 		}
@@ -67,7 +71,12 @@ extension UITabBarController {
 				item.setTitleTextAttributes(att, for: .normal)
 				if let title = item.title {
 					if title.starts(with: "Weights") {
-						item.title = "Weights (\(weights.count))"
+						if weights.count > 0 {
+							item.title = "Weights (\(weights.count))"
+						}
+						else {
+							item.title = "Weights"
+						}
 					}
 					else if title.starts(with: "Steps") {
 						if steps.count > 0 {

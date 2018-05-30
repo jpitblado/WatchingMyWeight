@@ -14,13 +14,44 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 
 	@IBOutlet var addButtonItem: UIBarButtonItem!
 
-	// MARK: private methods
+	// MARK: private properties and methods
 
 	private let keyStore = NSUbiquitousKeyValueStore.default
 
+	private lazy var refresher: UIRefreshControl = {
+		let refreshControl = UIRefreshControl()
+		refreshControl.tintColor = .black
+		refreshControl.addTarget(self, action: #selector(getData), for: .valueChanged)
+		return refreshControl
+	}()
+
 	private func updateUI() {
+		tableView.reloadData()
 		navigationItem.title = "Weight Data (\(weights.count))"
 		self.updateTabBarItems()
+		if self.refresher.isRefreshing {
+			let deadline = DispatchTime.now() + .milliseconds(500)
+			DispatchQueue.main.asyncAfter(deadline: deadline) {
+				self.refresher.endRefreshing()
+			}
+		}
+	}
+
+	// MARK: public methods
+
+	@objc
+	func getData() {
+		if settings.dataStorage == DataStorage.HealthApp {
+			HealthData.getWeights(fromLastDays: 21) {
+				DispatchQueue.main.async {
+					self.updateUI()
+				}
+			}
+		}
+		else {
+			readWeights()
+			self.updateUI()
+		}
 	}
 
 	// MARK: notification action
@@ -45,8 +76,10 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		tableView.refreshControl = refresher
+
 		// data setup
-		readWeights()
+		getData()
 
 		if settings.dataStorage == DataStorage.iCloud {
 			// set up observer to pull changes from iCloud
@@ -62,8 +95,14 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
+		if settings.dataStorage == DataStorage.HealthApp {
+			addButtonItem.isEnabled = false
+		}
+		else {
+			addButtonItem.isEnabled = true
+		}
+
 		sortWeights()
-		tableView.reloadData()
 		updateUI()
 	}
 
@@ -87,8 +126,10 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 
 		// Date label
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateStyle = DateFormatter.Style.medium
-		dateFormatter.timeStyle = DateFormatter.Style.none
+//		dateFormatter.dateStyle = DateFormatter.Style.medium
+//		dateFormatter.timeStyle = DateFormatter.Style.none
+		dateFormatter.dateStyle = DateFormatter.Style.short
+		dateFormatter.timeStyle = DateFormatter.Style.short
 		cell.textLabel?.text = dateFormatter.string(from: entry.date)
 		cell.textLabel?.font = settings.font()
 		cell.textLabel?.adjustsFontSizeToFitWidth = true
@@ -110,6 +151,9 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	}
 
 	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		if settings.dataStorage == .HealthApp {
+			return false
+		}
 		return true
 	}
 

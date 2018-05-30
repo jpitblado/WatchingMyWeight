@@ -31,6 +31,7 @@ enum NewWeight: String, Codable {
 enum DataStorage: String, Codable {
 	case Local = "Local"
 	case iCloud = "iCloud"
+	case HealthApp = "HealthApp"
 }
 
 struct Settings: Codable {
