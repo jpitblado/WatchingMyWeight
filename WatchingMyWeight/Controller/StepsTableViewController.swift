@@ -96,4 +96,12 @@ class StepsTableViewController: UITableViewController {
 
 		return cell
 	}
+
+	// MARK: navigation
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let backItem = UIBarButtonItem()
+		backItem.title = "Back"
+		navigationItem.backBarButtonItem = backItem
+	}
 }

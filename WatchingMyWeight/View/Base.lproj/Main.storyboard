@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ze2-x6-IuE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ze2-x6-IuE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -518,11 +519,53 @@
                             <outlet property="delegate" destination="wx7-TK-C7c" id="FjY-hi-mvF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Ch4-55-U9P"/>
+                    <navigationItem key="navigationItem" id="Ch4-55-U9P">
+                        <barButtonItem key="rightBarButtonItem" title="Graph" id="Jzl-sa-zI1">
+                            <connections>
+                                <segue destination="ur7-SR-xcj" kind="show" identifier="Graph" id="OvU-Kt-8iR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiV-qO-oVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="942" y="-2812"/>
+        </scene>
+        <!--Graph View Controller-->
+        <scene sceneID="wRC-Je-ikY">
+            <objects>
+                <viewController id="ur7-SR-xcj" customClass="XYGraphViewController" customModule="WatchingMyWeight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PAL-Iu-vl6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7AZ-Pf-zf9" customClass="XYGraphView" customModule="WatchingMyWeight" customModuleProvider="target">
+                                <rect key="frame" x="16" y="227" width="343" height="228.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7AZ-Pf-zf9" secondAttribute="height" multiplier="3:2" id="3wm-3n-wIc"/>
+                                    <constraint firstAttribute="height" priority="750" constant="800" id="5tR-n3-ote"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7AZ-Pf-zf9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GAK-Uw-f8x" secondAttribute="leading" constant="16" id="6GH-Dq-Xbd"/>
+                            <constraint firstItem="GAK-Uw-f8x" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7AZ-Pf-zf9" secondAttribute="bottom" constant="16" id="LKY-vK-rXy"/>
+                            <constraint firstItem="7AZ-Pf-zf9" firstAttribute="centerY" secondItem="GAK-Uw-f8x" secondAttribute="centerY" id="LvI-tI-hdC"/>
+                            <constraint firstItem="7AZ-Pf-zf9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GAK-Uw-f8x" secondAttribute="top" constant="16" id="MDt-Go-db4"/>
+                            <constraint firstItem="7AZ-Pf-zf9" firstAttribute="centerX" secondItem="GAK-Uw-f8x" secondAttribute="centerX" id="Wyv-WS-Bx1"/>
+                            <constraint firstItem="GAK-Uw-f8x" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7AZ-Pf-zf9" secondAttribute="trailing" constant="16" id="eGU-XS-Wkg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GAK-Uw-f8x"/>
+                    </view>
+                    <connections>
+                        <outlet property="xyGraphViewOutlet" destination="7AZ-Pf-zf9" id="dZJ-MG-8Yb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7N0-n1-8Ce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1809" y="-2812"/>
         </scene>
         <!--Weights-->
         <scene sceneID="jB8-Os-8xz">
