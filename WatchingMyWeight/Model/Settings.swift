@@ -22,6 +22,14 @@ struct Defaults {
 
 }
 
+func randomValue() -> CGFloat {
+	return CGFloat(Defaults.randomSource.nextInt(upperBound: 100))/10.0
+}
+
+func randomPoint() -> CGPoint {
+	return CGPoint(x: randomValue(), y: randomValue())
+}
+
 enum NewWeight: String, Codable {
 	case Default = "Default"
 	case MostRecent = "Most Recent"

@@ -35,23 +35,7 @@ class XYGraphView: UIView {
 		return CGVector(dx: bounds.size.width - 2 * marginSize, dy: bounds.size.height - 2 * marginSize)
 	}
 
-	private func randomValue() -> CGFloat {
-		return CGFloat(Defaults.randomSource.nextInt(upperBound: 100))/10.0
-	}
-
-	private func randomPoint() -> CGPoint {
-		return CGPoint(x: randomValue(), y: randomValue())
-	}
-
 	// MARK: public methods
-
-	func shiftXto0() {
-		let copy = data
-		data.removeAll()
-		for point in copy {
-			addPoint(point.offsetBy(dx: -dataMin.x, dy: 0))
-		}
-	}
 
 	func newData() {
 		data.removeAll()
@@ -75,34 +59,6 @@ class XYGraphView: UIView {
 		}
 		else if point.y > dataMax.y {
 			dataMax.y = point.y
-		}
-	}
-
-	func makeIdentityData(ofSize count: Int) {
-		newData()
-		for i in 0..<count {
-			addPoint(CGPoint(x: i, y: i))
-		}
-	}
-	
-	func makeRandomData(ofSize count: Int) {
-		newData()
-		for _ in 0..<count {
-			addPoint(randomPoint())
-		}
-	}
-
-	func makeRandomData() {
-		makeRandomData(ofSize: 3)
-	}
-
-	func makeSineData(ofSize count: Int) {
-		newData()
-		var x = -Constants.twoPi
-		let delta = 2.0*Constants.twoPi/CGFloat(count-1)
-		for _ in 0..<count {
-			addPoint(CGPoint(x: x, y: sin(x)))
-			x += delta
 		}
 	}
 

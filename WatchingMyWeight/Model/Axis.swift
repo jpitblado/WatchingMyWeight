@@ -11,7 +11,7 @@ import UIKit
 
 class Axis {
 
-	// MARK: private properties
+	// MARK: private properties and methods
 
 	private var minimum: CGFloat = 0.0
 	private var maximum: CGFloat = 1.0

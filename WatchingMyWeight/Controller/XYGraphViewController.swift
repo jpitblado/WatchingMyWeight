@@ -32,12 +32,40 @@ class XYGraphViewController: UIViewController {
 
 	// MARK: public methods
 
+	func makeIdentityData(ofSize count: Int) {
+		xyGraphViewOutlet.newData()
+		for i in 0..<count {
+			xyGraphViewOutlet.addPoint(CGPoint(x: i, y: i))
+		}
+	}
+
+	func makeRandomData(ofSize count: Int) {
+		xyGraphViewOutlet.newData()
+		for _ in 0..<count {
+			xyGraphViewOutlet.addPoint(randomPoint())
+		}
+	}
+
+	func makeRandomData() {
+		makeRandomData(ofSize: 3)
+	}
+
+	func makeSineData(ofSize count: Int) {
+		xyGraphViewOutlet.newData()
+		var x = -2.0*CGFloat.pi
+		let delta = -x/CGFloat(count-1)
+		for _ in 0..<count {
+			xyGraphViewOutlet.addPoint(CGPoint(x: x, y: sin(x)))
+			x += delta
+		}
+	}
+
 	@objc
 	func getData() {
 		if debug {
-//			xyGraphViewOutlet.makeRandomData(ofSize: 200)
-//			xyGraphViewOutlet.makeIdentityData(ofSize: 5)
-			xyGraphViewOutlet.makeSineData(ofSize: 50)
+//			makeRandomData(ofSize: 200)
+//			makeIdentityData(ofSize: 5)
+			makeSineData(ofSize: 50)
 			xyGraphViewOutlet.plot()
 		}
 		else {
@@ -50,7 +78,6 @@ class XYGraphViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// dataSetup
 		getData()
 	}
 
