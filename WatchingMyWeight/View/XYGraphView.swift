@@ -37,6 +37,10 @@ class XYGraphView: UIView {
 
 	// MARK: public methods
 
+	var usingDates: Bool = false
+	var offsetTimeInterval: Double = 0.0
+	var rescaleTimeInterval: Double = 1.0
+
 	func newData() {
 		data.removeAll()
 	}
@@ -88,6 +92,22 @@ class XYGraphView: UIView {
 		return CGPoint(x: x, y: y)
 	}
 
+	func configureXAxisLabel(_ label: UILabel, forValue value: CGFloat) {
+		if usingDates {
+			let date = Date(timeIntervalSinceReferenceDate: offsetTimeInterval + Double(value)*rescaleTimeInterval)
+			let dateFmt = DateFormatter()
+			dateFmt.dateStyle = DateFormatter.Style.short
+			configureLabel(label, withText: dateFmt.string(from: date))
+		}
+		else {
+			configureNumericLabel(label, forValue: value)
+		}
+	}
+
+	func configureYAxisLabel(_ label: UILabel, forValue value: CGFloat) {
+		configureNumericLabel(label, forValue: value)
+	}
+
 	private func layoutAxes() {
 		var point: CGPoint
 		var numTicks: Int
@@ -104,7 +124,7 @@ class XYGraphView: UIView {
 		numTicks = xAxis.ticks.count
 		for i in 0..<numTicks {
 			let newTickLabel = createLabel()
-			configureLabel(newTickLabel, withText: "\(xAxis.ticks[i])")
+			configureXAxisLabel(newTickLabel, forValue: xAxis.ticks[i])
 			point = CGPoint(x: xAxis.ticks[i], y: yAxis.min)
 			point = translatePoint(point)
 			point = point.offsetBy(dx: -newTickLabel.bounds.size.width/2.0, dy: axisLabelMargin)
@@ -122,7 +142,7 @@ class XYGraphView: UIView {
 		numTicks = yAxis.ticks.count
 		for i in 0..<numTicks {
 			let newTickLabel = createLabel()
-			configureLabel(newTickLabel, withText: "\(yAxis.ticks[i])")
+			configureYAxisLabel(newTickLabel, forValue: yAxis.ticks[i])
 			point = CGPoint(x: xAxis.min, y: yAxis.ticks[i])
 			point = translatePoint(point)
 			point = point.offsetBy(dx: -newTickLabel.bounds.width - axisLabelMargin, dy: -newTickLabel.bounds.size.height/2.0)

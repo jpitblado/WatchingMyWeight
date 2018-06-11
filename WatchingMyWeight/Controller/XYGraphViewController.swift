@@ -20,6 +20,10 @@ class XYGraphViewController: UIViewController {
 
 	private func updateUI() {
 		if let step0 = steps.last {
+			xyGraphViewOutlet.usingDates = true
+			xyGraphViewOutlet.offsetTimeInterval = step0.date.timeIntervalSinceReferenceDate
+			xyGraphViewOutlet.rescaleTimeInterval = TimeConstants.secondsPerDay
+			xyGraphViewOutlet.usingDates = true
 			xyGraphViewOutlet.newData()
 			for step in steps {
 				let x = step.date.timeIntervalSinceReferenceDate-step0.date.timeIntervalSinceReferenceDate

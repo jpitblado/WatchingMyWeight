@@ -21,6 +21,13 @@ extension UIView {
 		label.frame.size = CGSize.zero
 		label.sizeToFit()
 	}
+
+	func configureNumericLabel(_ label: UILabel, forValue value: CGFloat) {
+		let fmt = NumberFormatter()
+		fmt.numberStyle = NumberFormatter.Style.decimal
+		let v = NSNumber(value: Float(value))
+		configureLabel(label, withText: fmt.string(from: v) ?? "\(v)")
+	}
 }
 
 extension CGRect {
