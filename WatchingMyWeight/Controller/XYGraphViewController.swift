@@ -10,9 +10,54 @@ import UIKit
 
 class XYGraphViewController: UIViewController {
 
+	var showingInfo: Bool = false
+	var infoLabel = UILabel()
+
 	// MARK: outlets
 
-	@IBOutlet var xyGraphViewOutlet: XYGraphView!
+	@IBOutlet var xyGraphViewOutlet: XYGraphView! {
+		didSet {
+			let tap = UITapGestureRecognizer(target: self, action: #selector(didTap))
+			tap.numberOfTapsRequired = 1
+			tap.numberOfTouchesRequired = 1
+			xyGraphViewOutlet.addGestureRecognizer(tap)
+		}
+	}
+
+	private func infoForDataAt(index i: Int) -> String {
+		if debug || i < 0 || i >= steps.count {
+			return ""
+		}
+		let info = steps[i]
+
+		let dateFmt = DateFormatter()
+		dateFmt.dateStyle = DateFormatter.Style.short
+		let xString = dateFmt.string(from: info.date)
+
+		let fmt = NumberFormatter()
+		fmt.numberStyle = NumberFormatter.Style.decimal
+		fmt.maximumFractionDigits = 2
+		let yString = fmt.string(from: NSNumber(value: Float(info.count))) ?? "\(info.count)"
+		return xString + "\n" + yString
+	}
+
+	@objc func didTap(_ sender: UITapGestureRecognizer) {
+		let location = sender.location(in: xyGraphViewOutlet)
+		if let i = xyGraphViewOutlet.indexFor(xValue: location.x) {
+			if showingInfo {
+				infoLabel.isHidden = true
+				showingInfo = false
+				return
+			}
+			view.configureLabel(infoLabel, withText: infoForDataAt(index: i))
+			var loc = xyGraphViewOutlet.locationAt(index: i)
+			loc = loc.offsetBy(dx: xyGraphViewOutlet.frame.origin.x, dy: xyGraphViewOutlet.frame.origin.y)
+			loc = loc.offsetBy(dx: -infoLabel.frame.width/2.0, dy: -infoLabel.frame.height)
+			infoLabel.frame.origin = loc
+			infoLabel.isHidden = false
+			showingInfo = true
+		}
+	}
 
 	// MARK: private methods
 
@@ -81,6 +126,11 @@ class XYGraphViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		infoLabel.textAlignment = .center
+		infoLabel.numberOfLines = 0
+		infoLabel.isHidden = true
+		view.addSubview(infoLabel)
 
 		getData()
 	}

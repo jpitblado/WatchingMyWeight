@@ -66,6 +66,31 @@ class XYGraphView: UIView {
 		}
 	}
 
+	func locationAt(index i: Int) -> CGPoint {
+		if i < 0 || i >= data.count {
+			return CGPoint.zero
+		}
+		return translatePoint(data[i])
+	}
+
+	func indexFor(xValue: CGFloat) -> Int? {
+		let x = untrans(x: xValue)
+		var result: Int?
+		var dif: CGFloat = 0
+		var min: CGFloat = 0
+		for i in 0..<data.count {
+			dif = data[i].x - x
+			if dif < 0.0 {
+				dif = -dif
+			}
+			if i == 0 || dif < min {
+				min = dif
+				result = i
+			}
+		}
+		return result
+	}
+
 	// MARK: drawing
 
 	func plot() {
@@ -90,6 +115,10 @@ class XYGraphView: UIView {
 		let y: CGFloat = (yAxis.max - point.y) * drawScale.dy / yAxis.range + drawMargin.y
 
 		return CGPoint(x: x, y: y)
+	}
+
+	private func untrans(x: CGFloat) -> CGFloat {
+		return (x - drawMargin.x) * xAxis.range / drawScale.dx + xAxis.min
 	}
 
 	func configureXAxisLabel(_ label: UILabel, forValue value: CGFloat) {

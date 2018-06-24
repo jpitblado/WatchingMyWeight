@@ -50,7 +50,8 @@ extension UIViewController {
 				case .iCloud:
 					iCloudReadWeights()
 				case .HealthApp:
-					print("!!! doing nothing in askToLoad()")
+					// nothing to do for this case
+					break
 				}
 				self.updateTabBarItems()
 		}
