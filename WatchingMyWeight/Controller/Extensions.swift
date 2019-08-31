@@ -13,7 +13,7 @@ extension UIViewController {
 
 	func updateNavBar() {
 		// nav bar title setup
-		let att = [NSAttributedStringKey.font: settings.font()]
+		let att = [NSAttributedString.Key.font: settings.font()]
 		navigationController?.navigationBar.titleTextAttributes = att
 	}
 
@@ -39,7 +39,7 @@ extension UIViewController {
 		let alert = UIAlertController(
 			title: "Changing Data Storage",
 			message: "Load data from \(message)?",
-			preferredStyle: UIAlertControllerStyle.alert)
+			preferredStyle: UIAlertController.Style.alert)
 		let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
 		let yesAction = UIAlertAction(
 			title: "Yes",
@@ -66,7 +66,7 @@ extension UITabBarController {
 
 	func updateBarItems() {
 		// tab bar item title setup
-		let att = [NSAttributedStringKey.font: settings.font()]
+		let att = [NSAttributedString.Key.font: settings.font()]
 		if let items = tabBar.items {
 			for item in items {
 				item.setTitleTextAttributes(att, for: .normal)

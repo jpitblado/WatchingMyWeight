@@ -32,7 +32,7 @@ class DataStorageTableViewController: UITableViewController {
 		data.append(DataStorage.Local)
 		data.append(DataStorage.iCloud)
 		data.append(DataStorage.HealthApp)
-		selectedRow = data.index(of: settings.dataStorage)
+		selectedRow = data.firstIndex(of: settings.dataStorage)
 
 		navigationItem.title = "Data Storage"
 	}
@@ -62,9 +62,9 @@ class DataStorageTableViewController: UITableViewController {
 		}
 		cell.textLabel?.font = settings.font()
 
-		cell.accessoryType = UITableViewCellAccessoryType.none
+		cell.accessoryType = UITableViewCell.AccessoryType.none
 		if selectedRow == indexPath.row {
-			cell.accessoryType = UITableViewCellAccessoryType.checkmark
+			cell.accessoryType = UITableViewCell.AccessoryType.checkmark
 		}
 
 		return cell

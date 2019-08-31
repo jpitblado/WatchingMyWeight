@@ -69,16 +69,16 @@ class WeightViewController: UIViewController {
 	private func updateUI(forStackView stackView: UIStackView) {
 		if Device.is_iphone {
 			if UIDevice.current.orientation.isPortrait {
-				stackView.axis = UILayoutConstraintAxis.vertical
-				stackView.alignment = UIStackViewAlignment.center
-				stackView.distribution = UIStackViewDistribution.fill
+				stackView.axis = NSLayoutConstraint.Axis.vertical
+				stackView.alignment = UIStackView.Alignment.center
+				stackView.distribution = UIStackView.Distribution.fill
 			}
 			else {
-				stackView.axis = UILayoutConstraintAxis.horizontal
-				stackView.alignment = UIStackViewAlignment.fill
-				stackView.distribution = UIStackViewDistribution.equalSpacing
+				stackView.axis = NSLayoutConstraint.Axis.horizontal
+				stackView.alignment = UIStackView.Alignment.fill
+				stackView.distribution = UIStackView.Distribution.equalSpacing
 			}
-			stackView.contentMode = UIViewContentMode.scaleToFill
+			stackView.contentMode = UIView.ContentMode.scaleToFill
 		}
 	}
 

@@ -166,7 +166,7 @@ class SettingsTableViewController: UITableViewController {
 	// MARK: delegate
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		var style: UIFontTextStyle
+		var style: UIFont.TextStyle
 		if data[indexPath.row].isHeader {
 			style = .title1
 		}
@@ -181,7 +181,7 @@ class SettingsTableViewController: UITableViewController {
 		let row = indexPath.row
 		let cell = tableView.dequeueReusableCell(withIdentifier: data[row].id, for: indexPath)
 
-		var style: UIFontTextStyle
+		var style: UIFont.TextStyle
 		if data[row].isHeader {
 			style = .title1
 		}

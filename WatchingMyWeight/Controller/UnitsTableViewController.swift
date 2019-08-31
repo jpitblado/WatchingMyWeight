@@ -32,7 +32,7 @@ class UnitsTableViewController: UITableViewController {
 		data.append(Units.kg)
 		data.append(Units.lbs)
 
-		selectedRow = data.index(of: settings.units)
+		selectedRow = data.firstIndex(of: settings.units)
 
 		navigationItem.title = "Weight Units"
 	}

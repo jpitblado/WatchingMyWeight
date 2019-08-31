@@ -32,7 +32,7 @@ class NewWeightTableViewController: UITableViewController {
 		data.append(NewWeight.Default)
 		data.append(NewWeight.MostRecent)
 		data.append(NewWeight.Random)
-		selectedRow = data.index(of: settings.newWeight)
+		selectedRow = data.firstIndex(of: settings.newWeight)
 
 		navigationItem.title = "New Weight"
     }

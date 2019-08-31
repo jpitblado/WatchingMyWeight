@@ -59,7 +59,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 	@objc func ubiquitousKeyValueStoreDidChange(notification: NSNotification) {
 		let alert = UIAlertController(title: "Change detected",
 									  message: "Weight data changed in iCloud",
-									  preferredStyle: UIAlertControllerStyle.alert)
+									  preferredStyle: UIAlertController.Style.alert)
 		let cancelAction = UIAlertAction(title: "OK",
 										 style: .cancel,
 										 handler: nil)
@@ -157,7 +157,7 @@ class WeightTableViewController: UITableViewController, UINavigationControllerDe
 		return true
 	}
 
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			weights.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .automatic)

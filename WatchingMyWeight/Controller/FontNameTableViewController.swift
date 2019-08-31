@@ -41,7 +41,7 @@ class FontNameTableViewController: UITableViewController {
 				data.append(name)
 			}
 		}
-		selectedRow = data.index(of: settings.fontName) ?? 0
+		selectedRow = data.firstIndex(of: settings.fontName) ?? 0
 
 		navigationItem.title = "Font Name"
     }

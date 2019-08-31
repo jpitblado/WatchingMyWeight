@@ -63,11 +63,11 @@ struct Settings: Codable {
 
 	// MARK: methods
 
-	func preferredFont(forTextStyle style: UIFontTextStyle) -> UIFont {
+	func preferredFont(forTextStyle style: UIFont.TextStyle) -> UIFont {
 		return UIFont.preferredFont(forTextStyle: style)
 	}
 
-	func font(name: String, forTextStyle style: UIFontTextStyle) -> UIFont {
+	func font(name: String, forTextStyle style: UIFont.TextStyle) -> UIFont {
 		let pf = preferredFont(forTextStyle: style)
 
 		if name != "" {
@@ -86,7 +86,7 @@ struct Settings: Codable {
 		return pf
 	}
 
-	func font(forTextStyle style: UIFontTextStyle) -> UIFont {
+	func font(forTextStyle style: UIFont.TextStyle) -> UIFont {
 		return font(name: fontName, forTextStyle: style)
 	}
 
